@@ -1,4 +1,5 @@
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
+
 
 void	push_list_back(t_List *st, char *var_name, char *var_value)
 {
@@ -36,7 +37,7 @@ t_List	add_list(char **tab, t_List sta)
             ret = ft_trim_equal(tab[j], '=');
             if (ret[0] == NULL)
 			{
-                ft_putstr_fd("bash: export: `=89': not a valid identifier", 1);
+                ft_putstr_fd("bash: export: : not a valid identifier", 1);
 				return (NULL);
 			}
             else

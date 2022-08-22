@@ -2,6 +2,7 @@
 #define MINISHELL_H
 
 # include <stdio.h>
+# include <stdlib.h>
 # include <stdint.h>
 # include <errno.h>
 # include <dirent.h>
@@ -11,7 +12,8 @@
 # include <readline/history.h>
 
 # include "struct.h"
-
+# include "../libft/libft.h"
+# include "fonctions.h"
 
 
 

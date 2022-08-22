@@ -1,13 +1,18 @@
 NAME = minishell
 
-SRCS =	builtins/cd.c \
-		builtins/pwd.c \
-		builtins/echo.c \
-		builtins/env.c \
-		builtins/utils_env.c \
-		builtins/export.c \
-		builtins/unset.c \
-		signal/signal.c
+#srcs/builtins/cd.c \
+		srcs/builtins/pwd.c \
+		srcs/builtins/echo.c \
+		srcs/builtins/env.c \
+		srcs/builtins/utils_env.c \
+		srcs/builtins/export.c \
+		srcs/builtins/unset.c \
+		srcs/signal/signal.c 
+SRCS =	srcs/prompt/prompt.c \
+		srcs/main/main.c \
+		srcs/builtins/env.c \
+		srcs/builtins/utils_env.c \
+		
 
 
 OBJS = ${SRCS:.c=.o}

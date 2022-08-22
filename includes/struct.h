@@ -17,6 +17,13 @@ typedef struct s_sig
 	pid_t		pid;
 }		t_sig;
 
+typedef	struct s_shell
+{
+	t_ListElement	*env;
+	char	*prompt;
+
+}	t_shell;
+
 extern	t_sig glob;
 
 #endif
