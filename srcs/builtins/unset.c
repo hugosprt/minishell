@@ -1,4 +1,4 @@
-#include "../include/minishell.h"
+#include "../includes/minishell.h"
 
 
 void	ft_list_remove_if(t_List st, char *var_name)

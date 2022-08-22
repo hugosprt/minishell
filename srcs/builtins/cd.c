@@ -1,4 +1,4 @@
-#include "../include/minishell.h"
+#include "../includes/minishell.h"
 
 char    *search_in_env(t_List st, char *str)
 {   
