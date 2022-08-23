@@ -1,4 +1,4 @@
-#include "../include/minishell.h"
+#include "../../includes/minishell.h"
 
 int	is_equal(char c, char charset)
 {

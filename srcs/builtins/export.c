@@ -1,4 +1,4 @@
-#include "../include/minishell.h"
+#include "../includes/minishell.h"
 
 int is_in_env(t_List st, char *var_name, char *var_value)
 {
