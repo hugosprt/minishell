@@ -1,13 +1,24 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-enum{
+typedef enum e_koi{
 	ARG,
 	REDIR_D,
 	REDIR_G,
 	REDIR_DD,
 	REDIR_GG,
-};
+	PIPE,
+
+} t_koi;
+
+
+typedef struct s_lexer
+{
+	struct s_lexer	*prev;
+	struct s_lexer	*next;
+	char			*str;
+	t_koi			koi;	
+}	t_lexer;
 
 typedef struct t_ListElement
 {
@@ -25,10 +36,7 @@ typedef struct s_sig
 	pid_t		pid;
 }		t_sig;
 
-typedef struct s_lexer
-{
-	char	*str;
-}	t_lexer;
+
 
 typedef	struct s_shell
 {

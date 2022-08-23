@@ -5,6 +5,7 @@ void	minishell(t_shell *s)
 	while (1)
 	{
 		prompt(s);
+		lexer(s);
 	}
 }
 

@@ -48,7 +48,7 @@ void    path_error( char *path, char *cwd)
 	ft_putstr_fd(path, 2);
 	ft_putstr_fd(": No such file or directory\n", 2);
 	free(cwd);
-	glob.ret = 127;
+	s()->sig->ret = 127;
 }
 
 void cd(t_List st,  char *path)
