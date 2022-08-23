@@ -28,7 +28,6 @@ int		echo(char **str);
 **		cd.c
 **/
 void	cd(t_List st,  char *path);
-
 char	**ft_trim_equal(char const *s, char charset);
 void    ft_export(t_List st, char **arg);
 void	push_list_back(t_List *st, char *var_name, char *var_value);
@@ -54,5 +53,15 @@ t_shell		*s();
 int	lexer(t_shell *s);
 void	skip_white_space(t_shell *s);
 int		is_empty(char c);
+int		add_token_back(t_lexer **head, t_koi token);
+
+
+void add_token_lr(t_shell *s);
+void add_token_rr(t_shell *s);
+void add_token_pip(t_shell *s);
+
+
+
+
 
 #endif
