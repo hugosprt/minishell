@@ -51,5 +51,8 @@ char	**ft_trim_equal(char const *s, char charset);
 void	prompt(t_shell *s);
 
 t_shell		*s();
-void	lexer(t_shell *s);
+int	lexer(t_shell *s);
+void	skip_white_space(t_shell *s);
+int		is_empty(char c);
+
 #endif
