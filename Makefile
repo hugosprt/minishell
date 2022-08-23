@@ -13,6 +13,7 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/builtins/env.c \
 		srcs/builtins/utils_env.c \
 		srcs/singletons/sing.c \
+		
 
 OBJS = ${SRCS:.c=.o}
 

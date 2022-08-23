@@ -1,17 +1,15 @@
 #include "../../includes/minishell.h"
 
-
-
 void	add_token(t_shell *s)
 {
-	if (s->prompt == '|')
+	if (*s->prompt == '|')
 		add_token_pip(s);
-	else if (s->prompt == '<')
+	else if (*s->prompt == '<')
 		add_token_rr(s);
-	else if (s->prompt == '>')
+	else if (*s->prompt == '>')
 		add_token_lr(s);
-	else
-		add_token_arg(s);
+//	else
+//		add_token_arg(s);
 	
 }
 
@@ -23,10 +21,11 @@ int	lexer(t_shell *s)
 		return (1);
 	while (*s->prompt != '\0' && !s->error)
 	{
-		if (is_empty(s->prompt))
+		if (is_empty(*s->prompt))
 			skip_white_space(s);
 		else
-			add_token(s->prompt);
+			add_token(s);
 	}
+	s->prompt = (char *)tmp;
 	return (1);
 }
