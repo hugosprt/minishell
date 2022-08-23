@@ -50,5 +50,6 @@ char	**ft_trim_equal(char const *s, char charset);
 
 void	prompt(t_shell *s);
 
+t_shell		*s();
 
 #endif
