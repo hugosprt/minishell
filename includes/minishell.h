@@ -16,6 +16,4 @@
 # include "fonctions.h"
 
 
-
-
 #endif
