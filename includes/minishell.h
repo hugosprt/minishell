@@ -10,7 +10,7 @@
 # include <sys/types.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
+# include <stddef.h>
 # include "struct.h"
 # include "../libft/libft.h"
 # include "fonctions.h"

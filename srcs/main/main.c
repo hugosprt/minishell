@@ -1,11 +1,36 @@
 #include "../../includes/minishell.h"
 
+
+void	print_lexer(t_lexer *s)
+{
+	int	i;
+	const char	*token[8] = {"ARG", "END", "PIPE","R_REDIR", "L_REDIR",
+		"RR_REDIR", "LL_REDIR",NULL};
+
+	i = 0;
+	if (s == NULL)
+		return ;
+	while (s != NULL)
+	{
+		//printf("num %d  =",	s->koi);
+		printf("%s ........ ", token[s->koi]);
+		s = s->next;
+		i++;
+	}
+	printf("\n");
+}
+
+
+
 void	minishell(t_shell *s)
 {
 	while (1)
 	{
+		s->lexer = NULL;
 		prompt(s);
 		lexer(s);
+		print_lexer(s->lexer);
+
 	}
 }
 

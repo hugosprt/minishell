@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-int	is_empty(int c)
+int	is_empty(char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
 		return (1);
@@ -21,7 +21,7 @@ void	add_token_pip(t_shell *s)
 
 void	add_token_rr(t_shell *s)
 {
-	if (s->prompt[1] == R_RIGHT)
+	if (s->prompt[1] == '>')
 	{
 		add_token_back(&s->lexer, RR_REDIR);
 		s->prompt += 2;
@@ -35,7 +35,9 @@ void	add_token_rr(t_shell *s)
 
 void	add_token_lr(t_shell *s)
 {
-	if (s->prompt[1] == R_LEFT)
+	s->prompt += 1;
+
+	if (s->prompt[0] == '<')
 	{
 		add_token_back(&s->lexer, LL_REDIR);
 		s->prompt += 2;
@@ -43,6 +45,21 @@ void	add_token_lr(t_shell *s)
 	else
 	{
 		add_token_back(&s->lexer, L_REDIR);
-		s->prompt += 1;
+	}
+}
+
+int	is_separator(char c)
+{
+	if (c == '|' || c == '>' || c == '<')
+		return (1);
+	return (0);
+}
+
+void	add_token_arg(t_shell *s)
+{
+	add_token_back(&s->lexer, ARG);
+	while (*s->prompt && !is_separator(*s->prompt))
+	{
+		s->prompt++;
 	}
 }

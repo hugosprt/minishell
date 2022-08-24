@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:03:45 by hspriet           #+#    #+#             */
-/*   Updated: 2022/08/24 13:16:25 by rpol             ###   ########.fr       */
+/*   Updated: 2022/08/24 14:20:04 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
 int	how_many_word(char const *str, char charset)
 {

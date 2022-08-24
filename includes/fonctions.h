@@ -45,7 +45,7 @@ t_List	add_list(char **tab, t_List sta);
 /**
 **		utils_env.c
 **/
-char	**ft_trim_equal(char const *s, char charset);
+//char	**ft_trim_equal(char const *s, char charset);
 
 void	prompt(t_shell *s);
 
@@ -60,8 +60,8 @@ void	add_token_lr(t_shell *s);
 void	add_token_rr(t_shell *s);
 void	add_token_pip(t_shell *s);
 
-
-
-
-
+int	is_separator(char c);
+void	add_token_arg(t_shell *s);
+int first_arg(t_lexer *l);
+int 	test_pipe(t_lexer *s);
 #endif
