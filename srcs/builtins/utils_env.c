@@ -37,16 +37,12 @@ static char	**ft_free_equal(char **ret, int k)
 	return (NULL);
 }
 
-char	**ft_trim_equal(char const *s, char charset)
+char	**ft_trim_equal(char const *s, char charset, int r, int k)
 {
 	char	**ret;
-	int		i;	
-	int		j;	
-	int		k;
-	int		r;
+	int		j;
+	int		i;
 
-	r = 1;
-	k = -1;
 	i = 0;
 	ret = malloc(sizeof(char *) * (2));
 	if (!ret)
@@ -56,7 +52,7 @@ char	**ft_trim_equal(char const *s, char charset)
 		if (s[i] != charset)
 		{
 			j = i;
-			if(r == 0)
+			if (r == 0)
 				charset = 127;
 			while (s[j] != charset && s[j])
 				j++;

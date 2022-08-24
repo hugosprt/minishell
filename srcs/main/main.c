@@ -9,9 +9,9 @@ void	minishell(t_shell *s)
 	}
 }
 
-int main(int ac, char **av, char **env)
+int	main(int ac, char **av, char **env)
 {
-	t_shell *shell;
+	t_shell	*shell;
 
 	(void) ac;
 	(void) av;

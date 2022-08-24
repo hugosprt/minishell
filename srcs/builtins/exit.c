@@ -1,9 +1,8 @@
 #include "../includes/minishell.h"
 
-
-int		is_good(char *str)
+int	is_good(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -19,9 +18,9 @@ int		is_good(char *str)
 	return (1);
 }
 
-int		ft_exit(char *str)
+int	ft_exit(char *str)
 {
-	int sta;
+	int	sta;
 
 	if (str)
 	{

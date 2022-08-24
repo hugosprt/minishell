@@ -1,9 +1,9 @@
 #include "../../includes/minishell.h"
 
 
-t_shell		*s()
+t_shell	*s(void)
 {
-	static t_shell *s;
+	static t_shell	*s;
 
 	if (!s)
 	{
