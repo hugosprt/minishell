@@ -20,16 +20,15 @@ static char	*find_com(char *str)
 	return (com);
 }
 
-static char	*cut_com(char *str)
+static char	*cut_arg(char *str)
 {
 	int	i;
-	int	len;
 
 	i = 0;
 	while (str[i] != ' ' && str[i])
 		i++;
 	if (str[i] == ' ')
-		return ((char *)(s + i));
+		return ((char *)(str + i + 1));
 	return (NULL);
 }
 
@@ -45,9 +44,11 @@ t_parsing	*init_par(t_lexer *lex)
 		par->prev = NULL;
 		par->next = NULL;
 		par->com = find_com(lex->str);
-		par->arg = cut_com(lex->str);
+		par->arg = cut_arg(lex->str);
 		lex = lex->next;
 	}
+	printf("com :%s\n", par->com);
+	printf("arg :%s\n", par->arg);
 	while (lex)
 	{
 		tmp = par;
@@ -56,7 +57,7 @@ t_parsing	*init_par(t_lexer *lex)
 		par->prev = tmp;
 		par->next = NULL;
 		par->com = find_com(lex->str);
-		par->arg = cut_com(lex->str);
+		par->arg = cut_arg(lex->str);
 		lex = lex->next;
 	}
 	return (par);
