@@ -3,11 +3,12 @@
 
 typedef enum e_koi{
 	ARG,
-	REDIR_D,
-	REDIR_G,
-	REDIR_DD,
-	REDIR_GG,
+	END,
 	PIPE,
+	R_REDIR,
+	L_REDIR,
+	RR_REDIR,
+	LL_REDIR,
 }	t_koi;
 
 

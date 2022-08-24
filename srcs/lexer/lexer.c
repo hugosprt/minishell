@@ -4,12 +4,12 @@ void	add_token(t_shell *s)
 {
 	if (*s->prompt == '|')
 		add_token_pip(s);
-	else if (*s->prompt == '<')
-		add_token_rr(s);
 	else if (*s->prompt == '>')
+		add_token_rr(s);
+	else if (*s->prompt == '<')
 		add_token_lr(s);
-//	else
-//		add_token_arg(s);
+	else if (!is_separator(*s->prompt))
+		add_token_arg(s);
 	
 }
 
@@ -26,6 +26,8 @@ int	lexer(t_shell *s)
 		else
 			add_token(s);
 	}
+	add_token_back(&s->lexer, END);
 	s->prompt = (char *)tmp;
+	first_arg(s->lexer);
 	return (1);
 }

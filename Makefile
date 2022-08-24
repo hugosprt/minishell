@@ -13,7 +13,10 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/builtins/env.c \
 		srcs/builtins/utils_env.c \
 		srcs/singletons/sing.c \
-		
+		srcs/lexer/lexer.c \
+		srcs/lexer/lexer_utils1.c \
+		srcs/utils/lexer_list.c \
+		srcs/lexer/lexer_tester.c \
 
 OBJS = ${SRCS:.c=.o}
 
