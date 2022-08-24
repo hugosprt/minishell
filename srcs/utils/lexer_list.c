@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-t_lexer *create_token(t_koi	token, t_lexer *next, t_lexer *prev)
+t_lexer	*create_token(t_koi	token, t_lexer *next, t_lexer *prev)
 {
 	t_lexer	*lexer;
 
@@ -13,7 +13,7 @@ t_lexer *create_token(t_koi	token, t_lexer *next, t_lexer *prev)
 	return (lexer);
 }
 
-int		add_token_back(t_lexer **head, t_koi token)
+int	add_token_back(t_lexer **head, t_koi token)
 {
 	t_lexer	*tmp;
 

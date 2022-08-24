@@ -2,7 +2,7 @@
 
 void	prompt(t_shell *s)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = readline("minishell :");
 	s->prompt = tmp;

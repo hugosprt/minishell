@@ -8,7 +8,7 @@ typedef enum e_koi{
 	REDIR_DD,
 	REDIR_GG,
 	PIPE,
-} t_koi;
+}	t_koi;
 
 
 typedef struct s_lexer
@@ -21,8 +21,8 @@ typedef struct s_lexer
 
 typedef struct t_ListElement
 {
-	char			    	*var;
-    char                    *value;
+	char					*var;
+	char					*value;
 	struct t_ListElement	*next;
 }t_ListElement,	*t_List;
 
@@ -30,18 +30,18 @@ typedef struct t_ListElement
 typedef struct s_sig
 {
 	int				ret;
-	int			sigint;
-	int			sigquit;
-	pid_t		pid;
+	int				sigint;
+	int				sigquit;
+	pid_t			pid;
 }		t_sig;
 
-typedef	struct s_shell
+typedef struct s_shell
 {
 	t_ListElement	*env;
 	t_lexer			*lexer;
 	t_sig			*sig;
 	int				error;
-	char	*prompt;
+	char			*prompt;
 
 }	t_shell;
 

@@ -15,7 +15,7 @@ void	add_token(t_shell *s)
 
 int	lexer(t_shell *s)
 {
-	const char *tmp = s->prompt;
+	const char	*tmp = s->prompt;
 
 	if (s->prompt == NULL)
 		return (1);

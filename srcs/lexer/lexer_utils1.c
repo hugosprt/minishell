@@ -1,8 +1,6 @@
 #include "../../includes/minishell.h"
 
-
-
-int		is_empty(int c)
+int	is_empty(int c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
 		return (1);
@@ -15,13 +13,13 @@ void	skip_white_space(t_shell *s)
 		s->prompt++;
 }
 
-void add_token_pip(t_shell *s)
+void	add_token_pip(t_shell *s)
 {
-	add_token_back(&s->lexer,PIPE);
+	add_token_back(&s->lexer, PIPE);
 	s->prompt++;
 }
 
-void add_token_rr(t_shell *s)
+void	add_token_rr(t_shell *s)
 {
 	if (s->prompt[1] == R_RIGHT)
 	{
@@ -35,7 +33,7 @@ void add_token_rr(t_shell *s)
 	}
 }
 
-void add_token_lr(t_shell *s)
+void	add_token_lr(t_shell *s)
 {
 	if (s->prompt[1] == R_LEFT)
 	{
