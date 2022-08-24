@@ -27,6 +27,14 @@ typedef struct t_ListElement
 	struct t_ListElement	*next;
 }t_ListElement,	*t_List;
 
+typedef struct s_parsing
+{
+	struct s_parsing	*prev;
+	struct s_parsing	*next;
+	char				*com;
+	char				*arg;
+	int					fd;
+}	t_parsing;
 
 typedef struct s_sig
 {
