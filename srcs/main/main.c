@@ -20,8 +20,6 @@ void	print_lexer(t_lexer *s)
 	printf("\n");
 }
 
-
-
 void	minishell(t_shell *s)
 {
 	while (1)
@@ -29,8 +27,8 @@ void	minishell(t_shell *s)
 		s->lexer = NULL;
 		prompt(s);
 		lexer(s);
+		//printf("%s\n", s->prompt);
 		print_lexer(s->lexer);
-
 	}
 }
 
