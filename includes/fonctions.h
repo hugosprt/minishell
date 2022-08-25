@@ -53,7 +53,7 @@ t_shell	*s(void);
 int		lexer(t_shell *s);
 void	skip_white_space(t_shell *s);
 int		is_empty(char c);
-int		add_token_back(t_lexer **head, t_koi token);
+int	add_token_back(t_lexer **head, t_koi token, t_quote quote);
 
 
 void	add_token_lr(t_shell *s);
@@ -64,7 +64,6 @@ int	is_separator(char c);
 void	add_token_arg(t_shell *s);
 int first_arg(t_lexer *l);
 int 	test_pipe(t_lexer *s);
-
 /**
 **		parsing.c
 **/
@@ -77,4 +76,8 @@ t_parsing	*parsing(t_lexer *lex);
 
 t_parsing	*init_par(t_lexer *lex);
 
+
+int find_last_elem(t_lexer *l);
+t_lexer *find_last_elem2(t_lexer *l);
+void	index_quotes(t_shell *s);
 #endif

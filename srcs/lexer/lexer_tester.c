@@ -26,7 +26,7 @@ int first_arg(t_lexer *l)
 	if (size_list(tmp) == 2)
 	{
 		if(tmp->koi > 0)
-			return (printf("syntax error1\n"), 0);
+			return (printf("syntax error\n"), 0);
 	}
 	else if (tmp->koi == PIPE && (tmp->next->koi == ARG || tmp->next->koi == PIPE))
 		return (printf("syntax error\n"), 0);
@@ -58,6 +58,23 @@ int find_last_elem(t_lexer *l)
 	}
 	return (0);
 }
+
+t_lexer *find_last_elem2(t_lexer *l)
+{
+	t_lexer	*tmp;
+
+	tmp = l;
+	if (tmp == NULL)
+		return (NULL);
+	while (NULL != tmp)
+	{
+		if (NULL == tmp->next)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
 
 int 	test_pipe(t_lexer *l)
 {
