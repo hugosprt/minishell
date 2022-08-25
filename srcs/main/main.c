@@ -13,7 +13,9 @@ void	print_lexer(t_lexer *s)
 	while (s != NULL)
 	{
 		//printf("num %d  =",	s->koi);
-		printf("%s ........ ", token[s->koi]);
+		printf("%s ... ", token[s->koi]);
+		if(s->koi == 0)
+			printf(" : %s ... ", s->str);
 		s = s->next;
 		i++;
 	}
@@ -28,7 +30,7 @@ void	minishell(t_shell *s)
 		prompt(s);
 		lexer(s);
 		//printf("%s\n", s->prompt);
-		print_lexer(s->lexer);
+	//	print_lexer(s->lexer);
 	}
 }
 

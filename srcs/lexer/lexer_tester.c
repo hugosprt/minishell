@@ -59,6 +59,23 @@ int find_last_elem(t_lexer *l)
 	return (0);
 }
 
+t_lexer *find_last_elem2(t_lexer *l)
+{
+	t_lexer	*tmp;
+
+	tmp = l;
+	if (tmp == NULL)
+		return (NULL);
+	while (NULL != tmp)
+	{
+		if (NULL == tmp->next)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+
 int 	test_pipe(t_lexer *l)
 {
 	t_lexer	*tmp;
