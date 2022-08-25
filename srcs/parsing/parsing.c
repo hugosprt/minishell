@@ -8,6 +8,5 @@ t_parsing	*parsing(t_lexer *lex)
 	if (!lex || !lex->str)
 		return (NULL);
 	par = init_par(lex);
-	par->car = split_arg(par->arg);
 	return (par);
 }
