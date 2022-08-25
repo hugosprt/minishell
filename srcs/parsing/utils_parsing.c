@@ -1,19 +1,5 @@
 #include "../../includes/minishell.h"
 
-static int	firt_link(t_parsing *par, t_lexer *lex)
-{
-	par = malloc(sizeof(t_parsing));
-	par->prev = NULL;
-	par->next = NULL;
-	par->com = find_com(lex->str);
-	par->arg = cut_arg(lex->str);
-	while(lex->next->koi != PIPE)
-	{
-	
-	}
-	return (0);
-}
-
 static char	*find_com(char *str)
 {
 	char	*com;
@@ -46,6 +32,22 @@ static char	*cut_arg(char *str)
 	return (NULL);
 }
 
+static t_parsing	*first_link(t_lexer *lex)
+{
+	t_parsing *par;
+
+	par = malloc(sizeof(t_parsing));
+	par->prev = NULL;
+	par->next = NULL;
+	par->com = find_com(lex->str);
+	par->arg = cut_arg(lex->str);
+	while(lex->next->koi != PIPE)
+	{
+	
+	}
+	return (par);
+}
+
 t_parsing	*init_par(t_lexer *lex)
 {
 	t_parsing	*tmp;
@@ -53,7 +55,7 @@ t_parsing	*init_par(t_lexer *lex)
 
 	if (!lex->prev)
 	{
-		firts_link(par);
+		par = first_link(lex);
 		lex = lex->next;
 	}
 	printf("com :%s\n", par->com);
