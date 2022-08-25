@@ -19,8 +19,8 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/lexer/lexer_tester.c \
 		srcs/parsing/parsing.c \
 		srcs/parsing/utils_parsing.c \
-		srcs/lexer/lexer_quotes.c
-
+		srcs/lexer/lexer_quotes.c \
+		srcs/trimtrim/trimer.c 
 
 OBJS = ${SRCS:.c=.o}
 

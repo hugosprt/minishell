@@ -80,4 +80,6 @@ t_parsing	*init_par(t_lexer *lex);
 int find_last_elem(t_lexer *l);
 t_lexer *find_last_elem2(t_lexer *l);
 void	index_quotes(t_shell *s);
+char	*ft_strldup(const char *source, int size);
+void	trimer(t_shell *s);
 #endif

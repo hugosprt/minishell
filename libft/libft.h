@@ -6,7 +6,7 @@
 /*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 19:39:42 by hspriet           #+#    #+#             */
-/*   Updated: 2022/03/05 19:38:30 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/08/25 20:12:58 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void		ft_putnbr_base(unsigned long int n, int *res);
 char		**ft_split(char const *str, char charset);
 int			how_many_word(char const *str, char charset);
 int			is_charset(char c, char charset);
+char		*ft_strjoin(char const *s1, char const *s2);
 
 #endif
