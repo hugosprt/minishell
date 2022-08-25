@@ -12,8 +12,8 @@ typedef enum e_koi{
 }	t_koi;
 
 typedef enum e_quote{
-	S_QUOTES,
-	D_QUOTES,
+	S_QUOTES = '\'',
+	D_QUOTES = '\"',
 	DOLLAR,
 	MIX_QUOTES,
 	NOT_YET,
