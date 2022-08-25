@@ -7,7 +7,11 @@ static int	firt_link(t_parsing *par, t_lexer *lex)
 	par->next = NULL;
 	par->com = find_com(lex->str);
 	par->arg = cut_arg(lex->str);
-	return(0);
+	while(lex->next->koi != PIPE)
+	{
+	
+	}
+	return (0);
 }
 
 static char	*find_com(char *str)

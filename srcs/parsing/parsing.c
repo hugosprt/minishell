@@ -1,5 +1,6 @@
 #include "../../includes/minishell.h"
 
+
 t_parsing	*parsing(t_lexer *lex)
 {
 	t_parsing	*par;
