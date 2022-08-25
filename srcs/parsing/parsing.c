@@ -7,12 +7,6 @@ t_parsing	*parsing(t_lexer *lex)
 	if (!lex || !lex->str)
 		return (NULL);
 	par = init_par(lex);
-	while (lex->next)
-	{
-		lex = lex->next;
-		par = init_par(lex);
-	}
-	while (par->prev)
-		par = par->prev;
+	par->car = split_arg(par->arg);
 	return (par);
 }
