@@ -42,7 +42,9 @@ typedef struct s_parsing
 	struct s_parsing	*next;
 	char				*com;
 	char				*arg;
-	int					fd;
+	char				**car;
+	int					fd_in;
+	int					fd_out;
 }	t_parsing;
 
 typedef struct s_sig
