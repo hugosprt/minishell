@@ -5,7 +5,7 @@ static t_parsing	*first_link(t_parsing *par, t_lexer *lex)
 
 	while (lex->koi != END)
 	{
-		if (lex->koi == R_REDIR || lex->koi == RR_REDIR)
+		if (lex->koi == R_REDIR || lex->koi == L_REDIR || lex->koi == RR_REDIR)
 		{
 			par = redir(par, lex->next);
 			lex = lex->next;
@@ -31,6 +31,7 @@ t_parsing	*init_par(t_lexer *lex)
 	par->next = NULL;
 	par->com = lex->str;
 	par->arg = NULL;
+	par->fd_in = 0;
 	par->fd_out = 1;
 	if (lex->next->koi == ARG)
 	{
