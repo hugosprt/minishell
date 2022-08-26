@@ -15,58 +15,50 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int	is_n(char *str)
+int is_flag(char *str)
 {
-	int	a;
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	if (str[0] != '-')
+	if (*str == '-')
 	{
-		return (0);
+		while (str && is_empty(*str))
+		{
+			if (*str != 'n')
+				return (0);
+		}
 	}
 	else
-	{
-		i++;
-		a = i;
-		while (str[i])
-		{
-			if (str[i] != 'n' || !str[i])
-				return (0);
-			i++;
-		}
-		if (i == a)
-			return (0);
-	}
+		return (0);
 	return (1);
+}
+
+
+int	is_n(char *str)
+{
+	int i;
+	i = 0;
+	while (*str)
+	{
+		i = is_flag(str);
+		str++;
+	}
+	return (i);
 }
 
 int	echo(t_shell *s)
 {
 	t_parsing	*p;
-	int	i;
 	int	n;
+	char *str;
 
 	p = s->parsing;
-	i = 0;
+	str = p->arg;
 	n = 1;
-	i = 1;
-	if (p->arg)
+	if (str)
 	{
-		while (is_n(p->arg++))
-			n = 0;
-		if (p->arg)
-		{
-			while (p->arg)
-			{
-				ft_putstr_fd(p->arg, 1);
-				i++;
-				if (p->arg)
-					ft_putstr_fd(" ", 1);
-			}
-		}
+		n = is_n(str);
+		
+		ft_putstr_fd(str, p->fd_out);
+		if (p->fd_out != 1)
+			close(p->fd_out);
 	}
 	if (n == 1)
 		ft_putstr_fd("\n", 1);
