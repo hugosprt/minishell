@@ -33,12 +33,12 @@ t_parsing	*redir(t_parsing *par, t_lexer *lex, int i, char *s)
 		printf("closed fd :%d__%d\n", par->fd_out, close(par->fd_out));
 	if (lex->prev->koi == R_REDIR)
 	{
-		par->fd_out = open(str, O_CREAT | O_RDWR | O_TRUNC);
+		par->fd_out = open(str, O_CREAT | O_TRUNC | O_WRONLY, 00644);
 		printf("fd out R name %s code %d\n", str, par->fd_out);
 	}
 	else if (lex->prev->koi == RR_REDIR)
 	{
-		par->fd_out = open(str, O_CREAT | O_RDWR | O_APPEND);
+		par->fd_out = open(str, O_CREAT | O_APPEND | O_WRONLY, 00644);
 		printf("fd out RR name %s code %d\n", str, par->fd_out);
 	}
 	if (ft_csch(lex->str, ' '))
