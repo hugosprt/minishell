@@ -1,6 +1,5 @@
 #include "../../includes/minishell.h"
 
-
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
@@ -15,52 +14,43 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int is_flag(char *str)
+int	is_n(char *str, int n)
 {
-	if (*str == '-')
-	{
-		while (str && is_empty(*str))
-		{
-			if (*str != 'n')
-				return (0);
-		}
-	}
-	else
-		return (0);
-	return (1);
-}
+	int	i;
 
-
-int	is_n(char *str)
-{
-	int i;
 	i = 0;
-	while (*str)
+	if (str[0] == '-' && str[1] == 'n')
 	{
-		i = is_flag(str);
-		str++;
+		i++;
+		while (str[i] == 'n')
+			i++;
+		if (str[i] != ' ' && str[i] != '\0')
+			return (n);
+		while (str[i] == ' ')
+			i++;
 	}
-	return (i);
+	if (str[i] == '-' && str[i + 1] == 'n')
+		i = is_n((str + i), i + n);
+	return (i + n);
 }
 
 int	echo(t_shell *s)
 {
 	t_parsing	*p;
-	int	n;
-	char *str;
+	int			n;
+	char		*str;
 
 	p = s->parsing;
 	str = p->arg;
-	n = 1;
+	n = 0;
 	if (str)
 	{
-		n = is_n(str);
-		
-		ft_putstr_fd(str, p->fd_out);
+		n = is_n(str, 0);
+		ft_putstr_fd((str + n), p->fd_out);
 		if (p->fd_out != 1)
 			close(p->fd_out);
 	}
-	if (n == 1)
+	if (n == 0)
 		ft_putstr_fd("\n", 1);
 	return (0);
 }

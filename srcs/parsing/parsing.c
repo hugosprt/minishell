@@ -26,7 +26,6 @@ t_parsing	*parsing(t_lexer *lex)
 
 t_parsing	*redir(t_parsing *par, t_lexer *lex)
 {
-	printf("TYPE %d name%s\n", lex->prev->koi, lex->str);
 	if (par->fd_out != 1)
 		printf("closed fd out :%d__%d\n", par->fd_out, close(par->fd_out));
 	if (par->fd_in != 0)
@@ -46,7 +45,7 @@ t_parsing	*redir(t_parsing *par, t_lexer *lex)
 		par->fd_in = open(lex->str, O_RDONLY);
 		if (par->fd_in == -1)
 			return (printf("%s: No such file or directory\n", lex->str), par);
-		printf("fd in R name %s code %d\n", lex->str, par->fd_in);
+		printf("fd in L name %s code %d\n", lex->str, par->fd_in);
 	}
 	return (par);
 }
