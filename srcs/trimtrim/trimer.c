@@ -66,4 +66,5 @@ void	trimer(t_shell *s)
 			trimer_large(s, lexer);
 		lexer = lexer->next;
 	}
+	
 }
