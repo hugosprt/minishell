@@ -79,6 +79,7 @@ char	*ft_strldup(const char *source, int size)
 
 void skip_double_quote(t_shell *s, int *i)
 {
+
 	(*i)++;
 	s->prompt++;
 	while (*s->prompt && *s->prompt != '\"')
@@ -123,7 +124,7 @@ void	add_token_arg(t_shell *s)
 		if (*s->prompt == '\'')
 			skip_single_quote(s, &i);
 		else if (*s->prompt == '\"')
-			skip_single_quote(s, &i);
+			skip_double_quote(s, &i);
 		else
 		{
 			i++;

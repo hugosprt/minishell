@@ -20,7 +20,9 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/parsing/parsing.c \
 		srcs/parsing/utils_parsing.c \
 		srcs/lexer/lexer_quotes.c \
-		srcs/trimtrim/trimer.c 
+		srcs/trimtrim/trimer.c 	\
+		srcs/builtins/echo.c \
+		srcs/exec/exec_builtins.c
 
 OBJS = ${SRCS:.c=.o}
 

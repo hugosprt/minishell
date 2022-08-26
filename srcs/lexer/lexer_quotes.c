@@ -21,7 +21,7 @@ void	sing_quote(t_shell *s, char **str, t_lexer *l)
 void	doubl_quote(t_shell *s, char **str, t_lexer *l)
 {
 	(void) s;
-	if (l->quote == D_QUOTES || l->quote == D_QUOTES)
+	if (l->quote == S_QUOTES || l->quote == D_QUOTES)
 		l->quote = MIX_QUOTES;
 	else
 		l->quote = D_QUOTES;
