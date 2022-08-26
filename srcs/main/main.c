@@ -32,8 +32,9 @@ void	minishell(t_shell *s)
 		lexer(s);
 		trimer(s);
 		print_lexer(s->lexer);
-		parsing(s->lexer);
-		printf("here\n");
+		//parsing(s->lexer);
+		//exec(s);
+		///printf("here\n");
 		//printf("%s\n", s->prompt);
 		//lex->str = s->prompt;
 		//parsing(lex);

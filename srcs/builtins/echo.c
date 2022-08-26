@@ -43,25 +43,27 @@ int	is_n(char *str)
 	return (1);
 }
 
-int	echo(char **str)
+int	echo(t_shell *s)
 {
+	t_parsing	*p;
 	int	i;
 	int	n;
 
+	p = s->parsing;
 	i = 0;
 	n = 1;
 	i = 1;
-	if (str[i])
+	if (p->arg)
 	{
-		while (is_n(str[i++]))
+		while (is_n(p->arg++))
 			n = 0;
-		if (str[i])
+		if (p->arg)
 		{
-			while (str[i])
+			while (p->arg)
 			{
-				ft_putstr_fd(str[i], 1);
+				ft_putstr_fd(p->arg, 1);
 				i++;
-				if (str[i])
+				if (p->arg)
 					ft_putstr_fd(" ", 1);
 			}
 		}

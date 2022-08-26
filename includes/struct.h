@@ -59,6 +59,7 @@ typedef struct s_shell
 {
 	t_ListElement	*env;
 	t_lexer			*lexer;
+	t_parsing		*parsing;
 	t_sig			*sig;
 	int				error;
 	char			*prompt;
