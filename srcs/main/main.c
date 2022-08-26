@@ -22,7 +22,7 @@ void	print_lexer(t_lexer *s)
 	printf("\n");
 }
 
-void	minishell(t_shell *s)
+void	minishell(t_shell *s, t_List st)
 {
 	
 	while (1)
@@ -31,9 +31,9 @@ void	minishell(t_shell *s)
 		prompt(s);
 		lexer(s);
 		trimer(s);
-		print_lexer(s->lexer);
-		//parsing(s->lexer);
-		//exec(s);
+		//print_lexer(s->lexer);
+		s->parsing = parsing(s->lexer);
+		exec(s, st);
 		///printf("here\n");
 		//printf("%s\n", s->prompt);
 		//lex->str = s->prompt;
@@ -48,13 +48,15 @@ void	minishell(t_shell *s)
 int	main(int ac, char **av, char **env)
 {
 	t_shell	*shell;
+	t_List		st;
 
 	(void) ac;
 	(void) av;
+	st = NULL;
 	shell = s();
 	if (!shell)
 		return (0);
-	if (!add_list(env, shell->env))
-		return (0);
-	minishell(shell);
+	st = add_list(env, st);
+	//print_env(list);
+	minishell(shell, st);
 }

@@ -39,8 +39,8 @@ t_parsing	*init_par(t_lexer *lex)
 	}
 	else
 		first_link(par, lex->next);
-	printf("com :%s\n", par->com);
-	printf("arg :%sR\n", par->arg);
+	//printf("com :%sR\n", par->com);
+//	printf("arg :%sR\n", par->arg);
 
 	return (par);
 }

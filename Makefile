@@ -22,7 +22,8 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/lexer/lexer_quotes.c \
 		srcs/trimtrim/trimer.c 	\
 		srcs/builtins/echo.c \
-		srcs/exec/exec_builtins.c
+		srcs/exec/exec_builtins.c \
+		srcs/builtins/pwd.c \
 
 OBJS = ${SRCS:.c=.o}
 
