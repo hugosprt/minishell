@@ -24,11 +24,7 @@ void	print_lexer(t_lexer *s)
 
 void	minishell(t_shell *s)
 {
-	t_lexer	*lex;
-
-	lex = malloc(sizeof(t_lexer));
-	lex->prev = NULL;
-	lex->next = NULL;
+	
 	while (1)
 	{
 		s->lexer = NULL;
@@ -36,6 +32,8 @@ void	minishell(t_shell *s)
 		lexer(s);
 		trimer(s);
 		print_lexer(s->lexer);
+		parsing(s->lexer);
+		printf("here\n");
 		//printf("%s\n", s->prompt);
 		//lex->str = s->prompt;
 		//parsing(lex);

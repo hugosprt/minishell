@@ -43,7 +43,7 @@ typedef struct s_parsing
 	char				*com;
 	char				*arg;
 	char				**car;
-	int					fd_in;
+	int					*fd_in;
 	int					fd_out;
 }	t_parsing;
 
