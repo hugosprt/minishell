@@ -39,6 +39,7 @@ SRCS =	ft_atoi.c \
 		ft_printf.c \
 		ft_split.c \
 		ft_split2.c \
+		ft_firstword.c \
 
 OBJS = $(SRCS:.c=.o)
 
