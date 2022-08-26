@@ -76,7 +76,7 @@ t_parsing	*parsing(t_lexer *lex);
 
 t_parsing	*init_par(t_lexer *lex);
 
-t_parsing	*redir(t_parsing *par, t_lexer *lex, int i, char *s);
+t_parsing	*redir(t_parsing *par, t_lexer *lex);
 
 //t_parsing	*ft_pipe(t_parsing *par);
 
