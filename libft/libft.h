@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 19:39:42 by hspriet           #+#    #+#             */
-/*   Updated: 2022/08/26 13:39:25 by rpol             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -62,5 +51,6 @@ void		ft_putnbr_base(unsigned long int n, int *res);
 char		**ft_split(char const *str, char charset);
 int			how_many_word(char const *str, char charset);
 int			is_charset(char c, char charset);
+char		*ft_strjoin(char const *s1, char const *s2);
 
 #endif

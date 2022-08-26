@@ -15,7 +15,7 @@ void	print_lexer(t_lexer *s)
 		//printf("num %d  =",	s->koi);
 		printf("%s ... ", token[s->koi]);
 		if(s->koi == 0)
-			printf(" : %s ... ", s->str);
+			printf(" : -%s- ... ", s->str);
 		s = s->next;
 		i++;
 	}
@@ -30,9 +30,14 @@ void	minishell(t_shell *s)
 		s->lexer = NULL;
 		prompt(s);
 		lexer(s);
+		trimer(s);
 		print_lexer(s->lexer);
 		parsing(s->lexer);
 		printf("here\n");
+		//printf("%s\n", s->prompt);
+		//lex->str = s->prompt;
+		//parsing(lex);
+		
 
 		//printf("%s\n", s->prompt);
 	//	print_lexer(s->lexer);

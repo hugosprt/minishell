@@ -10,7 +10,9 @@ int	is_empty(char c)
 void	skip_white_space(t_shell *s)
 {
 	while (*s->prompt && is_empty(*s->prompt))
+	{
 		s->prompt++;
+	}
 }
 
 void	add_token_pip(t_shell *s)
@@ -50,7 +52,7 @@ void	add_token_lr(t_shell *s)
 
 int	is_separator(char c)
 {
-	if (c == '|' || c == '>' || c == '<')
+	if (c == '|' || c == '>' || c == '<' || is_empty(c))
 		return (1);
 	return (0);
 }
@@ -120,10 +122,13 @@ void	add_token_arg(t_shell *s)
 	{
 		if (*s->prompt == '\'')
 			skip_single_quote(s, &i);
-		if (*s->prompt == '\"')
+		else if (*s->prompt == '\"')
 			skip_single_quote(s, &i);
-		i++;
-		s->prompt++;
+		else
+		{
+			i++;
+			s->prompt++;
+		}
 	}
 	find_last_elem2(s->lexer)->str = ft_strldup(tmp, i);
 }
