@@ -39,7 +39,7 @@ void		push_list_back(t_List *st, char *var_name, char *var_value);
 void		is_var(char *str, t_List st);
 void		ft_export(t_List st, char **arg);
 void		create_env(char **envp);
-void		print_env(t_List st);
+void		print_env(t_List st, t_shell *s);
 t_List		add_list(char **tab, t_List sta);
 
 /**
@@ -89,4 +89,5 @@ void	index_quotes(t_shell *s);
 char	*ft_strldup(const char *source, int size);
 void	trimer(t_shell *s);
 void	exec(t_shell *s, t_List st);
+int	ft_strcmp_2(const char *str1, const char *str2);
 #endif

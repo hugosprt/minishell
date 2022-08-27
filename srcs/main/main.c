@@ -39,7 +39,7 @@ void	minishell(t_shell *s, t_List st)
 		//lex->str = s->prompt;
 		//parsing(lex);
 		//printf("%s\n", s->prompt);
-	//	print_lexer(s->lexer);
+		//	print_lexer(s->lexer);
 	}
 }
 
@@ -50,11 +50,13 @@ int	main(int ac, char **av, char **env)
 
 	(void) ac;
 	(void) av;
+
 	st = NULL;
 	shell = s();
 	if (!shell)
 		return (0);
 	st = add_list(env, st);
+	shell->str_env = env;
 	//print_env(list);
 	minishell(shell, st);
 }

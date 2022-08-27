@@ -1,5 +1,23 @@
 #include "../../includes/minishell.h"
 
+int	ft_strcmp_2(const char *str1, const char *str2)
+{
+	int	i;
+
+	i = 0;
+	if (!str1)
+		return (1);
+	while (str1[i] && str2[i])
+	{
+		if (str1[i] != str2[i])
+			return (1);
+		i++;
+	}
+	if (i < ft_strlen(str1) || i < ft_strlen(str2))
+		return (1);
+	return (0);
+}
+
 char	*search_in_env(t_List st, char *str)
 {
 	t_List	tmp;
@@ -46,7 +64,7 @@ void	path_error( char *path, char *cwd)
 	ft_putstr_fd(path, 2);
 	ft_putstr_fd(": No such file or directory\n", 2);
 	free(cwd);
-	s()->sig->ret = 127;
+	//s()->sig->ret = 127;
 }
 
 void	cd(t_List st, char *path)

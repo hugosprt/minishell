@@ -1,4 +1,4 @@
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 
 void	ft_list_remove_if(t_List st, char *var_name)
@@ -56,7 +56,12 @@ void	ft_unset(t_List st, char **arg)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
+	if (arg == NULL)
+	{
+		printf("unset: not enough arguments\n");
+		return ;
+	}
 	while (arg[i])
 	{
 		is_var2(arg[i], st);

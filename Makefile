@@ -24,6 +24,9 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/builtins/echo.c \
 		srcs/exec/exec_builtins.c \
 		srcs/builtins/pwd.c \
+		srcs/builtins/cd.c \
+		srcs/builtins/export.c \
+		srcs/builtins/unset.c \
 
 OBJS = ${SRCS:.c=.o}
 
