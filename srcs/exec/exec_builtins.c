@@ -11,5 +11,5 @@ void	exec(t_shell *s, t_List st)
 //	else if (!strcmp(s->parsing->com, "unset"))
 //		unset(st, s);
 	else if (!strcmp(s->parsing->com, "pwd"))
-		pwd();
+		pwd(s->parsing);
 }
