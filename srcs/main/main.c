@@ -26,6 +26,7 @@ void	minishell(t_shell *s, t_List st)
 {
 	while (1)
 	{
+		//(void) st;
 		s->lexer = NULL;
 		prompt(s);
 		lexer(s);

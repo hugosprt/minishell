@@ -2,7 +2,9 @@
 
 void	exec(t_shell *s, t_List st)
 {
-	if (!strcmp(s->parsing->com, "echo"))
+	if (!s->parsing)
+		return ;
+	else if (!strcmp(s->parsing->com, "echo"))
 		echo(s);
 	else if (!strcmp(s->parsing->com, "env"))
 		print_env(st);
