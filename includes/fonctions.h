@@ -17,7 +17,7 @@ int			is_in_env(t_List st, char *var_name, char *var_value);
 /**
 **		pwd.c
 **/
-void		pwd(void);
+void		pwd(t_parsing *par);
 
 /**
 **		echo.c
