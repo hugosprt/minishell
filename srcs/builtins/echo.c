@@ -47,10 +47,10 @@ int	echo(t_shell *s)
 	{
 		n = is_n(str, 0);
 		ft_putstr_fd((str + n), p->fd_out);
-		if (p->fd_out != 1)
-			close(p->fd_out);
 	}
 	if (n == 0)
-		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("\n", p->fd_out);
+	if (p->fd_out != 1)
+		close(p->fd_out);
 	return (0);
 }
