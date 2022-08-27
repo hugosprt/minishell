@@ -1,6 +1,5 @@
 #include "../includes/minishell.h"
 
-
 void	parent_signal(int sig)
 {
 	if (sig == SIGQUIT)

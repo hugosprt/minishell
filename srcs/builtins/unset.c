@@ -35,38 +35,31 @@ void	ft_list_remove_if(t_List st, char *var_name)
 	}
 }
 
-
-void is_var2(char *str, t_List st)
+void	is_var2(char *str, t_List st)
 {
-	int i;
-    char    *var_name;
+	int		i;
+	char	*var_name;
 
-    
-   i = 0;
-   if (!ft_isalpha(str[i]))
-    {
-        ft_putstr_fd("minishell: unset: : not a valid identifier\n", 2);
+	i = 0;
+	if (!ft_isalpha(str[i]))
+	{
+		ft_putstr_fd("minishell: unset: : not a valid identifier\n", 2);
 		return ;
 	}
-    while (str[i] && (ft_isalnum(str[i]) || (str[i] == '_')))
-    {
-        i++;
-    }
-		
-    var_name = str;
-	ft_list_remove_if(st , var_name);
-   
+	while (str[i] && (ft_isalnum(str[i]) || (str[i] == '_')))
+		i++;
+	var_name = str;
+	ft_list_remove_if(st, var_name);
 }
 
-
-void	ft_unset(t_List st,char **arg)
+void	ft_unset(t_List st, char **arg)
 {
-    int i;
+	int	i;
 
-    i = 1;
-    while (arg[i])
-    {
-        is_var2(arg[i], st);
-        i++;
-    }
+	i = 1;
+	while (arg[i])
+	{
+		is_var2(arg[i], st);
+		i++;
+	}
 }

@@ -38,24 +38,23 @@ void	doubl_quote(t_shell *s, char **str, t_lexer *l)
 
 void	set_quote(t_shell *s, t_lexer *l)
 {
-	char *str;
+	char	*str;
 
-	str =l->str;
-
+	str = l->str;
 	while (*str)
 	{
 		if (*str == '\'')
 			sing_quote(s, &str, l);
 		else if (*str == '\"')
 			doubl_quote(s, &str, l);
-		else 
+		else
 			str++;
 	}
 }
 
 void	index_quotes(t_shell *s)
 {
-	t_lexer *tmp;
+	t_lexer	*tmp;
 
 	tmp = s->lexer;
 	if (tmp == NULL)

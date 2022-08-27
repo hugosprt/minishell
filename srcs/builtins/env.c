@@ -1,6 +1,5 @@
 #include "../../includes/minishell.h"
 
-
 void	push_list_back(t_List *st, char *var_name, char *var_value)
 {
 	t_ListElement	*new_list;

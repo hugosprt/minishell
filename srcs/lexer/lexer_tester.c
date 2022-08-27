@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-int size_list(t_lexer *s)
+int	size_list(t_lexer *s)
 {
 	t_lexer	*tmp;
 	int		count;
@@ -12,11 +12,10 @@ int size_list(t_lexer *s)
 		count++;
 		tmp = tmp->next;
 	}
-	return (count);	
+	return (count);
 }
 
-
-int first_arg(t_lexer *l)
+int	first_arg(t_lexer *l)
 {
 	t_lexer	*tmp;
 
@@ -25,7 +24,7 @@ int first_arg(t_lexer *l)
 		return (printf("syntax error\n"), 0);
 	if (size_list(tmp) == 2)
 	{
-		if(tmp->koi > 0)
+		if (tmp->koi > 0)
 			return (printf("syntax error\n"), 0);
 	}
 	else if (tmp->koi == PIPE && (tmp->next->koi == ARG || tmp->next->koi == PIPE))
@@ -43,7 +42,7 @@ int first_arg(t_lexer *l)
 	return (1);
 }
 
-int find_last_elem(t_lexer *l)
+int	find_last_elem(t_lexer *l)
 {
 	t_lexer	*tmp;
 
@@ -59,7 +58,7 @@ int find_last_elem(t_lexer *l)
 	return (0);
 }
 
-t_lexer *find_last_elem2(t_lexer *l)
+t_lexer	*find_last_elem2(t_lexer *l)
 {
 	t_lexer	*tmp;
 
@@ -74,7 +73,6 @@ t_lexer *find_last_elem2(t_lexer *l)
 	}
 	return (NULL);
 }
-
 
 int 	test_pipe(t_lexer *l)
 {

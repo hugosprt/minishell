@@ -1,6 +1,5 @@
 #include "../../includes/minishell.h"
 
-
 t_shell	*s(void)
 {
 	static t_shell	*s;

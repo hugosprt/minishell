@@ -2,7 +2,6 @@
 
 static t_parsing	*first_link(t_parsing *par, t_lexer *lex)
 {
-
 	while (lex->koi != END)
 	{
 		if (lex->koi == R_REDIR || lex->koi == L_REDIR || lex->koi == RR_REDIR)
@@ -42,6 +41,5 @@ t_parsing	*init_par(t_lexer *lex)
 		first_link(par, lex->next);
 	//printf("com :%sR\n", par->com);
 //	printf("arg :%sR\n", par->arg);
-
 	return (par);
 }

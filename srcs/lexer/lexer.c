@@ -10,7 +10,6 @@ void	add_token(t_shell *s)
 		add_token_lr(s);
 	else if (!is_separator(*s->prompt))
 		add_token_arg(s);
-	
 }
 
 int	lexer(t_shell *s)

@@ -133,4 +133,3 @@ void	add_token_arg(t_shell *s)
 	}
 	find_last_elem2(s->lexer)->str = ft_strldup(tmp, i);
 }
-
