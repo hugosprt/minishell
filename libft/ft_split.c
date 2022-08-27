@@ -6,7 +6,7 @@
 /*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:03:45 by hspriet           #+#    #+#             */
-/*   Updated: 2022/08/24 14:20:04 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/08/27 16:31:38 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ char	**ft_split(char const *s, char charset)
 
 	k = -1;
 	i = 0;
+	if (!s)
+		return (NULL);
 	ret = ft_25_lines(how_many_word(s, charset));
 	if (!ret)
 		return (NULL);

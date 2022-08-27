@@ -1,4 +1,4 @@
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	is_in_env(t_List st, char *var_name, char *var_value)
 {
@@ -34,10 +34,10 @@ void	is_var(char *str, t_List st)
 		i++;
 	if (str[i] && str[i] == '=')
 	{
-		ret = ft_trim_equal(str, '=');
+		ret = ft_trim_equal(str, '=', 1, -1);
 		if (ret[0] == NULL)
 		{
-			ft_putstr_fd("bash: export: : not a valid identifier", 2);
+			ft_putstr_fd("bash: export: : not a valid identifier\n", 2);
 			return ;
 		}
 		else
@@ -73,8 +73,11 @@ void	ft_export(t_List st, char **arg)
 	int	i;
 
 	i = 0;
-	if (arg[1] == NULL)
+	if (arg == NULL)
+	{
 		printf("le tri\n");
+		return ;
+	}
 	while (arg[i])
 	{
 		is_var(arg[i], st);

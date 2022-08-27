@@ -58,11 +58,13 @@ typedef struct s_sig
 typedef struct s_shell
 {
 	t_ListElement	*env;
+	char			**str_env;
 	t_lexer			*lexer;
 	t_parsing		*parsing;
 	t_sig			*sig;
 	int				error;
 	char			*prompt;
+	int 			pid;
 
 }	t_shell;
 
