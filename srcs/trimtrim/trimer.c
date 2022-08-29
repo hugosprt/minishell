@@ -9,7 +9,68 @@ int	is_quote(char c)
 	return (0);
 }
 
-void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i)
+char	*is_in_env2(t_List st, char *var_name)
+{
+	char *ret;
+
+	if (st == NULL)
+		return (0);
+	while (st != NULL)
+	{
+		if (!ft_strcmp_2(var_name, st->var))
+		{
+			ret = st->value;
+			return (ret);
+		}
+		st = st->next;
+	}
+	return (NULL);
+}
+
+
+void	supp_dollarz(t_shell *s, t_lexer *l, int *i , t_List st)
+{
+	int 	fin;
+	char	*ret;
+	char	*start;
+	char	*finish;
+	char 	*var;
+
+	(void) s;
+	fin = (*i) + 1;
+	start = ft_strldup(l->str, (*i));
+	if(!(l->str[fin++]))
+	{
+		l->str = "$";
+		(*i)++;
+		return ;
+	}
+	if (l->str[fin] == '?' && fin++)
+		ret = ft_itoa(42);
+	else
+	{
+		while ((ft_isalnum(l->str[fin]) || (l->str[fin] == '_')) && l->str[fin])
+		{
+			fin++;
+		}
+		var = ft_strldup(l->str + (*i) + 1,
+				fin - (*i) - 1);
+		ret = is_in_env2(st, var);
+		if (ret == NULL)
+		{
+			finish = ft_strjoin(start, ft_strjoin(" ",
+				ft_strdup(l->str + fin)));
+			l->str = finish;
+			return ;
+		}
+	}
+	finish = ft_strjoin(start, ft_strjoin(ret,
+				ft_strdup(l->str + fin)));
+	l->str = finish;
+	(*i) += ft_strlen(ret);
+
+}
+void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i, t_List st)
 {
 	int		fin;
 	char	*start;
@@ -20,7 +81,10 @@ void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i)
 	fin = (*i) + 1;
 	while (l->str[fin] && l->str[fin] != (char) quote)
 	{
-		fin++;
+		if (l->str[fin] == '$' && l->quote == D_QUOTES)
+			supp_dollarz(s, l, &fin, st);
+		else
+			fin++;
 	}
 	if (l->str == 0)
 			fin--;
@@ -32,7 +96,7 @@ void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i)
 	(*i) = fin - 1;
 }
 
-void	trimer_large(t_shell *s, t_lexer *l)
+void	trimer_large(t_shell *s, t_lexer *l, t_List st)
 {
 	int	i;
 
@@ -41,18 +105,20 @@ void	trimer_large(t_shell *s, t_lexer *l)
 	{
 		if (l->str[i] == '\'')
 		{
-			supp_d_quote(s, l, S_QUOTES, &i);
+			supp_d_quote(s, l, S_QUOTES, &i, st);
 		}
 		else if (l->str[i] == '\"')
 		{
-			supp_d_quote(s, l, D_QUOTES, &i);
+			supp_d_quote(s, l, D_QUOTES, &i, st);
 		}
+		else if (l->str[i] == '$')
+			supp_dollarz(s, l, &i, st);
 		else
 			i++;
 	}
 }
 
-void	trimer(t_shell *s)
+void	trimer(t_shell *s, t_List st)
 {
 	t_lexer	*lexer;
 
@@ -62,7 +128,7 @@ void	trimer(t_shell *s)
 	while (lexer)
 	{
 		if (lexer->koi == ARG)
-			trimer_large(s, lexer);
+			trimer_large(s, lexer, st);
 		lexer = lexer->next;
 	}
 }
