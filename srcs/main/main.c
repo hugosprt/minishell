@@ -30,7 +30,7 @@ void	minishell(t_shell *s, t_List st)
 		s->lexer = NULL;
 		prompt(s);
 		lexer(s);
-		trimer(s);
+		trimer(s, st);
 		//print_lexer(s->lexer);
 		s->parsing = parsing(s->lexer);
 		exec(s, st);
