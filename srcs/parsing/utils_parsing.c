@@ -11,7 +11,7 @@ static t_parsing	*first_link(t_parsing *par, t_lexer *lex)
 		}
 		else if (lex->koi == ARG)
 		{
-			par->arg = ft_strjoin(par->arg, ft_strjoin(" ", lex->str));
+			par->arg = n_strjoin(3, par->arg, " ", lex->str);
 		}
 		// if (lex->koi == PIPE)
 		// 	par = ft_pipe(par);

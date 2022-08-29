@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdarg.h>
 
 long int	ft_atol(const char *theString);
 int			ft_atoi(const char *theString);
@@ -52,5 +53,6 @@ char		**ft_split(char const *str, char charset);
 int			how_many_word(char const *str, char charset);
 int			is_charset(char c, char charset);
 char		*ft_strjoin(char const *s1, char const *s2);
+char		*n_strjoin(unsigned int n_arg, ...);
 
 #endif
