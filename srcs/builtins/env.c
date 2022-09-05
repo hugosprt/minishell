@@ -67,4 +67,5 @@ void	print_env(t_List st)
 		st = st->next;
 		i++;
 	}
+	s()->sig->ret = 0;
 }

@@ -56,6 +56,7 @@ void	home(t_List st, char *buf)
 	else
 		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 	free(buf);
+	s()->sig->ret = 0;
 }
 
 void	path_error( char *path, char *cwd)
@@ -64,7 +65,7 @@ void	path_error( char *path, char *cwd)
 	ft_putstr_fd(path, 2);
 	ft_putstr_fd(": No such file or directory\n", 2);
 	free(cwd);
-	//s()->sig->ret = 127;
+	s()->sig->ret = 1;
 }
 
 void	cd(t_List st, char *path)
@@ -81,5 +82,6 @@ void	cd(t_List st, char *path)
 	{
 		change_pwd(st, cwd);
 		free(cwd);
+		s()->sig->ret = 0;
 	}
 }
