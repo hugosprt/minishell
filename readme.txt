@@ -11,3 +11,7 @@
 4-Gestion des arguments de echo dans les pipes? pas de literature...
 
 5- changer mechanique de redir > >> < avec dup ou dup2
+
+
+Pour Hugo :
+echo a | > b donne syntax error dans minishell mais pas dans bash posix. 

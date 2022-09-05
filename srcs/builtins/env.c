@@ -51,7 +51,7 @@ t_List	add_list(char **tab, t_List sta)
 	return (sta);
 }
 
-void	print_env(t_List st, t_shell *s)
+void	print_env(t_List st)
 {
 	int	i;
 
@@ -60,10 +60,10 @@ void	print_env(t_List st, t_shell *s)
 		return ;
 	while (st != NULL)
 	{
-		ft_putstr_fd(st->var, s->parsing->fd_out);
-		ft_putstr_fd("=", s->parsing->fd_out);
-		ft_putstr_fd(st->value, s->parsing->fd_out);
-		ft_putstr_fd("\n", s->parsing->fd_out);
+		ft_putstr_fd(st->var, 1);
+		ft_putstr_fd("=", 1);
+		ft_putstr_fd(st->value, 1);
+		ft_putstr_fd("\n", 1);
 		st = st->next;
 		i++;
 	}

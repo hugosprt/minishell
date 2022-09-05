@@ -29,12 +29,12 @@ void	minishell(t_shell *s, t_List st)
 		//(void) st;
 		s->error = 0;
 		s->lexer = NULL;
+		s->st = st;
 		prompt(s);
 		lexer(s);
 		trimer(s, st);
 		//print_lexer(s->lexer);
-		s->parsing = parsing(s->lexer);
-		exec(s, st);
+		parsing(s);
 		///printf("here\n");
 		//printf("%s\n", s->prompt);
 		//lex->str = s->prompt;

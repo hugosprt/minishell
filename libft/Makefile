@@ -41,6 +41,7 @@ SRCS =	ft_atoi.c \
 		ft_split2.c \
 		ft_firstword.c \
 		n_strjoin.c \
+		ft_strncpy.c \
 
 OBJS = $(SRCS:.c=.o)
 

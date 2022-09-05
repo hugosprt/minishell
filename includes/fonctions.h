@@ -6,6 +6,8 @@
  * 
  */
 
+int			ft_exit(char *str);
+
 void		get_signal(int sig);
 
 /**
@@ -17,7 +19,7 @@ int			is_in_env(t_List st, char *var_name, char *var_value);
 /**
 **		pwd.c
 **/
-void		pwd(t_parsing *par);
+void		pwd(void);
 
 /**
 **		echo.c
@@ -39,7 +41,7 @@ void		push_list_back(t_List *st, char *var_name, char *var_value);
 void		is_var(char *str, t_List st);
 void		ft_export(t_List st, char **arg);
 void		create_env(char **envp);
-void		print_env(t_List st, t_shell *s);
+void		print_env(t_List st);
 t_List		add_list(char **tab, t_List sta);
 
 /**
@@ -68,15 +70,15 @@ int			test_pipe(t_lexer *s);
 **		parsing.c
 **/
 
-t_parsing	*parsing(t_lexer *lex);
+int			parsing(t_shell *s);
 
 /**
 **		utils_parsing.c
 **/
 
-t_parsing	*init_par(t_lexer *lex);
+int			make_block(t_shell *s);
 
-t_parsing	*redir(t_parsing *par, t_lexer *lex);
+t_lexer		*redir(t_parsing *par);
 
 //t_parsing	*ft_pipe(t_parsing *par);
 
@@ -88,7 +90,7 @@ t_lexer *find_last_elem2(t_lexer *l);
 void	index_quotes(t_shell *s);
 char	*ft_strldup(const char *source, int size);
 void	trimer(t_shell *s, t_List st);
-void	exec(t_shell *s, t_List st);
+void	exec(t_shell *s);
 int	ft_strcmp_2(const char *str1, const char *str2);
 void syntax_problem(t_shell *shell, int error_value);
 void	quote_problem(t_shell *shell, int error_value);
