@@ -90,4 +90,7 @@ char	*ft_strldup(const char *source, int size);
 void	trimer(t_shell *s, t_List st);
 void	exec(t_shell *s, t_List st);
 int	ft_strcmp_2(const char *str1, const char *str2);
+void syntax_problem(t_shell *shell, int error_value);
+void	quote_problem(t_shell *shell, int error_value);
+
 #endif

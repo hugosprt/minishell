@@ -9,6 +9,8 @@ t_shell	*s(void)
 		s = malloc(sizeof(t_shell));
 		s->env = malloc(sizeof(t_shell));
 		s->lexer = malloc(sizeof(t_shell));
+		s->sig = malloc(sizeof(t_shell));
+		
 	}
 	return (s);
 }
