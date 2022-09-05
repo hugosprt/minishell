@@ -110,8 +110,3 @@ t_lexer	*redir(t_parsing *p)
 	p->l = p->l->next;
 	return (p->l);
 }
-
-// t_parsing	*pipe(t_parsing *par)
-// {
-
-// }
