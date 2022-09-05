@@ -93,7 +93,12 @@ void	exec(t_shell *sh)
 		}
 		waitpid(pid, &p->status, 0);
 		if (WIFEXITED(p->status))
+		{
 			s()->sig->ret = WEXITSTATUS(p->status);
+		}
+		else
+			s()->sig->ret = 0;
+
 	}
 	if (p->arg)
 	{
