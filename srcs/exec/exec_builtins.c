@@ -91,9 +91,9 @@ void	exec(t_shell *sh)
 			write(2, ": command not found\n", 20);
 			exit(127);
 		}
-		waitpid(pid, p->status, 0);
-		if (WIFEXITED(*p->status))
-			s()->sig->ret = WEXITSTATUS(*p->status);
+		waitpid(pid, &p->status, 0);
+		if (WIFEXITED(p->status))
+			s()->sig->ret = WEXITSTATUS(p->status);
 	}
 	if (p->arg)
 	{
