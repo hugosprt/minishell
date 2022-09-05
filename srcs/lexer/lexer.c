@@ -25,9 +25,12 @@ int	lexer(t_shell *s)
 		else
 			add_token(s);
 	}
-	index_quotes(s);
 	add_token_back(&s->lexer, END, NOT_YET);
-	s->prompt = (char *)tmp;
-	first_arg(s->lexer);
+	index_quotes(s);
+	if (!s->error)
+	{	
+		s->prompt = (char *)tmp;
+		first_arg(s, s->lexer);
+	}
 	return (1);
 }

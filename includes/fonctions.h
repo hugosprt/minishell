@@ -64,8 +64,8 @@ void		add_token_pip(t_shell *s);
 
 int			is_separator(char c);
 void		add_token_arg(t_shell *s);
-int			first_arg(t_lexer *l);
-int			test_pipe(t_lexer *s);
+int			first_arg(t_shell *s, t_lexer *l);
+int			test_pipe(t_shell *s, t_lexer *l);
 /**
 **		parsing.c
 **/
