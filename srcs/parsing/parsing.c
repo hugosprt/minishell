@@ -59,27 +59,6 @@ int	parsing(t_shell *s)
 	return (0);
 }
 
-char	*cut_first(t_parsing *p)
-{
-	int	i;
-
-	i = 0;
-	if (p->com)
-		free(p->com);
-	while (p->l->str[i])
-	{
-		if (p->l->str[i] == ' ')
-		{
-			p->com = ft_strncpy(p->l->str, i);
-			i++;
-			p->arg = n_strjoin(3, p->arg, " ", p->l->str + i);
-			return (p->com);
-		}
-		i++;
-	}
-	return (p->l->str);
-}
-
 static int	redir_d(t_parsing *p, int type)
 {
 	int	flags;
@@ -88,7 +67,7 @@ static int	redir_d(t_parsing *p, int type)
 		flags = O_CREAT | O_TRUNC | O_WRONLY;
 	else
 		flags = O_CREAT | O_APPEND | O_WRONLY;
-	p->block[1] = open(cut_first(p), flags, 00644);
+	p->block[1] = open(p->l->str, flags, 00644);
 	if (p->block[1] == -1)
 		return (error(p->s, 2));
 	else
@@ -102,7 +81,7 @@ static int	redir_d(t_parsing *p, int type)
 static int    redir_g(t_parsing *p)
 {
 	//write(2, "ica\n", 4);
-	p->block[0] = open(cut_first(p), O_RDONLY);
+	p->block[0] = open(p->l->str, O_RDONLY);
 	//write(2, "icb\n", 4);
 	if (p->block[0] == -1)
 		return (-1);
