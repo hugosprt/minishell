@@ -34,7 +34,7 @@ void	minishell(t_shell *s, t_List st)
 		lexer(s);
 		trimer(s, st);
 		//print_lexer(s->lexer);
-//		parsing(s);
+		parsing(s);
 		///printf("here\n");
 		//printf("%s\n", s->prompt);
 		//lex->str = s->prompt;
