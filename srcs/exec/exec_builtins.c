@@ -89,6 +89,7 @@ void	exec(t_shell *s)
 			write(2, "bash: ", 6);
 			write(2, p->com, ft_strlen(p->com));
 			write(2, ": command not found\n", 20);
+			exit(2);
 		}
 		else
 			waitpid(pid, NULL, 0);
