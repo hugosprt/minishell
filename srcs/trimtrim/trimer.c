@@ -28,7 +28,7 @@ char	*is_in_env2(t_List st, char *var_name)
 }
 
 
-void	supp_dollarz(t_shell *s, t_lexer *l, int *i , t_List st)
+void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 {
 	int 	fin;
 	char	*ret;
@@ -36,7 +36,7 @@ void	supp_dollarz(t_shell *s, t_lexer *l, int *i , t_List st)
 	char	*finish;
 	char 	*var;
 
-	(void) s;
+	(void) shell;
 	fin = (*i) + 1;
 	start = ft_strldup(l->str, (*i));
 	if(!(l->str[fin++]))
@@ -46,7 +46,7 @@ void	supp_dollarz(t_shell *s, t_lexer *l, int *i , t_List st)
 		return ;
 	}
 	if (l->str[fin] == '?' && fin++)
-		ret = ft_itoa(42);
+		ret = ft_itoa(s()->sig->ret);
 	else
 	{
 		while ((ft_isalnum(l->str[fin]) || (l->str[fin] == '_')) && l->str[fin])
@@ -127,7 +127,7 @@ void	trimer(t_shell *s, t_List st)
 		return ;
 	while (lexer)
 	{
-		if (lexer->koi == ARG)
+		if (lexer->koi == ARG && !s->error)
 			trimer_large(s, lexer, st);
 		lexer = lexer->next;
 	}

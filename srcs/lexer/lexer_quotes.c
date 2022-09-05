@@ -12,8 +12,7 @@ void	sing_quote(t_shell *s, char **str, t_lexer *l)
 		(*str)++;
 	if (!(**str))
 	{
-		printf("quote pas fermees\n");
-		return ;
+		quote_problem(s, 0);
 	}
 	(*str)++;
 }
@@ -30,8 +29,7 @@ void	doubl_quote(t_shell *s, char **str, t_lexer *l)
 		(*str)++;
 	if (!(**str))
 	{	
-		printf("quote pas fermees\n");
-		return ;
+		quote_problem(s, 1);
 	}
 	(*str)++;
 }
@@ -59,7 +57,7 @@ void	index_quotes(t_shell *s)
 	tmp = s->lexer;
 	if (tmp == NULL)
 		return ;
-	while (tmp != NULL)
+	while (tmp != NULL && !s->error)
 	{
 		if (tmp->koi == ARG)
 			set_quote(s, tmp);

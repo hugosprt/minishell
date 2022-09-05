@@ -95,8 +95,6 @@ int 	test_pipe(t_lexer *l)
 		return (0);
 	if (tmp->koi == LL_REDIR && tmp->next->koi == END)
 		return (0);
-	if (tmp->koi >= 2 && tmp->next->koi >= 2)
-		return (0);
 	if (tmp->koi == R_REDIR && tmp->next->koi == END)
 		return (0);
 	if (tmp->koi == RR_REDIR && tmp->next->koi == END)

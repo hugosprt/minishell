@@ -27,6 +27,7 @@ void	minishell(t_shell *s, t_List st)
 	while (1)
 	{
 		//(void) st;
+		s->error = 0;
 		s->lexer = NULL;
 		s->st = st;
 		prompt(s);
@@ -57,6 +58,7 @@ int	main(int ac, char **av, char **env)
 		return (0);
 	st = add_list(env, st);
 	shell->str_env = env;
+	shell->error = 0;
 	//print_env(list);
 	minishell(shell, st);
 }
