@@ -34,13 +34,13 @@ int	is_n(char *str, int n)
 	return (i + n);
 }
 
-int	echo(t_shell *s)
+void	echo(t_shell *sh)
 {
 	t_parsing	*p;
 	int			n;
 	char		*str;
 
-	p = s->parsing;
+	p = sh->parsing;
 	str = p->arg;
 	n = 0;
 	if (str)
@@ -50,5 +50,6 @@ int	echo(t_shell *s)
 	}
 	if (n == 0)
 		ft_putstr_fd("\n", 1);
-	return (0);
+	s()->sig->ret = 0;
+	return ;
 }

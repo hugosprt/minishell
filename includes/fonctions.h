@@ -24,7 +24,7 @@ void		pwd(void);
 /**
 **		echo.c
 **/
-int			echo(t_shell *shell);
+void			echo(t_shell *shell);
 
 /**
 **		cd.c
