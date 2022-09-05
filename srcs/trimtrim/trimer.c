@@ -39,12 +39,7 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 	(void) shell;
 	fin = (*i) + 1;
 	start = ft_strldup(l->str, (*i));
-	if(!(l->str[fin++]))
-	{
-		l->str = "$";
-		(*i)++;
-		return ;
-	}
+	finish = NULL;
 	if (l->str[fin] == '?' && fin++)
 		ret = ft_itoa(s()->sig->ret);
 	else
@@ -70,6 +65,7 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 	(*i) += ft_strlen(ret);
 
 }
+
 void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i, t_List st)
 {
 	int		fin;
