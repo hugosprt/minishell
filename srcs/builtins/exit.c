@@ -1,4 +1,4 @@
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	is_good(char *str)
 {
@@ -26,11 +26,14 @@ int	ft_exit(char *str)
 	{
 		if (!is_good(str))
 		{
-			ft_printf("bash: exit: status numeric argument required\n");
+			ft_putstr_fd("exit\n", 2);
+			ft_putstr_fd("bash: exit: status numeric argument required\n", 2);
 			exit(2);
 		}
 		sta = ft_atoi(str);
+		ft_putstr_fd("exit\n", 2);
 		exit(sta);
 	}
+	ft_putstr_fd("exit\n", 2);
 	exit(0);
 }

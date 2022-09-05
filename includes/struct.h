@@ -19,7 +19,6 @@ typedef enum e_quote{
 	NOT_YET,
 }	t_quote;
 
-
 typedef struct s_lexer
 {
 	struct s_lexer	*prev;
@@ -36,15 +35,18 @@ typedef struct t_ListElement
 	struct t_ListElement	*next;
 }t_ListElement,	*t_List;
 
+
 typedef struct s_parsing
 {
-	struct s_parsing	*prev;
-	struct s_parsing	*next;
 	char				*com;
 	char				*arg;
-	char				**car;
-	int					fd_in;
-	int					fd_out;
+	int					std_in;
+	int					std_out;
+	int					prev_in;
+	int					block[2];
+	int					pipe[2];
+	struct s_shell		*s;
+	t_lexer				*l;
 }	t_parsing;
 
 typedef struct s_sig
@@ -64,7 +66,8 @@ typedef struct s_shell
 	t_sig			*sig;
 	int				error;
 	char			*prompt;
-	int 			pid;
+	int				pid;
+	t_List			st;
 
 }	t_shell;
 
