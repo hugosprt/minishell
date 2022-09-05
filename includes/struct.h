@@ -45,7 +45,7 @@ typedef struct s_parsing
 	int					prev_in;
 	int					block[2];
 	int					pipe[2];
-	int					*status;
+	int					status;
 	struct s_shell		*s;
 	t_lexer				*l;
 }	t_parsing;
