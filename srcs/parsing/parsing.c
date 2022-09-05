@@ -14,40 +14,122 @@ int	ft_csch(char *s, char c)
 	return (0);
 }
 
-t_parsing	*parsing(t_lexer *lex)
+int error(t_shell *s, int i)
+{
+	if (i == 1)
+	{
+		s->error = 1;
+		ft_putstr_fd("MALLOC ERROR\n", 2);
+	}
+	if (i == 1)
+	{
+		s->error = 1;
+		ft_putstr_fd("COULD NOT OPEN FILE\n", 2);
+	}
+	return (-1);
+}
+
+int	init_par(t_shell *s)
 {
 	t_parsing	*par;
 
-	if (!lex || !lex->str)
-		return (NULL);
-	par = init_par(lex);
-	return (par);
+	par = malloc(sizeof(t_parsing));
+	if (!par)
+		return (error(s, 1));
+	s->parsing = par;
+	par->s = s;
+	par->arg = NULL;
+	par->com = NULL;
+	par->l = s->lexer;
+	par->std_in = dup(STDIN_FILENO);
+	par->std_out = dup(STDOUT_FILENO);
+	par->prev_in = STDIN_FILENO;
+	par->block[0] = 0;
+	par->block[1] = 1;
+	make_block(s);
+	return (0);
 }
 
-t_parsing	*redir(t_parsing *par, t_lexer *lex)
+int	parsing(t_shell *s)
 {
-	if (par->fd_out != 1)
-		printf("closed fd out :%d__%d\n", par->fd_out, close(par->fd_out));
-	if (par->fd_in != 0)
-		printf("closed fd in :%d__%d\n", par->fd_in, close(par->fd_in));
-	if (lex->prev->koi == R_REDIR)
+	if (!s->lexer || s->error == 1 || s->lexer->koi == END)
+		return (-1);
+	if (!s->error)
+		init_par(s);
+	return (0);
+}
+
+char	*cut_first(t_parsing *p)
+{
+	int	i;
+
+	i = 0;
+	if (p->com)
+		free(p->com);
+	while (p->l->str[i])
 	{
-		par->fd_out = open(lex->str, O_CREAT | O_TRUNC | O_WRONLY, 00644);
-		printf("fd out R name %s code %d\n", lex->str, par->fd_out);
+		if (p->l->str[i] == ' ')
+		{
+			p->com = ft_strncpy(p->l->str, i);
+			i++;
+			p->arg = n_strjoin(3, p->arg, " ", p->l->str + i);
+			return (p->com);
+		}
+		i++;
 	}
-	else if (lex->prev->koi == RR_REDIR)
+	return (p->l->str);
+}
+
+static int	redir_d(t_parsing *p, int type)
+{
+	int	flags;
+
+	if (type == R_REDIR)
+		flags = O_CREAT | O_TRUNC | O_WRONLY;
+	else
+		flags = O_CREAT | O_APPEND | O_WRONLY;
+	p->block[1] = open(cut_first(p), flags, 00644);
+	if (p->block[1] == -1)
+		return (error(p->s, 2));
+	else
 	{
-		par->fd_out = open(lex->str, O_CREAT | O_APPEND | O_WRONLY, 00644);
-		printf("fd out RR name %s code %d\n", lex->str, par->fd_out);
+		dup2(p->block[1], STDOUT_FILENO);
+		close(p->block[1]);
+		return (STDOUT_FILENO);
 	}
-	else if (lex->prev->koi == L_REDIR)
+}
+
+static int    redir_g(t_parsing *p)
+{
+	//write(2, "ica\n", 4);
+	p->block[0] = open(cut_first(p), O_RDONLY);
+	//write(2, "icb\n", 4);
+	if (p->block[0] == -1)
+		return (-1);
+	else
 	{
-		par->fd_in = open(lex->str, O_RDONLY);
-		if (par->fd_in == -1)
-			return (printf("%s: No such file or directory\n", lex->str), par);
-		printf("fd in L name %s code %d\n", lex->str, par->fd_in);
+		dup2(p->block[0], STDIN_FILENO);
+		close(p->block[0]);
 	}
-	return (par);
+	return (STDIN_FILENO);
+}
+
+t_lexer	*redir(t_parsing *p)
+{
+	//write(2, "ict\n", 4);
+	if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR)
+	{
+		p->l = p->l->next;
+		redir_d(p, p->l->prev->koi);
+	}
+	else if (p->l->koi == L_REDIR)
+	{
+		p->l = p->l->next;
+		//write(2, "ict\n", 4);
+		redir_g(p);
+	}
+	p->l = p->l->next;
+	return (p->l);
 }
 
 // t_parsing	*pipe(t_parsing *par)
