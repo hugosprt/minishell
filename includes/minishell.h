@@ -13,6 +13,7 @@
 # include <readline/history.h>
 # include <stddef.h>
 # include <fcntl.h>
+#include <sys/wait.h>
 # include "struct.h"
 # include "../libft/libft.h"
 # include "fonctions.h"
