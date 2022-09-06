@@ -69,12 +69,11 @@ void	exec(t_shell *sh)
 	// write(2, "____", 4);
 	// ft_putstr_fd(sh->parsing->arg, 2);
 	// write(2, "___\n", 4);
-	// if (!strcmp(sh->parsing->com, "echo"))
-	// {
-	// write(2, "ic5\n", 4);
-	// 	echo(sh);
-	// }
-	if (!strcmp(p->com, "env"))
+	if (!strcmp(sh->parsing->com, "echo"))
+	{
+		echo(sh);
+	}
+	else if (!strcmp(p->com, "env"))
 		print_env(sh->st);
 	else if (!strcmp(p->com, "export"))
 	{
