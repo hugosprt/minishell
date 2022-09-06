@@ -51,10 +51,7 @@ int	make_block(t_shell *s)
 	p = s->parsing;
 	if (p->l->koi == ARG)
 	{
-		if (p->arg)
-			p->arg = n_strjoin(3, p->arg, " ", p->l->str);
-		else
-			p->arg = p->l->str;
+		p->arg = add2tab(p->arg, p->l->str);
 		p->l = p->l->next;
 	}
 	//write(2, "icw\n", 4);

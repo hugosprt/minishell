@@ -41,7 +41,7 @@ void	echo(t_shell *sh)
 	char		*str;
 
 	p = sh->parsing;
-	str = p->arg;
+	str = p->arg[1];
 	n = 0;
 	if (str)
 	{
