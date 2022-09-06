@@ -83,4 +83,5 @@ void	ft_export(t_List st, char **arg)
 		is_var(arg[i], st);
 		i++;
 	}
+	s()->sig->ret = 0;
 }

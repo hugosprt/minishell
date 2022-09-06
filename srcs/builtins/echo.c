@@ -128,4 +128,5 @@ void echo(t_shell *shell)
 	}
 	if (n == 1)
 		ft_putstr_fd("\n", 1);
+	s()->sig->ret = 0;
 }

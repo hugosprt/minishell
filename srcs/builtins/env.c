@@ -51,13 +51,20 @@ t_List	add_list(char **tab, t_List sta)
 	return (sta);
 }
 
-void	print_env(t_List st)
+void	print_env(t_shell *shell, t_List st)
 {
 	int	i;
 
 	i = 0;
 	if (st == NULL)
 		return ;
+	if (shell->parsing->arg[1] != NULL)
+	{
+		ft_putstr_fd("too many argument\n", 2);
+		s()->sig->ret = 2;
+		return ;
+	}	
+
 	while (st != NULL)
 	{
 		ft_putstr_fd(st->var, 1);

@@ -74,7 +74,7 @@ void	exec(t_shell *sh)
 		echo(sh);
 	}
 	else if (!strcmp(p->com, "env"))
-		print_env(sh->st);
+		print_env(sh, sh->st);
 	else if (!strcmp(p->com, "export"))
 	{
 		ft_export(sh->st, t);

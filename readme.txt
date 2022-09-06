@@ -15,3 +15,6 @@
 
 Pour Hugo :
 echo a | > b donne syntax error dans minishell mais pas dans bash posix. 
+
+
+env avec arg doit renvoyer une erreur
