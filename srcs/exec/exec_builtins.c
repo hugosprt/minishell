@@ -81,7 +81,7 @@ void	exec(t_shell *sh)
 	}	
 	else if (!strcmp(p->com, "unset"))
 	{
-		ft_unset(sh->st, t);
+		ft_unset(sh->st, t++);
 	}
 	else if (!strcmp(p->com, "pwd"))
 		pwd();
