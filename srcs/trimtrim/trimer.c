@@ -41,8 +41,7 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 	start = ft_strldup(l->str, (*i));
 	finish = NULL;
 	if (l->str[fin] == '?' && fin++)
-		ret = ft_itoa(s()->sig->ret);
-	else
+		ret = ft_itoa(s()->sig->ret);	else
 	{
 		while ((ft_isalnum(l->str[fin]) || (l->str[fin] == '_')) && l->str[fin])
 		{
