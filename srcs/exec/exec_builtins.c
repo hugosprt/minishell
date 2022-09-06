@@ -89,7 +89,7 @@ void	exec(t_shell *sh)
 	else if (!strcmp(p->com, "cd"))
 		cd(sh->st, p->arg[1]);
 	else if (!strcmp(p->com, "exit"))
-		ft_exit(p->arg[1]);
+		ft_exit(t++);
 	else
 	{
 		pid = fork();
