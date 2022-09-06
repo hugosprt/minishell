@@ -94,5 +94,8 @@ void	exec(t_shell *s);
 int	ft_strcmp_2(const char *str1, const char *str2);
 void syntax_problem(t_shell *shell, int error_value);
 void	quote_problem(t_shell *shell, int error_value);
+void	get_signal(int sig);
+void	signal_gestion(t_shell *s);
+void	ctrl_d_exit(void);
 
 #endif

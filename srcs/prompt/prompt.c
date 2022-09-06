@@ -4,10 +4,10 @@ void	prompt(t_shell *s)
 {
 	char	*tmp;
 
-	tmp = readline("minishell ➡️ ");
+	tmp = readline("minishell: ");
 	s->prompt = tmp;
 	if (s->prompt == NULL)
-			exit (0);
+			ctrl_d_exit();
 	if (*tmp == '\0')
 		return ;
 	add_history(tmp);

@@ -29,6 +29,7 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/builtins/unset.c \
 		srcs/errors/errors.c \
 		srcs/builtins/exit.c \
+		srcs/signals/signal.c \
 
 OBJS = ${SRCS:.c=.o}
 
