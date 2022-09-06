@@ -39,7 +39,7 @@ typedef struct t_ListElement
 typedef struct s_parsing
 {
 	char				*com;
-	char				*arg;
+	char				**arg;
 	int					std_in;
 	int					std_out;
 	int					prev_in;
