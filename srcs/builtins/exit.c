@@ -18,19 +18,26 @@ int	is_good(char *str)
 	return (1);
 }
 
-int	ft_exit(char *str)
+int	ft_exit(char **str)
 {
 	int	sta;
 
-	if (str)
+	if (str[1])
 	{
-		if (!is_good(str))
+		if (!is_good(str[1]))
 		{
 			ft_putstr_fd("exit\n", 2);
-			ft_putstr_fd("bash: exit: status numeric argument required\n", 2);
+			ft_putstr_fd("minishell: exit: status numeric argument required\n", 2);
 			exit(2);
 		}
-		sta = ft_atoi(str);
+		if (str[2])
+		{
+			ft_putstr_fd("exit\n", 2);
+			ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+			s()->sig->ret = 1;
+			return (0);
+		}
+		sta = ft_atoi(str[1]);
 		ft_putstr_fd("exit\n", 2);
 		exit(sta);
 	}

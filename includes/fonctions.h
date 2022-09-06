@@ -6,7 +6,7 @@
  * 
  */
 
-int			ft_exit(char *str);
+int			ft_exit(char **str);
 
 void		get_signal(int sig);
 
