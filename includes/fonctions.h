@@ -24,7 +24,7 @@ void		pwd(void);
 /**
 **		echo.c
 **/
-void			echo(t_shell *shell);
+void		echo(t_shell *shell);
 
 /**
 **		cd.c
@@ -33,7 +33,6 @@ void		cd(t_List st, char *path);
 char		**ft_trim_equal(char const *s, char charset, int r, int k);
 void		ft_export(t_List st, char **arg);
 void		push_list_back(t_List *st, char *var_name, char *var_value);
-
 
 /**
 **		env.c
@@ -56,7 +55,6 @@ int			lexer(t_shell *s);
 void		skip_white_space(t_shell *s);
 int			is_empty(char c);
 int			add_token_back(t_lexer **head, t_koi token, t_quote quote);
-
 
 void		add_token_lr(t_shell *s);
 void		add_token_rr(t_shell *s);
@@ -85,17 +83,17 @@ t_lexer		*redir(t_parsing *par);
 int			find_last_elem(t_lexer *l);
 t_lexer		*find_last_elem2(t_lexer *l);
 void		index_quotes(t_shell *s);
-int find_last_elem(t_lexer *l);
-t_lexer *find_last_elem2(t_lexer *l);
-void	index_quotes(t_shell *s);
-char	*ft_strldup(const char *source, int size);
-void	trimer(t_shell *s, t_List st);
-void	exec(t_shell *s);
-int	ft_strcmp_2(const char *str1, const char *str2);
-void syntax_problem(t_shell *shell, int error_value);
-void	quote_problem(t_shell *shell, int error_value);
-void	get_signal(int sig);
-void	signal_gestion(t_shell *s);
-void	ctrl_d_exit(void);
+int			find_last_elem(t_lexer *l);
+t_lexer		*find_last_elem2(t_lexer *l);
+void		index_quotes(t_shell *s);
+char		*ft_strldup(const char *source, int size);
+void		trimer(t_shell *s, t_List st);
+void		exec(t_shell *s);
+int			ft_strcmp_2(const char *str1, const char *str2);
+void		syntax_problem(t_shell *shell, int error_value);
+void		quote_problem(t_shell *shell, int error_value);
+void		get_signal(int sig);
+void		signal_gestion(t_shell *s);
+void		ctrl_d_exit(void);
 
 #endif
