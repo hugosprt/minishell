@@ -7,10 +7,16 @@ int	error(t_shell *sh, int i)
 		sh->error = 1;
 		ft_putstr_fd("MALLOC ERROR\n", 2);
 	}
-	if (i == 1)
+	if (i == 2)
 	{
 		sh->error = 1;
 		ft_putstr_fd("COULD NOT OPEN FILE\n", 2);
+	}
+	if (i == 3)
+	{
+		sh->error = 1;
+		ft_putstr_fd("COULD NOT OPEN FILE\n", 2);
+		exit(130);
 	}
 	return (-1);
 }
@@ -28,6 +34,8 @@ int	count_pipe(t_lexer *lex)
 			i++;
 		l = l->next;
 	}
+	if (i)
+		return (i + 1);
 	return (i);
 }
 
@@ -56,55 +64,4 @@ int	parsing(t_shell *sh)
 	if (!sh->error)
 		init_par(sh);
 	return (0);
-}
-
-static int	redir_d(t_parsing *p, int type)
-{
-	int	flags;
-	int	fd;
-
-	if (type == R_REDIR)
-		flags = O_CREAT | O_TRUNC | O_WRONLY;
-	else
-		flags = O_CREAT | O_APPEND | O_WRONLY;
-	fd = open(p->l->str, flags, 00644);
-	if (fd == -1)
-		return (error(p->sh, 2));
-	else
-	{
-		dup2(fd, STDOUT_FILENO);
-		close(fd);
-		return (STDOUT_FILENO);
-	}
-}
-
-static int    redir_g(t_parsing *p)
-{
-	int	fd;
-
-	fd = open(p->l->str, O_RDONLY);
-	if (fd == -1)
-		return (-1);
-	else
-	{
-		dup2(fd, STDIN_FILENO);
-		close(fd);
-	}
-	return (STDIN_FILENO);
-}
-
-t_lexer	*redir(t_parsing *p)
-{
-	if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR)
-	{
-		p->l = p->l->next;
-		redir_d(p, p->l->prev->koi);
-	}
-	else if (p->l->koi == L_REDIR)
-	{
-		p->l = p->l->next;
-		redir_g(p);
-	}
-	p->l = p->l->next;
-	return (p->l);
 }

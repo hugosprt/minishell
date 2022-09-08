@@ -69,6 +69,7 @@ int			test_pipe(t_shell *s, t_lexer *l);
 **/
 
 int			parsing(t_shell *s);
+int			error(t_shell *sh, int i);
 
 /**
 **		utils_parsing.c
@@ -76,7 +77,19 @@ int			parsing(t_shell *s);
 
 int			make_block(t_shell *s);
 
+/**
+**		redir.c
+**/
+
+void		dup2_close(int fd, int old_fd);
+
 t_lexer		*redir(t_parsing *par);
+
+/**
+**		redir.c
+**/
+
+void		ici_fichier(t_parsing *p);
 
 //t_parsing	*ft_pipe(t_parsing *par);
 

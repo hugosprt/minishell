@@ -19,6 +19,8 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/lexer/lexer_tester.c \
 		srcs/parsing/parsing.c \
 		srcs/parsing/utils_parsing.c \
+		srcs/parsing/redir.c \
+		srcs/parsing/ici_fichier.c \
 		srcs/lexer/lexer_quotes.c \
 		srcs/trimtrim/trimer.c 	\
 		srcs/builtins/echo.c \

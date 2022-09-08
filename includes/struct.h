@@ -46,6 +46,7 @@ typedef struct s_parsing
 	int					pipe[2];
 	int					nb_pipe;
 	int					status;
+	int					fd;
 	struct s_shell		*sh;
 	t_lexer				*l;
 }	t_parsing;

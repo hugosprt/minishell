@@ -8,12 +8,11 @@ void	make_the_fd_great_again(t_shell *sh)
 	dup2(sh->parsing->prev_in, STDIN_FILENO);
 	if (sh->parsing->prev_in != 0)
 		close(sh->parsing->prev_in);
-	if (!sh->parsing->nb_pipe)
+	if (sh->parsing->nb_pipe <= 1)
 		return ;
 	sh->parsing->nb_pipe--;
 	pipe(sh->parsing->pipe);
-	dup2(sh->parsing->pipe[1], STDOUT_FILENO);
-	close(sh->parsing->pipe[1]);
+	dup2_close(sh->parsing->pipe[1], 1);
 	sh->parsing->prev_in = dup(sh->parsing->pipe[0]);
 	close(sh->parsing->pipe[0]);
 }
@@ -31,14 +30,13 @@ int	make_block(t_shell *sh)
 			p->arg = add2tab(p->arg, p->l->str);
 			p->l = p->l->next;
 		}
-		if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR || p->l->koi == L_REDIR)
+		if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR 
+					|| p->l->koi == L_REDIR || p->l->koi == LL_REDIR)
 			p->l = redir(p);
 	}
 	exec(sh);
-	dup2(sh->parsing->std_in, STDIN_FILENO);
-	close(sh->parsing->std_in);
-	dup2(sh->parsing->std_out, STDOUT_FILENO);
-	close(sh->parsing->std_out);
+	dup2_close(sh->parsing->std_in, STDIN_FILENO);
+	dup2_close(sh->parsing->std_out, STDOUT_FILENO);
 	if (p->l->koi == PIPE)
 	{
 		sh->parsing->l = p->l->next;

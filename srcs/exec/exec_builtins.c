@@ -58,6 +58,8 @@ void	exec(t_shell *sh)
 
 	// write(2, "ic1\n", 4);
 	p = sh->parsing;
+	if (!p->arg)
+		return ;
 	t = p->arg;
 	// printtab(t);
 	// write(2, "ic2\n", 4);
