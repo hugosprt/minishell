@@ -57,7 +57,10 @@ int	main(int ac, char **av, char **env)
 	if (!shell)
 		return (0);
 	signal_gestion(shell);
-	st = add_list(env, st);
+	if (env == NULL)
+		add_list(ft_split("USER noenv", ' '), st);
+	else
+		st = add_list(env, st);
 	shell->str_env = env;
 	shell->error = 0;
 	//print_env(list);

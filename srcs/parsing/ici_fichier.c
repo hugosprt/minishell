@@ -7,6 +7,7 @@ static	void	ec145(t_parsing *p)
 	p->fd = open(".ici_fichier", O_WRONLY | O_CREAT | O_TRUNC, 00600);
 	if (p->fd == -1)
 		error(p->sh, 3);
+	s()->t = 1;
 	while (1)
 	{
 		ligne = readline("> ");
@@ -25,6 +26,7 @@ void	ici_fichier(t_parsing *p)
 	int		tmp_fd_out;
 	int		pid;
 
+	
 	tmp_fd_out = dup(STDOUT_FILENO);
 	dup2_close(p->std_out, STDOUT_FILENO);
 	pid = fork();
