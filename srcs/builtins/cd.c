@@ -74,10 +74,14 @@ void	cd(t_List st, char *path)
 
 	cwd = NULL;
 	cwd = getcwd(cwd, 999999);
+	if (!cwd)
+		return (path_error(path, cwd));
 	if (path == NULL)
 		return (home(st, cwd));
 	else if (chdir(path))
+	{
 		return (path_error(path, cwd));
+	}
 	else
 	{
 		change_pwd(st, cwd);
