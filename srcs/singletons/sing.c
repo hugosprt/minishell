@@ -11,6 +11,7 @@ t_shell	*s(void)
 		s->lexer = malloc(sizeof(t_shell));
 		s->sig = malloc(sizeof(t_shell));
 		s->sig->ret = 0;
+		s->t = 0;
 	}
 	return (s);
 }

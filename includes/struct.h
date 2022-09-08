@@ -73,6 +73,7 @@ typedef struct s_shell
 	char			*prompt;
 	int				pid;
 	t_List			st;
+	int				t;
 
 }	t_shell;
 

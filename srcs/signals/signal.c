@@ -9,14 +9,14 @@ void	ctrl_d_exit(void)
 	exit(exit_c);
 }
 
-void
-	handle_int(siginfo_t *siginfo)
+void	handle_int(siginfo_t *siginfo)
 {
-	// if (s()->prog_state == OUT_OF_SHELL)
-	// {
-	// 	__putchar('\n', 1);
-	// 	exit(0);
-	// }
+	if (s()->t == 1)
+	{
+		
+		ft_putchar_fd('\n', 1);
+		exit(0);
+	}
 	if (siginfo->si_pid != 0)
 	{
 		ft_putchar_fd('\n', 1);
