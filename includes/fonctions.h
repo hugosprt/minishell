@@ -108,5 +108,6 @@ void		quote_problem(t_shell *shell, int error_value);
 void		get_signal(int sig);
 void		signal_gestion(t_shell *s);
 void		ctrl_d_exit(void);
-
+void	path_not_set(t_parsing *p);
+void	path_error( char *path, char *cwd);
 #endif

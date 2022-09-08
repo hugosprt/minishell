@@ -23,3 +23,13 @@ void	quote_problem(t_shell *shell, int error_value)
 	shell->error = 1;
 	s()->sig->ret = 2;
 }
+
+void	path_not_set(t_parsing *p)
+{
+	if (access(p->com, 0) == 0)
+		execve(p->com, p->arg, s()->str_env);
+	write(2, "minishell:  no such file or directory: ", 39);
+	write(2, p->com, ft_strlen(p->com));
+	write(2, "\n", 1);
+	exit (127);
+}
