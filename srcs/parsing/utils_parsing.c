@@ -30,11 +30,11 @@ int	make_block(t_shell *sh)
 			p->arg = add2tab(p->arg, p->l->str);
 			p->l = p->l->next;
 		}
-		if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR 
-					|| p->l->koi == L_REDIR || p->l->koi == LL_REDIR)
+		if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR
+			|| p->l->koi == L_REDIR || p->l->koi == LL_REDIR)
 			p->l = redir(p);
 	}
-	exec(sh);
+	exec(sh, sh->parsing);
 	dup2_close(sh->parsing->std_in, STDIN_FILENO);
 	dup2_close(sh->parsing->std_out, STDOUT_FILENO);
 	if (p->l->koi == PIPE)

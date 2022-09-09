@@ -24,7 +24,7 @@ void		pwd(void);
 /**
 **		echo.c
 **/
-void		echo(t_shell *shell);
+void		echo(t_shell *shell, int i, int n);
 
 /**
 **		cd.c
@@ -101,13 +101,14 @@ t_lexer		*find_last_elem2(t_lexer *l);
 void		index_quotes(t_shell *s);
 char		*ft_strldup(const char *source, int size);
 void		trimer(t_shell *s, t_List st);
-void		exec(t_shell *s);
+void		exec(t_shell *s, t_parsing *p);
 int			ft_strcmp_2(const char *str1, const char *str2);
 void		syntax_problem(t_shell *shell, int error_value);
 void		quote_problem(t_shell *shell, int error_value);
 void		get_signal(int sig);
 void		signal_gestion(t_shell *s);
 void		ctrl_d_exit(void);
-void	path_not_set(t_parsing *p);
-void	path_error( char *path, char *cwd);
+void		path_not_set(t_parsing *p);
+void		path_error( char *path, char *cwd);
+void		free_stuff(t_parsing *p);
 #endif

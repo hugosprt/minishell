@@ -43,6 +43,7 @@ SRCS =	ft_atoi.c \
 		n_strjoin.c \
 		ft_strncpy.c \
 		add2tab.c \
+		printtab_fd.c \
 
 OBJS = $(SRCS:.c=.o)
 

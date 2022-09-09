@@ -1,17 +1,5 @@
 #include "libft.h"
 
-// static void	printtab(char **t)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (t[i])
-// 	{
-// 		ft_putstr_fd(t[i], 2);
-// 		write(2, "\n", 1);
-// 		i++;
-// 	}
-// }
 
 static int	check_n_arg(char **t)
 {
