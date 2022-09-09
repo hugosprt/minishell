@@ -48,7 +48,7 @@ void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 		if (!path)
 			path_not_set(p);
 		cmd_path = ft_split(path, ':');
-		p->com = add_cmd(cmd_path, p->com, p);
+		p->com = add_cmd(cmd_path, p->arg[0], p);
 		while (cmd_path[i])
 			free(cmd_path[i++]);
 		if (!p->com)
@@ -77,20 +77,19 @@ void	exec(t_shell *sh, t_parsing *p)
 {
 	if (!p->arg)
 		return ;
-	p->com = p->arg[0];
-	if (!strcmp(p->com, "echo"))
+	if (!ft_strcmp(p->arg[0], "echo"))
 		echo(sh, 1, 1);
-	else if (!strcmp(p->com, "env"))
+	else if (!ft_strcmp(p->arg[0], "env"))
 		print_env(sh, sh->st);
-	else if (!strcmp(p->com, "export"))
+	else if (!ft_strcmp(p->arg[0], "export"))
 		ft_export(sh->st, p->arg);
-	else if (!strcmp(p->com, "unset"))
+	else if (!ft_strcmp(p->arg[0], "unset"))
 		ft_unset(sh->st, p->arg);
-	else if (!strcmp(p->com, "pwd"))
+	else if (!ft_strcmp(p->arg[0], "pwd"))
 		pwd();
-	else if (!strcmp(p->com, "cd"))
+	else if (!ft_strcmp(p->arg[0], "cd"))
 		cd(sh->st, p->arg[1]);
-	else if (!strcmp(p->com, "exit"))
+	else if (!ft_strcmp(p->arg[0], "exit"))
 	{
 		if (!p->nb_pipe)
 			ft_exit(p->arg);

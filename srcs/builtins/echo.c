@@ -1,7 +1,24 @@
 #include "../../includes/minishell.h"
 
+static char	**ft_free(char	**ret)
+{
+	int k;
+
+	k = 0;
+	while(ret[k])
+		k++;
+	while (k >= 0)
+	{
+		free(ret[k]);
+		k--;
+	}
+	free(ret);
+	return (NULL);
+}
+
 void	free_stuff(t_parsing *p)
 {
+	ft_free(p->arg);
 	p->arg = NULL;
 	p->com = NULL;
 }
