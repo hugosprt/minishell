@@ -1,11 +1,14 @@
 #include "../../includes/minishell.h"
 
+
+
 void	ctrl_d_exit(void)
 {
 	uint32_t	exit_c;
 
 	exit_c = s()->sig->ret;
 	ft_putstr_fd("exit\n", 2);
+	free(s());
 	exit(exit_c);
 }
 
