@@ -12,7 +12,6 @@ void	print_lexer(t_lexer *s)
 		return ;
 	while (s != NULL)
 	{
-		//printf("num %d  =",	s->koi);
 		printf("%s ... ", token[s->koi]);
 		if(s->koi == 0)
 			printf(" : -%s- ... ", s->str);
@@ -51,18 +50,18 @@ int	main(int ac, char **av, char **env)
 
 	(void) ac;
 	(void) av;
+
 	st = NULL;
 	shell = s();
 	if (!shell)
 		return (0);
 	signal_gestion(shell);
-	if (env == NULL)
-		add_list(ft_split("USER noenv", ' '), st);
+	if (!env || !(*env))
+		env = NULL;
 	else
 		st = add_list(env, st);
 	shell->str_env = env;
 	shell->error = 0;
-	//print_env(list);
 	minishell(shell, st);
 	return (s()->sig->ret);
 }
