@@ -1,5 +1,11 @@
 #include "../../includes/minishell.h"
 
+static void	make_the_split(t_shell *sh)
+{
+	sh->parsing->arg = ft_split(sh->parsing->com, '*');
+	free(sh->parsing->com);
+	sh->parsing->com = NULL;
+}
 
 void	make_the_fd_great_again(t_shell *sh)
 {
@@ -27,13 +33,14 @@ int	make_block(t_shell *sh)
 	{
 		if (p->l->koi == ARG)
 		{
-			p->arg = add2tab(p->arg, p->l->str);
+			p->com = joinfree1(p->com, p->l->str);
 			p->l = p->l->next;
 		}
 		if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR
 			|| p->l->koi == L_REDIR || p->l->koi == LL_REDIR)
 			p->l = redir(p);
 	}
+	make_the_split(sh);
 	exec(sh, sh->parsing);
 	dup2_close(sh->parsing->std_in, STDIN_FILENO);
 	dup2_close(sh->parsing->std_out, STDOUT_FILENO);

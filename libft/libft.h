@@ -57,5 +57,6 @@ char		*n_strjoin(unsigned int n_arg, ...);
 char		*ft_strncpy(char *src, int size);
 char		**add2tab(char **t, char *s);
 void		printtab_fd(char **t, int fd);
-
+int			ft_strcmp(const char *s1, const char *s2);
+char		*joinfree1(char *s1, char *s2);
 #endif
