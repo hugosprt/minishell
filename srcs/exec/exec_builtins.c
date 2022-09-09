@@ -2,20 +2,19 @@
 
 char	*add_cmd(char **cmd_paths, char *args, t_parsing *com)
 {
-	char	*guess;
+	char	*ret;
 	char	*tmp;
 
-	(void) com;
-	if (access(args, 0) == 0)
+	if (access(args,  X_OK) == 0)
 		return (args);
 	while (*cmd_paths)
 	{
 		tmp = ft_strjoin(*cmd_paths, "/");
-		guess = ft_strjoin(tmp, args);
+		ret = ft_strjoin(tmp, args);
 		free(tmp);
-		if (access(guess, 0) == 0)
-			return (guess);
-		free(guess);
+		if (access(ret,  X_OK) == 0)
+			return (ret);
+		free(ret);
 		cmd_paths++;
 	}
 	com->error = ft_strdup(args);
@@ -63,6 +62,7 @@ void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 			exit (127);
 		}
 		execve(p->com, p->arg, sh->str_env);
+		exit (0);
 	}
 	waitpid(pid, &p->status, 0);
 	if (WIFEXITED(p->status))
