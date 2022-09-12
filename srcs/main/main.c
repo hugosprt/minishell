@@ -44,10 +44,14 @@ void	minishell(t_shell *shell, t_List st)
 		prompt(shell);
 		lexer(shell);
 		trimer(shell, st);
-		//print_lexer(s->lexer);
+		//print_lexer(shell->lexer);
 		parsing(shell);
-		free(shell->parsing);
-		freelex(shell->lexer);
+		if (shell->error || shell->lexer->str)
+			freelex(shell->lexer);
+		if (!shell->error)
+		{
+			free(shell->parsing);
+		}
 	}
 }
 

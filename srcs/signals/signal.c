@@ -8,7 +8,6 @@ void	ctrl_d_exit(void)
 
 	exit_c = s()->sig->ret;
 	ft_putstr_fd("exit\n", 2);
-	free(s());
 	exit(exit_c);
 }
 
@@ -16,7 +15,6 @@ void	handle_int(siginfo_t *siginfo)
 {
 	if (s()->t == 1)
 	{
-		
 		ft_putchar_fd('\n', 1);
 		exit(0);
 	}
