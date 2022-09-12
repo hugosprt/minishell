@@ -99,7 +99,7 @@ void		index_quotes(t_shell *s);
 int			find_last_elem(t_lexer *l);
 t_lexer		*find_last_elem2(t_lexer *l);
 void		index_quotes(t_shell *s);
-char		*ft_strldup(const char *source, int size);
+char		*ft_strldup(char *source, int size);
 void		trimer(t_shell *s, t_List st);
 void		exec(t_shell *s, t_parsing *p);
 int			ft_strcmp_2(const char *str1, const char *str2);

@@ -57,7 +57,7 @@ int	is_separator(char c)
 	return (0);
 }
 
-char	*ft_strldup(const char *source, int size)
+char	*ft_strldup(char *source, int size)
 {
 	char	*dest;
 	int		len;
