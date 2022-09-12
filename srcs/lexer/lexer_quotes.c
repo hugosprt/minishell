@@ -39,11 +39,11 @@ void	set_quote(t_shell *s, t_lexer *l)
 	char	*str;
 
 	str = l->str;
-	while (*str)
+	while (!s->error && *str)
 	{
-		if (*str == '\'')
+		if (*str == '\''  && !s->error)
 			sing_quote(s, &str, l);
-		else if (*str == '\"')
+		else if (*str == '\"'  && !s->error)
 			doubl_quote(s, &str, l);
 		else
 			str++;
