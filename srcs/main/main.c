@@ -1,5 +1,17 @@
 #include "../../includes/minishell.h"
 
+static void	freelex(t_lexer *l)
+{
+	t_lexer	*tmp;
+
+	while (l->next)
+	{
+		tmp = l;
+		l = l->next;
+		free(tmp);
+	}
+	free (l);
+}
 
 void	print_lexer(t_lexer *s)
 {
@@ -34,12 +46,8 @@ void	minishell(t_shell *shell, t_List st)
 		trimer(shell, st);
 		//print_lexer(s->lexer);
 		parsing(shell);
-		///printf("here\n");
-		//printf("%s\n", s->prompt);
-		//lex->str = s->prompt;
-		//parsing(lex);
-		//printf("%s\n", s->prompt);
-		//	print_lexer(s->lexer);
+		free(shell->parsing);
+		freelex(shell->lexer);
 	}
 }
 

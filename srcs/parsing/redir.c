@@ -50,6 +50,7 @@ t_lexer	*redir(t_parsing *p)
 		p->l = p->l->next;
 		ici_fichier(p);
 	}
+	free(p->l->str);
 	p->l = p->l->next;
 	return (p->l);
 }
