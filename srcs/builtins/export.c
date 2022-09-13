@@ -2,17 +2,21 @@
 
 int	is_in_env(t_List st, char *var_name, char *var_value)
 {
-	if (st == NULL)
+
+	t_List tmp;
+
+	tmp = st;
+	if (tmp == NULL)
 		return (0);
-	while (st != NULL)
+	while (tmp != NULL)
 	{
 		if (!ft_strcmp_2(var_name, st->var))
 		{
-			st->var = var_name;
-			st->value = var_value;
+			tmp->var = var_name;
+			tmp->value = var_value;
 			return (1);
 		}
-		st = st->next;
+		tmp = tmp->next;
 	}
 	return (0);
 }

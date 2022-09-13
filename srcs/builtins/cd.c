@@ -37,6 +37,7 @@ void	change_pwd(t_List st, char *old)
 	char	*cwd;
 	char *tmp;
 
+	(void) st;
 	cwd = NULL;
 	cwd = getcwd(cwd, 999999);
 	tmp = ft_strjoin("OLDPWD=", old);
