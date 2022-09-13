@@ -41,9 +41,9 @@ void	set_quote(t_shell *s, t_lexer *l)
 	str = l->str;
 	while (!s->error && *str)
 	{
-		if (*str == '\''  && !s->error)
+		if (*str == '\'' && !s->error)
 			sing_quote(s, &str, l);
-		else if (*str == '\"'  && !s->error)
+		else if (*str == '\"' && !s->error)
 			doubl_quote(s, &str, l);
 		else
 			str++;

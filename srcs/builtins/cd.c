@@ -35,11 +35,16 @@ char	*search_in_env(t_List st, char *str)
 void	change_pwd(t_List st, char *old)
 {
 	char	*cwd;
+	char *tmp;
 
 	cwd = NULL;
 	cwd = getcwd(cwd, 999999);
-	is_var(ft_strjoin("OLDPWD=", old), st);
-	is_var(ft_strjoin("PWD=", cwd), st);
+	tmp = ft_strjoin("OLDPWD=", old);
+	is_var(tmp, st);
+	free(tmp);
+	tmp = ft_strjoin("PWD=", cwd);
+	is_var(tmp, st);
+	free(tmp);
 	free(cwd);
 }
 
