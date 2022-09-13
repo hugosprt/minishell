@@ -60,8 +60,8 @@ int	init_par(t_shell *sh)
 int	parsing(t_shell *sh)
 {
 	if (!sh->lexer || sh->error == 1 || sh->lexer->koi == END)
-		return (-1);
+		return (0);
 	if (!sh->error)
 		init_par(sh);
-	return (0);
+	return (1);
 }
