@@ -64,6 +64,7 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 	tmp2 =  ft_strdup(l->str + fin);
 	tmp1 = ft_strjoin(ret, tmp2);
 	finish = ft_strjoin(start, tmp1);
+	free(l->str);
 	l->str = finish;
 	free(start);
 	free(tmp1);
@@ -96,6 +97,7 @@ void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i, t_List st)
 	free(tmp1);
 	tmp1 = ft_strdup(l->str + fin + 1);
 	finish = ft_strjoin(start, tmp1);
+	free(l->str);
 	l->str = finish;
 	free(start);
 	free(tmp1);
@@ -135,7 +137,9 @@ void	trimer(t_shell *s, t_List st)
 	while (lexer)
 	{
 		if (lexer->koi == ARG && !s->error)
+		{
 			trimer_large(s, lexer, st);
+		}
 		lexer = lexer->next;
 	}
 }

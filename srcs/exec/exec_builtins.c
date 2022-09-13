@@ -44,13 +44,21 @@ void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 	pid = fork();
 	if (pid == 0)
 	{
-		path = get_path(sh);
-		if (!path)
-			path_not_set(p);
-		cmd_path = ft_split(path, ':');
-		p->com = add_cmd(cmd_path, p->arg[0], p);
-		while (cmd_path[i])
-			free(cmd_path[i++]);
+		if (!ft_strlen(p->com) == 0)
+		{
+			path = get_path(sh);
+			if (!path)
+					path_not_set(p);
+			cmd_path = ft_split(path, ':');
+			p->com = add_cmd(cmd_path, p->arg[0], p);
+			while (cmd_path[i])
+				free(cmd_path[i++]);
+		}
+		else
+		{
+			p->error = "s";
+			p->com = NULL;
+		}
 		if (!p->com)
 		{
 			if (ft_strrchr(p->error, '/'))
