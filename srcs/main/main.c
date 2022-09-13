@@ -8,6 +8,8 @@ static void	freelex(t_lexer *l)
 	{
 		tmp = l;
 		l = l->next;
+		if (tmp->koi == ARG)
+			free(tmp->str);
 		free(tmp);
 	}
 	free (l);
@@ -37,7 +39,6 @@ void	minishell(t_shell *shell, t_List st)
 {
 	while (1)
 	{
-		//(void) st;		
 		shell->error = 0;
 		shell->lexer = NULL;
 		shell->st = st;
