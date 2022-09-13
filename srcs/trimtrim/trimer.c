@@ -68,7 +68,7 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 			return ;
 		}
 	}
-	tmp2 =  ft_strdup(l->str + fin);
+	tmp2 = ft_strdup(l->str + fin);
 	tmp1 = ft_strjoin(ret, tmp2);
 	finish = ft_strjoin(start, tmp1);
 	free(l->str);

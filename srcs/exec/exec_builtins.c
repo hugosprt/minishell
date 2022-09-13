@@ -72,14 +72,19 @@ void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 		execve(p->com, p->arg, sh->str_env);
 		exit (0);
 	}
-		
+	p->status = 567;
 	waitpid(pid, &p->status, 0);
 	if (WIFEXITED(p->status))
 	{
 		s()->sig->ret = WEXITSTATUS(p->status);
 	}
 	else
-		s()->sig->ret = 0;
+	{
+		if(p->status == 567)
+			s()->sig->ret = 130;
+		else
+			s()->sig->ret = 0;
+	}
 }
 
 void	exec(t_shell *sh, t_parsing *p)
