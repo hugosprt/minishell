@@ -27,7 +27,6 @@ char	*is_in_env2(t_List st, char *var_name)
 	return (NULL);
 }
 
-
 void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 {
 	int 	fin;
@@ -35,6 +34,8 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 	char	*start;
 	char	*finish;
 	char 	*var;
+	char 	*tmp1;
+	char 	*tmp2;
 
 	(void) shell;
 	fin = (*i) + 1;
@@ -53,17 +54,22 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 		ret = is_in_env2(st, var);
 		if (ret == NULL)
 		{
-			finish = ft_strjoin(start, ft_strjoin(" ",
-				ft_strdup(l->str + fin)));
+			tmp2 = ft_strdup(l->str + fin);
+			tmp1 = ft_strjoin(" ", tmp2);
+			finish = ft_strjoin(start, tmp1);
 			l->str = finish;
 			return ;
 		}
 	}
-	finish = ft_strjoin(start, ft_strjoin(ret,
-				ft_strdup(l->str + fin)));
+	tmp2 =  ft_strdup(l->str + fin);
+	tmp1 = ft_strjoin(ret, tmp2);
+	finish = ft_strjoin(start, tmp1);
 	l->str = finish;
+	free(start);
+	free(tmp1);
+	free(tmp2);
+	free(var);
 	(*i) += ft_strlen(ret);
-
 }
 
 void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i, t_List st)
@@ -71,9 +77,9 @@ void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i, t_List st)
 	int		fin;
 	char	*start;
 	char	*finish;
+	char 	*tmp1;
+	char 	*tmp2;
 
-	(void) s;
-	(void) quote;
 	fin = (*i) + 1;
 	while (l->str[fin] && l->str[fin] != (char) quote)
 	{
@@ -84,11 +90,16 @@ void	supp_d_quote(t_shell *s, t_lexer *l, t_quote quote, int *i, t_List st)
 	}
 	if (l->str == 0)
 			fin--;
-	start = ft_strjoin(ft_strldup(l->str, (*i)),
-			ft_strldup(l->str + (*i) + 1, fin - (*i) - 1));
-	finish = ft_strjoin(start, ft_strdup(l->str + fin + 1));
+	tmp1 = ft_strldup(l->str, (*i));
+	tmp2 =  ft_strldup(l->str + (*i) + 1, fin - (*i) - 1);
+	start = ft_strjoin(tmp1, tmp2);
+	free(tmp1);
+	tmp1 = ft_strdup(l->str + fin + 1);
+	finish = ft_strjoin(start, tmp1);
 	l->str = finish;
 	free(start);
+	free(tmp1);
+	free(tmp2);
 	(*i) = fin - 1;
 }
 
