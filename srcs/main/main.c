@@ -17,9 +17,9 @@ static void	freelex(t_lexer *l)
 
 void	print_lexer(t_lexer *s)
 {
-	int	i;
-	const char	*token[8] = {"ARG", "END", "PIPE","R_REDIR", "L_REDIR",
-		"RR_REDIR", "LL_REDIR",NULL};
+	int			i;
+	const char	*token[8] = {"ARG", "END", "PIPE", "R_REDIR", "L_REDIR",
+		"RR_REDIR", "LL_REDIR", NULL};
 
 	i = 0;
 	if (s == NULL)
@@ -27,7 +27,7 @@ void	print_lexer(t_lexer *s)
 	while (s != NULL)
 	{
 		printf("%s ... ", token[s->koi]);
-		if(s->koi == 0)
+		if (s->koi == 0)
 			printf(" : -%s- ... ", s->str);
 		s = s->next;
 		i++;
