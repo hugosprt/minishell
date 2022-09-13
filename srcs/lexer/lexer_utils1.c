@@ -115,6 +115,7 @@ void	add_token_arg(t_shell *s)
 {
 	int 	i;
 	char 	*tmp;
+	t_lexer *tt;
 
 	tmp = s->prompt;
 	i = 0;
@@ -131,5 +132,6 @@ void	add_token_arg(t_shell *s)
 			s->prompt++;
 		}
 	}
-	find_last_elem2(s->lexer)->str = ft_strldup(tmp, i);
+	tt = find_last_elem2(s->lexer);
+	tt->str = ft_strldup(tmp, i);
 }

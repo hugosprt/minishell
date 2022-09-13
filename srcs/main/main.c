@@ -45,7 +45,6 @@ void	minishell(t_shell *shell, t_List st)
 		prompt(shell);
 		lexer(shell);
 		trimer(shell, st);
-		//print_lexer(shell->lexer);
 		if (parsing(shell))
 			free(shell->parsing);
 		if (shell->error || shell->lexer)

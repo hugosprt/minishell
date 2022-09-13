@@ -44,11 +44,11 @@ void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (!ft_strlen(p->com) == 0)
+		if (!ft_strlen(p->arg[0]) == 0)
 		{
 			path = get_path(sh);
 			if (!path)
-					path_not_set(p);
+				path_not_set(p);
 			cmd_path = ft_split(path, ':');
 			p->com = add_cmd(cmd_path, p->arg[0], p);
 			while (cmd_path[i])
@@ -56,7 +56,7 @@ void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 		}
 		else
 		{
-			p->error = "s";
+			p->error = " ";
 			p->com = NULL;
 		}
 		if (!p->com)
@@ -72,6 +72,7 @@ void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 		execve(p->com, p->arg, sh->str_env);
 		exit (0);
 	}
+		
 	waitpid(pid, &p->status, 0);
 	if (WIFEXITED(p->status))
 	{
