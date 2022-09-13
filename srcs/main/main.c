@@ -46,13 +46,11 @@ void	minishell(t_shell *shell, t_List st)
 		lexer(shell);
 		trimer(shell, st);
 		//print_lexer(shell->lexer);
-		parsing(shell);
-		if (shell->error || shell->lexer->str)
-			freelex(shell->lexer);
-		if (!shell->error)
-		{
+		if (parsing(shell))
 			free(shell->parsing);
-		}
+		if (shell->error || shell->lexer)
+			freelex(shell->lexer);
+		
 	}
 }
 
