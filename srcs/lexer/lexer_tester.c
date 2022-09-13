@@ -86,7 +86,8 @@ int 	test_pipe(t_shell *s, t_lexer *l)
 		syntax_problem(s, 5);
 	if (tmp->prev->koi == L_REDIR && tmp->koi == PIPE)
 		syntax_problem(s, 0);
-	if (tmp->prev->koi == RR_REDIR && tmp->koi == PIPE && tmp->next->koi == PIPE)
+	if (tmp->prev->koi == RR_REDIR && tmp->koi == PIPE 
+			&& tmp->next->koi == PIPE)
 		syntax_problem(s, 0);
 	if (tmp->koi == PIPE && tmp->next->koi == PIPE)
 		return (0);
