@@ -54,6 +54,7 @@ char	**ft_trim_equal(char const *s, char charset, int r, int k)
 			j = i;
 			if (r == 0)
 				charset = 127;
+			r++;
 			while (s[j] != charset && s[j])
 				j++;
 			ret[++k] = ft_strcpy2(s, &i, j - i);

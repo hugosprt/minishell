@@ -28,9 +28,10 @@ void	is_var(char *str, t_List st)
 	char	*var_value;
 
 	i = 0;
+	ret = malloc(sizeof(char *) * (2));
 	if (!ft_isalpha(str[i]))
 	{
-		write(2, "minishell: export: : not a valid identifier\n", 42);
+		write(2, "minishell: export: : not a valid identifier\n", 44);
 		return ;
 	}
 	while (str[i] && (ft_isalnum(str[i]) || (str[i] == '_')))
@@ -40,11 +41,14 @@ void	is_var(char *str, t_List st)
 		ret = ft_trim_equal(str, '=', 1, -1);
 		if (ret[0] == NULL)
 		{
-			write(2, "minishell: export: : not a valid identifier\n", 42);
+			write(2, "minishell: export: : not a valid identifier\n", 44);
 		}
 		else
 			var_name = ret[0];
-		if (ret[1] == NULL)
+		i = 0;
+		while (ret[i])
+			i++;
+		if (i == 0)
 			var_value = NULL;
 		else
 			var_value = ret[1];
