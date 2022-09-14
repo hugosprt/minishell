@@ -1,5 +1,30 @@
 #include "../../includes/minishell.h"
 
+void	error_return(t_parsing *p, int i)
+{
+	if (i == 1)
+	{
+		if (ft_strrchr(p->error, '/'))
+			write(2, "minishell: no such file or directory: ", 38);
+		else
+			write(2, "minishell: command not found: ", 30);
+		write(2, p->error, ft_strlen(p->error));
+		write(2, "\n", 1);
+	}
+	else if (i == 2)
+	{
+		if (WIFEXITED(p->status))
+			s()->sig->ret = WEXITSTATUS(p->status);
+		else
+		{
+			if (p->status == 567)
+				s()->sig->ret = 130;
+			else
+				s()->sig->ret = 0;
+		}
+	}
+}
+
 static void	make_the_split(t_shell *sh)
 {
 	sh->parsing->arg = ft_split(sh->parsing->com, '*');

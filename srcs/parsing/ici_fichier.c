@@ -26,7 +26,6 @@ void	ici_fichier(t_parsing *p)
 	int		tmp_fd_out;
 	int		pid;
 
-	
 	tmp_fd_out = dup(STDOUT_FILENO);
 	dup2_close(p->std_out, STDOUT_FILENO);
 	pid = fork();

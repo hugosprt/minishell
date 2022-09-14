@@ -5,14 +5,14 @@ char	*add_cmd(char **cmd_paths, char *args, t_parsing *com)
 	char	*ret;
 	char	*tmp;
 
-	if (access(args,  X_OK) == 0)
+	if (access(args, X_OK) == 0)
 		return (args);
 	while (*cmd_paths)
 	{
 		tmp = ft_strjoin(*cmd_paths, "/");
 		ret = ft_strjoin(tmp, args);
 		free(tmp);
-		if (access(ret,  X_OK) == 0)
+		if (access(ret, X_OK) == 0)
 			return (ret);
 		free(ret);
 		cmd_paths++;
@@ -38,53 +38,24 @@ char	*get_path(t_shell *shell)
 
 void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
 {
-	char	*path;
-	char		**cmd_path;
-
 	pid = fork();
 	if (pid == 0)
 	{
 		if (!ft_strlen(p->arg[0]) == 0)
-		{
-			path = get_path(sh);
-			if (!path)
-				path_not_set(p);
-			cmd_path = ft_split(path, ':');
-			p->com = add_cmd(cmd_path, p->arg[0], p);
-			while (cmd_path[i])
-				free(cmd_path[i++]);
-		}
+			make_path(sh, p, 0);
 		else
 		{
 			p->error = " ";
 			p->com = NULL;
 		}
 		if (!p->com)
-		{
-			if (ft_strrchr(p->error, '/'))
-				write(2, "minishell: no such file or directory: ", 38);
-			else
-				write(2, "minishell: command not found: ", 30);
-			write(2, p->error, ft_strlen(p->error));
-			write(2, "\n", 1);
-			exit (127);
-		}
+			error_return(p, 1);
 		execve(p->com, p->arg, sh->str_env);
 		exit (0);
 	}
 	p->status = 567;
 	waitpid(pid, &p->status, 0);
-	if (WIFEXITED(p->status))
-	{
-		s()->sig->ret = WEXITSTATUS(p->status);
-	}
-	else
-	{
-		if(p->status == 567)
-			s()->sig->ret = 130;
-		else
-			s()->sig->ret = 0;
-	}
+	error_return(p, 2);
 }
 
 void	exec(t_shell *sh, t_parsing *p)
