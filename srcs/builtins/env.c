@@ -1,5 +1,38 @@
 #include "../../includes/minishell.h"
 
+char	**ft_trim_equal(char const *s, char charset, int r, int k)
+{
+	char	**ret;
+	int		j;
+	int		i;
+
+	i = 0;
+	ret = malloc(sizeof(char *) * (2));
+	if (!ret)
+		return (NULL);
+	while (s[i])
+	{
+		if (s[i] != charset)
+		{
+			j = i;
+			if (r == 0)
+				charset = 127;
+			r++;
+			while (s[j] != charset && s[j])
+				j++;
+			ret[++k] = ft_strcpy2(s, &i, j - i);
+			if (!ret[k])
+				return (ft_free_equal(ret, k));
+		}
+		else
+		{
+			i++;
+			r = 0;
+		}
+	}
+	return (ret);
+}
+
 void	push_list_back(t_List *st, char *var_name, char *var_value)
 {
 	t_ListElement	*new_list;

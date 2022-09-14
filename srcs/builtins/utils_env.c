@@ -7,7 +7,7 @@ int	is_equal(char c, char charset)
 	return (0);
 }
 
-static char	*ft_strcpy2(char const *s, int *i, int size)
+char	*ft_strcpy2(char const *s, int *i, int size)
 {
 	int		j;
 	char	*ret;
@@ -26,7 +26,7 @@ static char	*ft_strcpy2(char const *s, int *i, int size)
 	return (ret);
 }
 
-static char	**ft_free_equal(char **ret, int k)
+char	**ft_free_equal(char **ret, int k)
 {
 	while (k >= 0)
 	{
@@ -37,16 +37,16 @@ static char	**ft_free_equal(char **ret, int k)
 	return (NULL);
 }
 
-char	**ft_trim_equal(char const *s, char charset, int r, int k)
+char	**ft_trim_equal2(char const *s, char charset, int r, char **ret)
 {
-	char	**ret;
 	int		j;
 	int		i;
+	int		k;
 
 	i = 0;
-	ret = malloc(sizeof(char *) * (2));
-	if (!ret)
-		return (NULL);
+	k = -1;
+	ret[0] = NULL;
+	ret[1] = NULL;
 	while (s[i])
 	{
 		if (s[i] != charset)
