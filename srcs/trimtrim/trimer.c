@@ -27,15 +27,15 @@ char	*is_in_env2(t_List st, char *var_name)
 	return (NULL);
 }
 
-void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
+void	supp_dollarz(t_shell *shell, t_lexer *l, int *i, t_List st)
 {
-	int 	fin;
+	int		fin;
 	char	*ret;
 	char	*start;
 	char	*finish;
-	char 	*var;
-	char 	*tmp1;
-	char 	*tmp2;
+	char	*var;
+	char	*tmp1;
+	char	*tmp2;
 
 	(void) shell;
 	fin = (*i) + 1;
@@ -64,7 +64,12 @@ void	supp_dollarz(t_shell *shell, t_lexer *l, int *i , t_List st)
 			tmp2 = ft_strdup(l->str + fin);
 			tmp1 = ft_strjoin(" ", tmp2);
 			finish = ft_strjoin(start, tmp1);
+			free(l->str);
 			l->str = finish;
+			free(start);
+			free(tmp1);
+			free(tmp2);
+			free(var);
 			return ;
 		}
 	}
@@ -127,7 +132,7 @@ void	trimer_large(t_shell *s, t_lexer *l, t_List st)
 		{
 			supp_d_quote(s, l, D_QUOTES, &i, st);
 		}
-		else if (l->str[i] == '$')
+		else if (l->str[i] == '$' && l->str[i + 1] != '$')
 			supp_dollarz(s, l, &i, st);
 		else
 			i++;
