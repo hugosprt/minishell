@@ -111,4 +111,6 @@ void		ctrl_d_exit(void);
 void		path_not_set(t_parsing *p);
 void		path_error( char *path, char *cwd);
 void		free_stuff(t_parsing *p);
+void		path_error( char *path, char *cwd);
+
 #endif

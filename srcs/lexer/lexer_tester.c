@@ -27,7 +27,8 @@ int	first_arg(t_shell *s, t_lexer *l)
 		if (tmp->koi > 0)
 			syntax_problem(s, 5);
 	}
-	else if (tmp->koi == PIPE && (tmp->next->koi == ARG || tmp->next->koi == PIPE))
+	else if (tmp->koi == PIPE && (tmp->next->koi == ARG
+			|| tmp->next->koi == PIPE))
 		syntax_problem(s, 0);
 	else
 	{

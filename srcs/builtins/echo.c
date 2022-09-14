@@ -2,10 +2,10 @@
 
 static char	**ft_free(char	**ret)
 {
-	int k;
+	int	k;
 
 	k = 0;
-	while(ret[k])
+	while (ret[k])
 		k++;
 	while (k >= 0)
 	{

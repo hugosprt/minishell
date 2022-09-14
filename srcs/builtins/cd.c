@@ -35,7 +35,7 @@ char	*search_in_env(t_List st, char *str)
 void	change_pwd(t_List st, char *old)
 {
 	char	*cwd;
-	char *tmp;
+	char	*tmp;
 
 	(void) st;
 	cwd = NULL;
@@ -63,15 +63,6 @@ void	home(t_List st, char *buf)
 		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
 	free(buf);
 	s()->sig->ret = 0;
-}
-
-void	path_error( char *path, char *cwd)
-{
-	ft_putstr_fd("minishell: cd: ", 2);
-	ft_putstr_fd(path, 2);
-	ft_putstr_fd(": No such file or directory\n", 2);
-	free(cwd);
-	s()->sig->ret = 1;
 }
 
 void	cd(t_List st, char *path)
