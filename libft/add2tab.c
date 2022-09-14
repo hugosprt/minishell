@@ -1,6 +1,5 @@
 #include "libft.h"
 
-
 static int	check_n_arg(char **t)
 {
 	int	n;
@@ -49,6 +48,5 @@ char	**add2tab(char **t, char *s)
 		i--;
 	}
 	ft_free(t);
-
 	return (sa);
 }

@@ -7,10 +7,7 @@ char	*joinfree1(char *s1, char *s2)
 	int		j;
 
 	if (!s1)
-	{
-		s3 = ft_strdup(s2);
-		return (s3);
-	}
+		return (ft_strdup(s2));
 	s3 = (char *) malloc(ft_strlen(s1) + ft_strlen(s2) + 2 * (sizeof (char)));
 	if (s3 == NULL)
 		return (NULL);

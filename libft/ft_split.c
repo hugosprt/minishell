@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 16:03:45 by hspriet           #+#    #+#             */
-/*   Updated: 2022/08/27 16:31:38 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/09/14 13:22:34 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ static char	*ft_strcpy(char const *s, int *i, int size)
 	return (ret);
 }
 
-static char	**ft_25_lines(int size)
+static char	**ft_25_lines(int size, int *k, int *i)
 {
 	char	**ret;
 
+	*k = -1;
+	*i = 0;
 	ret = (char **) malloc(sizeof(char *) * (size + 1));
 	if (!ret)
 		return (NULL);
@@ -83,11 +85,9 @@ char	**ft_split(char const *s, char charset)
 	int		j;	
 	int		k;	
 
-	k = -1;
-	i = 0;
 	if (!s)
 		return (NULL);
-	ret = ft_25_lines(how_many_word(s, charset));
+	ret = ft_25_lines(how_many_word(s, charset), &k, &i);
 	if (!ret)
 		return (NULL);
 	while (s[i])

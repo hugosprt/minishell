@@ -1,4 +1,3 @@
-
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -28,7 +27,7 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr_fd(char *s, int fd);
 char		*ft_strdup(const char *source);
-char		*ft_strjoin(char  *s1, char *s2);
+char		*ft_strjoin(char	*s1, char *s2);
 char		*ft_firstword(char	*s);
 int			ft_strlen(const char *str);
 size_t		ft_strlcat(char *s1, const char *s2, size_t n);
