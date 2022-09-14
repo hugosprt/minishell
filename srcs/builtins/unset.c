@@ -2,8 +2,8 @@
 
 void	ft_list_remove_if(t_List st, char *var_name)
 {
-	t_ListElement *prev;
-	t_ListElement *tmp;
+	t_ListElement	*prev;
+	t_ListElement	*tmp;
 
 	if (st && !ft_strcmp_2(var_name, st->var))
 	{
@@ -21,16 +21,10 @@ void	ft_list_remove_if(t_List st, char *var_name)
 			free(tmp->var);
 			free(tmp->value);
 			free(tmp);
+			break ;
 		}
 		prev = tmp;
 		tmp = tmp->next;
-	}
-	if (!ft_strcmp_2(var_name, tmp->var))
-	{
-		prev->next = NULL;
-		free(tmp->var);
-		free(tmp->value);
-		free(tmp);
 	}
 }
 
