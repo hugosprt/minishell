@@ -23,6 +23,7 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/parsing/ici_fichier.c \
 		srcs/lexer/lexer_quotes.c \
 		srcs/trimtrim/trimer.c 	\
+		srcs/trimtrim/trimer_utils.c 	\
 		srcs/builtins/echo.c \
 		srcs/exec/exec_builtins.c \
 		srcs/builtins/pwd.c \
