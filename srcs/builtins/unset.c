@@ -13,7 +13,7 @@ void	ft_list_remove_if(t_List st, char *var_name)
 	}
 	prev = st;
 	tmp = st->next;
-	while (tmp && tmp->next)
+	while (tmp)
 	{
 		if (!ft_strcmp_2(var_name, tmp->var))
 		{
