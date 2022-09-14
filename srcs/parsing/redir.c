@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-void	make_path(t_shell *sh, t_parsing *p, int i)
+void	make_path(t_shell *sh, t_parsing *p)
 {
 	char		*path;
 	char		**cmd_path;
@@ -10,8 +10,7 @@ void	make_path(t_shell *sh, t_parsing *p, int i)
 		path_not_set(p);
 	cmd_path = ft_split(path, ':');
 	p->com = add_cmd(cmd_path, p->arg[0], p);
-	while (cmd_path[i])
-		free(cmd_path[i++]);
+	ft_free(cmd_path);
 }
 
 void	dup2_close(int fd, int old_fd)

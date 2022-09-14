@@ -42,14 +42,16 @@ void	le_exec(t_shell *sh, t_parsing *p, int pid)
 	if (pid == 0)
 	{
 		if (!ft_strlen(p->arg[0]) == 0)
-			make_path(sh, p, 0);
+			make_path(sh, p);
 		else
 		{
 			p->error = " ";
 			p->com = NULL;
 		}
 		if (!p->com)
+		{
 			error_return(p, 1);
+		}
 		execve(p->com, p->arg, sh->str_env);
 		exit (0);
 	}

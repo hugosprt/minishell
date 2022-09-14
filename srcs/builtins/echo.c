@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-static char	**ft_free(char	**ret)
+char	**ft_free(char	**ret)
 {
 	int	k;
 

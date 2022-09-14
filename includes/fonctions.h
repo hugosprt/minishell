@@ -24,6 +24,9 @@ void		pwd(void);
 /**
 **		echo.c
 **/
+
+char		**ft_free(char	**ret);
+
 void		echo(t_shell *shell, int i, int n);
 
 /**
@@ -82,7 +85,7 @@ int			make_block(t_shell *s);
 **		redir.c
 **/
 
-void		make_path(t_shell *sh, t_parsing *p, int i);
+void		make_path(t_shell *sh, t_parsing *p);
 
 void		dup2_close(int fd, int old_fd);
 

@@ -10,6 +10,7 @@ void	error_return(t_parsing *p, int i)
 			write(2, "minishell: command not found: ", 30);
 		write(2, p->error, ft_strlen(p->error));
 		write(2, "\n", 1);
+		exit (127);
 	}
 	else if (i == 2)
 	{
