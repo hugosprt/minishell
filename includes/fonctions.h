@@ -94,6 +94,13 @@ t_lexer		*redir(t_parsing *par);
 
 void		ici_fichier(t_parsing *p);
 
+/**
+**		exec.c
+**/
+
+char		*add_cmd(char **cmd_paths, char *args, t_parsing *com);
+char		*get_path(t_shell *shell);
+
 //t_parsing	*ft_pipe(t_parsing *par);
 
 int			find_last_elem(t_lexer *l);

@@ -36,7 +36,7 @@ char	*get_path(t_shell *shell)
 	return (NULL);
 }
 
-void	le_exec(t_shell *sh, t_parsing *p, int i, int pid)
+void	le_exec(t_shell *sh, t_parsing *p, int pid)
 {
 	pid = fork();
 	if (pid == 0)
@@ -80,7 +80,7 @@ void	exec(t_shell *sh, t_parsing *p)
 			ft_exit(p->arg);
 	}
 	else
-		le_exec(sh, p, 0, 0);
+		le_exec(sh, p, 0);
 	if (p->arg)
 		free_stuff(p);
 }
