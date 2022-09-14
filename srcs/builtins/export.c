@@ -9,7 +9,7 @@ int	is_in_env(t_List st, char *var_name, char *var_value)
 		return (0);
 	while (tmp != NULL)
 	{
-		if (!ft_strcmp_2(var_name, st->var))
+		if (!ft_strcmp_2(var_name, tmp->var))
 		{
 			tmp->var = var_name;
 			tmp->value = var_value;

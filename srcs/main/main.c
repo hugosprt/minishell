@@ -59,7 +59,6 @@ int	main(int ac, char **av, char **env)
 
 	(void) ac;
 	(void) av;
-
 	st = NULL;
 	shell = s();
 	if (!shell)

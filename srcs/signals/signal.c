@@ -1,7 +1,5 @@
 #include "../../includes/minishell.h"
 
-
-
 void	ctrl_d_exit(void)
 {
 	uint32_t	exit_c;
