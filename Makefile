@@ -15,6 +15,7 @@ SRCS =	srcs/prompt/prompt.c \
 		srcs/singletons/sing.c \
 		srcs/lexer/lexer.c \
 		srcs/lexer/lexer_utils1.c \
+		srcs/lexer/lexer_utils2.c \
 		srcs/utils/lexer_list.c \
 		srcs/lexer/lexer_tester.c \
 		srcs/parsing/parsing.c \

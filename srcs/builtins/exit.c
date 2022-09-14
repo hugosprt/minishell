@@ -27,7 +27,8 @@ int	ft_exit(char **str)
 		if (!is_good(str[1]))
 		{
 			ft_putstr_fd("exit\n", 2);
-			ft_putstr_fd("minishell: exit: status numeric argument required\n", 2);
+			ft_putstr_fd("minishell: exit: status", 2);
+			ft_putstr_fd("numeric argument required\n", 2);
 			exit(2);
 		}
 		if (str[2])
