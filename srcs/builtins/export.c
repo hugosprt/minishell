@@ -29,33 +29,31 @@ void	is_var(char *str, t_List st)
 
 	i = 0;
 	ret = malloc(sizeof(char *) * (2));
-	if (!ft_isalpha(str[i]))
-	{
-		write(2, "minishell: export: : not a valid identifier\n", 44);
+	if (!ret)
 		return ;
-	}
-	while (str[i] && (ft_isalnum(str[i]) || (str[i] == '_')))
-		i++;
-	if (str[i] && str[i] == '=')
+	if (!ft_isalpha(str[i]))
+		write(2, "minishell: export: : not a valid identifier\n", 44);
+	else
 	{
-		ret = ft_trim_equal(str, '=', 1, -1);
-		if (ret[0] == NULL)
-		{
-			write(2, "minishell: export: : not a valid identifier\n", 44);
-		}
-		else
-			var_name = ret[0];
-		i = 0;
-		while (ret[i])
+		while (str[i] && (ft_isalnum(str[i]) || (str[i] == '_')))
 			i++;
-		if (i == 0)
-			var_value = NULL;
-		else
-			var_value = ret[1];
-		free(ret);
-		if (!is_in_env(st, var_name, var_value))
-			push_list_back(&st, var_name, var_value);
+		if (str[i] && str[i] == '=')
+		{
+			ret = ft_trim_equal2(str, '=', 1, ret);
+			if (ret[0] == NULL)
+				write(2, "minishell: export: : not a valid identifier\n", 44);
+			else
+				var_name = ret[0];
+			i = 0;
+			if (!ret[1])
+				var_value = NULL;
+			else
+				var_value = ret[1];
+			if (!is_in_env(st, var_name, var_value))
+				push_list_back(&st, var_name, var_value);
+		}
 	}
+	free(ret);
 }
 
 void	export_only(t_List st)

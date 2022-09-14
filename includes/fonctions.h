@@ -33,13 +33,18 @@ void		echo(t_shell *shell, int i, int n);
 **		cd.c
 **/
 void		cd(t_List st, char *path);
-char		**ft_trim_equal(char const *s, char charset, int r, int k);
+char		**ft_trim_equal2(char const *s, char charset, int r, char **ret);
 void		ft_export(t_List st, char **arg);
 void		push_list_back(t_List *st, char *var_name, char *var_value);
 
 /**
 **		env.c
 **/
+
+char		**ft_free_equal(char **ret, int k);
+
+char		*ft_strcpy2(char const *s, int *i, int size);
+
 void		is_var(char *str, t_List st);
 void		ft_export(t_List st, char **arg);
 void		create_env(char **envp);
