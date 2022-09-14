@@ -7,7 +7,7 @@ void	prompt(t_shell *s)
 	tmp = readline("minishell: ");
 	s->prompt = tmp;
 	if (s->prompt == NULL)
-			ctrl_d_exit();
+		ctrl_d_exit();
 	if (*tmp == '\0')
 		return ;
 	add_history(tmp);

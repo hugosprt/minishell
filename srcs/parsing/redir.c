@@ -1,5 +1,19 @@
 #include "../../includes/minishell.h"
 
+void	make_path(t_shell *sh, t_parsing *p, int i)
+{
+	char		*path;
+	char		**cmd_path;
+
+	path = get_path(sh);
+	if (!path)
+		path_not_set(p);
+	cmd_path = ft_split(path, ':');
+	p->com = add_cmd(cmd_path, p->arg[0], p);
+	while (cmd_path[i])
+		free(cmd_path[i++]);
+}
+
 void	dup2_close(int fd, int old_fd)
 {
 	dup2(fd, old_fd);

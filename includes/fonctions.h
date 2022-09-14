@@ -75,11 +75,14 @@ int			error(t_shell *sh, int i);
 **		utils_parsing.c
 **/
 
+void		error_return(t_parsing *p, int i);
 int			make_block(t_shell *s);
 
 /**
 **		redir.c
 **/
+
+void		make_path(t_shell *sh, t_parsing *p, int i);
 
 void		dup2_close(int fd, int old_fd);
 

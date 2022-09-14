@@ -35,7 +35,6 @@ typedef struct t_ListElement
 	struct t_ListElement	*next;
 }t_ListElement,	*t_List;
 
-
 typedef struct s_parsing
 {
 	char				*com;
