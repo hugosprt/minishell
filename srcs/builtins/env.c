@@ -63,8 +63,7 @@ void	print_env(t_shell *shell, t_List st)
 		ft_putstr_fd("too many argument\n", 2);
 		s()->sig->ret = 2;
 		return ;
-	}	
-
+	}
 	while (st != NULL)
 	{
 		ft_putstr_fd(st->var, 1);

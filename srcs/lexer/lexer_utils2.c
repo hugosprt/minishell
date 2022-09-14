@@ -1,6 +1,5 @@
 #include "../../includes/minishell.h"
 
-
 int	is_separator(char c)
 {
 	if (c == '|' || c == '>' || c == '<' || is_empty(c))
@@ -28,9 +27,8 @@ char	*ft_strldup(const char *source, int size)
 	return (dest);
 }
 
-void skip_double_quote(t_shell *s, int *i)
+void	skip_double_quote(t_shell *s, int *i)
 {
-
 	(*i)++;
 	s->prompt++;
 	while (*s->prompt && *s->prompt != '\"')
@@ -45,8 +43,7 @@ void skip_double_quote(t_shell *s, int *i)
 	}
 }
 
-
-void skip_single_quote(t_shell *s, int *i)
+void	skip_single_quote(t_shell *s, int *i)
 {
 	(*i)++;
 	s->prompt++;
@@ -64,9 +61,9 @@ void skip_single_quote(t_shell *s, int *i)
 
 void	add_token_arg(t_shell *s)
 {
-	int 	i;
-	char 	*tmp;
-	t_lexer	*l;
+	int			i;
+	char		*tmp;
+	t_lexer		*l;
 
 	tmp = s->prompt;
 	i = 0;

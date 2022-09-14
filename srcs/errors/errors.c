@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-void syntax_problem(t_shell *shell, int error_value)
+void	syntax_problem(t_shell *shell, int error_value)
 {
 	const char	*error[6] = {"|", "<", ">", "<<", ">>", "newline"};
 
@@ -32,4 +32,13 @@ void	path_not_set(t_parsing *p)
 	write(2, p->com, ft_strlen(p->com));
 	write(2, "\n", 1);
 	exit (127);
+}
+
+void	path_error( char *path, char *cwd)
+{
+	ft_putstr_fd("minishell: cd: ", 2);
+	ft_putstr_fd(path, 2);
+	ft_putstr_fd(": No such file or directory\n", 2);
+	free(cwd);
+	s()->sig->ret = 1;
 }

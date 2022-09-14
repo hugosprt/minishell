@@ -38,7 +38,6 @@ void	add_token_rr(t_shell *s)
 void	add_token_lr(t_shell *s)
 {
 	s->prompt += 1;
-
 	if (s->prompt[0] == '<')
 	{
 		add_token_back(&s->lexer, LL_REDIR, NOT_YET);
