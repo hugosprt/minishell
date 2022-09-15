@@ -27,12 +27,12 @@ char	*is_in_env2(t_List st, char *var_name)
 	return (NULL);
 }
 
-void	not_expand(t_lexer *l, char *finish, char *start, char *ret, int fin)
+void	not_expand(t_lexer *l, char *finish, char *start, char *ret)
 {
 	char		*tmp1;
 	char		*tmp2;
 
-	tmp2 = ft_strdup(l->str + fin);
+	tmp2 = ft_strdup(l->str + s()->fin);
 	tmp1 = ft_strjoin(ret, tmp2);
 	finish = ft_strjoin(start, tmp1);
 	free(l->str);
@@ -44,29 +44,29 @@ void	not_expand(t_lexer *l, char *finish, char *start, char *ret, int fin)
 
 void	supp_dollarz(t_lexer *l, int *i, t_List st)
 {
-	int		fin;
 	char	*ret;
 	char	*start;
 	char	*finish;
 	char	*var;
 
-	fin = (*i) + 1;
+	s()->fin = (*i) + 1;
 	start = ft_strldup(l->str, (*i));
 	finish = NULL;
-	if (l->str[fin] == '?' && fin++)
+	if (l->str[s()->fin] == '?' && s()->fin++)
 		ret = ft_itoa(s()->sig->ret);
 	else
 	{
-		while ((ft_isalnum(l->str[fin]) || (l->str[fin] == '_')) && l->str[fin])
-			fin++;
+		while ((ft_isalnum(l->str[s()->fin]) || (l->str[s()->fin] == '_'))
+			&& l->str[s()->fin])
+			s()->fin++;
 		var = ft_strldup(l->str + (*i) + 1,
-				fin - (*i) - 1);
+				s()->fin - (*i) - 1);
 		ret = is_in_env2(st, var);
 		if (ret == NULL)
-			return (free(var), not_expand(l, finish, start, " ", fin));
+			return (free(var), not_expand(l, finish, start, " "));
 		free(var);
 	}
-	not_expand(l, finish, start, ret, fin);
+	not_expand(l, finish, start, ret);
 	(*i) += ft_strlen(ret);
 	free(ret);
 }

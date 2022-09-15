@@ -71,6 +71,7 @@ typedef struct s_shell
 	int				pid;
 	t_List			st;
 	int				t;
+	int				fin;
 
 }	t_shell;
 

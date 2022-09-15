@@ -47,16 +47,17 @@ void	trimer_large(t_lexer *l, t_List st)
 	}
 }
 
-void	trimer(t_shell *s, t_List st)
+void	trimer(t_shell *shell, t_List st)
 {
 	t_lexer	*lexer;
 
-	lexer = s->lexer;
+	s()->lexer = shell->lexer;
+	lexer = s()->lexer;
 	if (lexer == NULL)
 		return ;
 	while (lexer)
 	{
-		if (lexer->koi == ARG && !s->error)
+		if (lexer->koi == ARG && !shell->error)
 			trimer_large(lexer, st);
 		lexer = lexer->next;
 	}
