@@ -1,5 +1,19 @@
 #include "../../includes/minishell.h"
 
+static void	incr(int *i, int *r, char **ret, int n)
+{
+	if (n == 2)
+	{
+		*i += 1;
+		*r = 0;
+	}
+	if (n == 1)
+	{
+		ret[0] = NULL;
+		ret[1] = NULL;
+	}
+}
+
 int	is_equal(char c, char charset)
 {
 	if (charset == c)
@@ -45,8 +59,7 @@ char	**ft_trim_equal2(char const *s, char charset, int r, char **ret)
 
 	i = 0;
 	k = -1;
-	ret[0] = NULL;
-	ret[1] = NULL;
+	incr(&i, &r, ret, 1);
 	while (s[i])
 	{
 		if (s[i] != charset)
@@ -62,10 +75,7 @@ char	**ft_trim_equal2(char const *s, char charset, int r, char **ret)
 				return (ft_free_equal(ret, k));
 		}
 		else
-		{
-			i++;
-			r = 0;
-		}
+			incr(&i, &r, ret, 2);
 	}
 	return (ret);
 }
