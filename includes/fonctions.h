@@ -134,6 +134,7 @@ void		supp_d_quote(t_lexer *l, t_quote quote, int *i, t_List st);
 void		supp_dollarz(t_lexer *l, int *i, t_List st);
 void		not_expand(t_lexer *l, char *f, char *s, char *ret);
 void		return_value(t_lexer *l, char *start, int *i);
+char		*joinfree2(char *s1, char *s2);
 char		*is_in_env2(t_List st, char *var_name);
 int			is_quote(char c);
 #endif

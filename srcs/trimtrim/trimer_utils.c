@@ -20,7 +20,7 @@ void	supp_d_quote(t_lexer *l, t_quote quote, int *i, t_List st)
 			fin--;
 	tmp1 = ft_strldup(l->str, (*i));
 	tmp2 = ft_strldup(l->str + (*i) + 1, fin - (*i) - 1);
-	start = joinfree1(tmp1, tmp2);
+	start = joinfree2(tmp1, tmp2);
 	tmp1 = ft_strdup(l->str + fin + 1);
 	finish = ft_strjoin(start, tmp1);
 	free(l->str);
