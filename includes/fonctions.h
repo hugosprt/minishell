@@ -132,7 +132,7 @@ void		free_stuff(t_parsing *p);
 void		path_error( char *path, char *cwd);
 void		supp_d_quote(t_lexer *l, t_quote quote, int *i, t_List st);
 void		supp_dollarz(t_lexer *l, int *i, t_List st);
-void		not_expand(t_lexer *l, char *f, char *s, char *ret, int fi);
+void		not_expand(t_lexer *l, char *f, char *s, char *ret);
 void		return_value(t_lexer *l, char *start, int *i);
 char		*is_in_env2(t_List st, char *var_name);
 int			is_quote(char c);
