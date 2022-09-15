@@ -1,5 +1,11 @@
 #include "../../includes/minishell.h"
 
+static void	incr(int *i, int *r)
+{
+	*i += 1;
+	*r = 0;
+}
+
 char	**ft_trim_equal(char const *s, char charset, int r, int k)
 {
 	char	**ret;
@@ -8,8 +14,6 @@ char	**ft_trim_equal(char const *s, char charset, int r, int k)
 
 	i = 0;
 	ret = malloc(sizeof(char *) * (2));
-	if (!ret)
-		return (NULL);
 	while (s[i])
 	{
 		if (s[i] != charset)
@@ -25,10 +29,7 @@ char	**ft_trim_equal(char const *s, char charset, int r, int k)
 				return (ft_free_equal(ret, k));
 		}
 		else
-		{
-			i++;
-			r = 0;
-		}
+			incr(&i, &r);
 	}
 	return (ret);
 }
