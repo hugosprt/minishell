@@ -12,17 +12,19 @@ int	is_quote(char c)
 char	*is_in_env2(t_List st, char *var_name)
 {
 	char	*ret;
+	t_List	tmp;
 
-	if (st == NULL)
+	tmp = st;
+	if (tmp == NULL)
 		return (0);
-	while (st != NULL)
+	while (tmp != NULL)
 	{
-		if (!ft_strcmp_2(var_name, st->var))
+		if (!ft_strcmp_2(var_name, tmp->var))
 		{
-			ret = st->value;
+			ret = tmp->value;
 			return (ret);
 		}
-		st = st->next;
+		tmp = tmp->next;
 	}
 	return (NULL);
 }
@@ -68,5 +70,4 @@ void	supp_dollarz(t_lexer *l, int *i, t_List st)
 	}
 	not_expand(l, finish, start, ret);
 	(*i) += ft_strlen(ret);
-	free(ret);
 }
