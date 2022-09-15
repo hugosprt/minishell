@@ -33,6 +33,7 @@ void	not_expand(t_lexer *l, char *finish, char *start, char *ret)
 {
 	char		*tmp1;
 	char		*tmp2;
+	char		*tmp3;
 
 	tmp2 = ft_strdup(l->str + s()->fin);
 	tmp1 = ft_strjoin(ret, tmp2);
@@ -42,6 +43,18 @@ void	not_expand(t_lexer *l, char *finish, char *start, char *ret)
 	free(start);
 	free(tmp1);
 	free(tmp2);
+	tmp3 = ft_itoa(s()->sig->ret);
+	if (ft_strcmp_2(ret, tmp3))
+		s()->b = 1;
+	else
+		s()->b = 0;
+	free(tmp3);
+}
+
+void	ft_24line(char *ret)
+{
+	if (s()->b == 0)
+		free(ret);
 }
 
 void	supp_dollarz(t_lexer *l, int *i, t_List st)
@@ -70,4 +83,5 @@ void	supp_dollarz(t_lexer *l, int *i, t_List st)
 	}
 	not_expand(l, finish, start, ret);
 	(*i) += ft_strlen(ret);
+	ft_24line(ret);
 }
