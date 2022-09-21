@@ -78,7 +78,7 @@ void	supp_dollarz(t_lexer *l, int *i, t_List st)
 				s()->fin - (*i) - 1);
 		ret = is_in_env2(st, var);
 		if (ret == NULL)
-			return (free(var), not_expand(l, finish, start, " "));
+			return (free(var), not_expand(l, finish, start, ""));
 		free(var);
 	}
 	not_expand(l, finish, start, ret);
