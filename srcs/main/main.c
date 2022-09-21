@@ -56,7 +56,14 @@ int	main(int ac, char **av, char **env)
 {
 	t_shell		*shell;
 	t_List		st;
+	char		*test[5];
+	char		cwd[1024];
 
+	test[0] = "NULL";
+	test[3] = "PATH=/bin";
+	test[1] = ft_strjoin("PWD=", getcwd(cwd, sizeof(cwd)));
+	test[2] = "_=/usr/bin/env";
+	test[4] = NULL;
 	(void) ac;
 	(void) av;
 	st = NULL;
@@ -65,7 +72,7 @@ int	main(int ac, char **av, char **env)
 		return (0);
 	signal_gestion(shell);
 	if (!env || !(*env))
-		env = NULL;
+		st = add_list(test, st);
 	else
 		st = add_list(env, st);
 	shell->str_env = env;
