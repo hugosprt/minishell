@@ -58,11 +58,14 @@ void	home(t_List st, char *buf)
 	{
 		chdir(home);
 		change_pwd(st, buf);
+		s()->sig->ret = 0;
 	}
 	else
+	{
 		ft_putstr_fd("minishell: cd: HOME not set\n", 2);
+		s()->sig->ret = 1;
+	}
 	free(buf);
-	s()->sig->ret = 0;
 }
 
 void	cd(t_List st, char *path)

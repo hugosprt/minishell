@@ -79,10 +79,7 @@ void	exec(t_shell *sh, t_parsing *p)
 	else if (!ft_strcmp(p->arg[0], "cd"))
 		cd(sh->st, p->arg[1]);
 	else if (!ft_strcmp(p->arg[0], "exit"))
-	{
-		if (!p->nb_pipe)
-			ft_exit(p->arg);
-	}
+		ft_exit(p->nb_pipe, p->arg);
 	else
 		le_exec(sh, p, 0);
 	free_stuff(p);
