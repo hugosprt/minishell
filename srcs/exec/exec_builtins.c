@@ -64,6 +64,8 @@ void	exec(t_shell *sh, t_parsing *p)
 {
 	if (!p->arg)
 		return ;
+	if (sh->error)
+		return (free_stuff(p));
 	if (!ft_strcmp(p->arg[0], "echo"))
 		echo(sh, 1, 1);
 	else if (!ft_strcmp(p->arg[0], "env"))
@@ -83,6 +85,5 @@ void	exec(t_shell *sh, t_parsing *p)
 	}
 	else
 		le_exec(sh, p, 0);
-	if (p->arg)
-		free_stuff(p);
+	free_stuff(p);
 }
