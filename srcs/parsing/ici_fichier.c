@@ -1,10 +1,24 @@
 #include "../../includes/minishell.h"
 
+static	void	message(char *ligne, char *str, int i)
+{
+	if (!ligne)
+	{
+		ft_putstr_fd("bash: warning: here-document at line ", 2);
+		ft_putnbr_fd(i, 2);
+		ft_putstr_fd(" delimited by end-of-file (wanted `", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("')\n", 2);
+	}
+}
+
 static	void	ec145(t_parsing *p)
 {
 	char	*ligne;
+	int		i;
 
-	p->fd = open(".ici_fichier", O_WRONLY | O_CREAT | O_TRUNC, 00600);
+	i = 1;
+	p->fd = open("/tmp/.ici_fichier", O_WRONLY | O_CREAT | O_TRUNC, 00600);
 	if (p->fd == -1)
 		error(p->sh, 3);
 	s()->t = 1;
@@ -12,9 +26,13 @@ static	void	ec145(t_parsing *p)
 	{
 		ligne = readline("> ");
 		if (!ligne || !strcmp(ligne, p->l->str))
+		{
+			message(ligne, p->l->str, i);
 			break ;
+		}
 		ft_putendl_fd(ligne, p->fd);
 		free(ligne);
+		i++;
 	}
 	close(p->fd);
 	free(ligne);
@@ -31,10 +49,12 @@ void	ici_fichier(t_parsing *p)
 	pid = fork();
 	if (pid == 0)
 		ec145(p);
-	waitpid(pid, NULL, 0);
-	p->fd = open(".ici_fichier", O_RDONLY);
+	p->status = 567;
+	waitpid(pid, &p->status, 0);
+	error_return(p, 2);
+	p->fd = open("/tmp/.ici_fichier", O_RDONLY);
 	if (p->fd == -1)
-		unlink(".ici_fichier");
+		unlink("/tmp/.ici_fichier");
 	else
 		dup2_close(p->fd, STDIN_FILENO);
 	dup2_close(tmp_fd_out, STDOUT_FILENO);

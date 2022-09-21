@@ -2,21 +2,17 @@
 
 int	error(t_shell *sh, int i)
 {
+	ft_putstr_fd("minishell: ", 2);
+	sh->error = 1;
+	s()->sig->ret = 1;
 	if (i == 1)
-	{
-		sh->error = 1;
 		ft_putstr_fd("MALLOC ERROR\n", 2);
-	}
-	if (i == 2)
+	else
 	{
-		sh->error = 1;
-		ft_putstr_fd("COULD NOT OPEN FILE\n", 2);
-	}
-	if (i == 3)
-	{
-		sh->error = 1;
-		ft_putstr_fd("COULD NOT OPEN FILE\n", 2);
-		exit(130);
+		ft_putstr_fd(sh->parsing->l->str, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
+		if (i == 3)
+			exit(130);
 	}
 	return (-1);
 }
