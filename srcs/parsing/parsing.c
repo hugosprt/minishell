@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 13:36:14 by rpol              #+#    #+#             */
+/*   Updated: 2022/10/03 13:44:22 by rpol             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 int	error(t_shell *sh, int i)
@@ -49,6 +61,8 @@ int	init_par(t_shell *sh)
 	par->l = sh->lexer;
 	par->prev_in = STDIN_FILENO;
 	par->nb_pipe = count_pipe(sh->lexer);
+	if (lex_check(sh))
+		return (0);
 	make_block(sh);
 	return (0);
 }

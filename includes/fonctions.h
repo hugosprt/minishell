@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fonctions.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/03 13:36:44 by rpol              #+#    #+#             */
+/*   Updated: 2022/10/03 13:43:20 by rpol             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FONCTIONS_H
 # define FONCTIONS_H
 
@@ -137,4 +149,5 @@ void		return_value(t_lexer *l, char *start, int *i);
 char		*joinfree2(char *s1, char *s2);
 char		*is_in_env2(t_List st, char *var_name);
 int			is_quote(char c);
+int			lex_check(t_shell *sh);
 #endif
