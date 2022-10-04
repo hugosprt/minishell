@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:45:46 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:45:48 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/04 14:51:12 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	lex_check(t_shell *sh)
 	t_lexer	*l;
 
 	l = sh->lexer;
+	if (isp(sh))
+		return (1);
 	if (sh->parsing->nb_pipe)
 	{
 		if (sh->lexer->koi == ARG)

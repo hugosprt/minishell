@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:07 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:44:16 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/04 17:26:43 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,15 @@ int	main(int ac, char **av, char **env)
 {
 	t_shell		*shell;
 	t_List		st;
-	char		*test[5];
+	char		*test[4];
 	char		cwd[1024];
 
+	if (isatty(1) == 0 || isatty(0) == 0)
+		return (0);
 	test[0] = "NULL";
 	test[3] = "PATH=/bin";
 	test[1] = ft_strjoin("PWD=", getcwd(cwd, sizeof(cwd)));
-	test[2] = "_=/usr/bin/env";
+	test[2] = " ";
 	test[4] = NULL;
 	(void) ac;
 	(void) av;

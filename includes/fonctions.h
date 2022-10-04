@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fonctions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:44 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:43:20 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/04 15:04:25 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,4 +150,6 @@ char		*joinfree2(char *s1, char *s2);
 char		*is_in_env2(t_List st, char *var_name);
 int			is_quote(char c);
 int			lex_check(t_shell *sh);
+int			isp(t_shell *sh);
+
 #endif
