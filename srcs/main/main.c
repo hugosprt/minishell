@@ -6,11 +6,24 @@
 /*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:07 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/04 17:26:43 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/05 14:03:45 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static t_List	init(t_List st)
+{
+	char		*test[4];
+	char		cwd[1024];
+
+	test[0] = "NULL";
+	test[3] = "PATH=/bin";
+	test[1] = ft_strjoin("PWD=", getcwd(cwd, sizeof(cwd)));
+	test[2] = " ";
+	test[4] = NULL;
+	return (add_list(test, st));
+}
 
 static void	freelex(t_lexer *l)
 {
@@ -25,26 +38,6 @@ static void	freelex(t_lexer *l)
 		free(tmp);
 	}
 	free (l);
-}
-
-void	print_lexer(t_lexer *s)
-{
-	int			i;
-	const char	*token[8] = {"ARG", "END", "PIPE", "R_REDIR", "L_REDIR",
-		"RR_REDIR", "LL_REDIR", NULL};
-
-	i = 0;
-	if (s == NULL)
-		return ;
-	while (s != NULL)
-	{
-		printf("%s ... ", token[s->koi]);
-		if (s->koi == 0)
-			printf(" : -%s- ... ", s->str);
-		s = s->next;
-		i++;
-	}
-	printf("\n");
 }
 
 void	minishell(t_shell *shell, t_List st)
@@ -68,16 +61,9 @@ int	main(int ac, char **av, char **env)
 {
 	t_shell		*shell;
 	t_List		st;
-	char		*test[4];
-	char		cwd[1024];
 
 	if (isatty(1) == 0 || isatty(0) == 0)
 		return (0);
-	test[0] = "NULL";
-	test[3] = "PATH=/bin";
-	test[1] = ft_strjoin("PWD=", getcwd(cwd, sizeof(cwd)));
-	test[2] = " ";
-	test[4] = NULL;
 	(void) ac;
 	(void) av;
 	st = NULL;
@@ -86,7 +72,7 @@ int	main(int ac, char **av, char **env)
 		return (0);
 	signal_gestion(shell);
 	if (!env || !(*env))
-		st = add_list(test, st);
+		st = init(st);
 	else
 		st = add_list(env, st);
 	shell->str_env = env;

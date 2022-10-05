@@ -6,61 +6,16 @@
 /*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:45:46 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/04 14:51:12 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/05 14:01:37 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-static int	eat_the_bugz(t_shell *sh)
-{
-	sh->parsing->arg = ft_split("ls", ' ');
-	exec(sh, sh->parsing);
-	sh->parsing->arg = ft_split("cat", ' ');
-	exec(sh, sh->parsing);
-	s()->sig->ret = 0;
-	return (1);
-}
-
-static t_lexer	*wcatp(t_lexer *l)
-{
-	while (l->koi != END)
-	{
-		if (l->koi == PIPE)
-			l = l->next;
-		else if (l->koi == ARG)
-		{
-			if (!ft_strcmp(l->str, "cat"))
-				l = l->next;
-			else
-				return (l);
-		}
-	}
-	return (l);
-}
-
 int	lex_check(t_shell *sh)
 {
-	t_lexer	*l;
-
-	l = sh->lexer;
 	if (isp(sh))
 		return (1);
-	if (sh->parsing->nb_pipe)
-	{
-		if (sh->lexer->koi == ARG)
-		{
-			if (!ft_strcmp(sh->lexer->str, "cat"))
-			{
-				l = wcatp(l);
-				if (l->koi == ARG)
-				{
-					if ((!ft_strcmp(l->str, "ls")) && (l->next->koi == END))
-						return (eat_the_bugz(sh));
-				}
-			}
-		}
-	}
 	return (0);
 }
 

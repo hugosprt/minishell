@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:41:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/04 17:35:25 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/10/03 13:44:05 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	add_token_rr(t_shell *s)
 
 void	add_token_lr(t_shell *s)
 {
-	if (s->prompt[1] == '<')
+	s->prompt += 1;
+	if (s->prompt[0] == '<')
 	{
 		add_token_back(&s->lexer, LL_REDIR, NOT_YET);
 		s->prompt += 2;
@@ -57,6 +58,5 @@ void	add_token_lr(t_shell *s)
 	else
 	{
 		add_token_back(&s->lexer, L_REDIR, NOT_YET);
-		s->prompt += 1;
 	}
 }
