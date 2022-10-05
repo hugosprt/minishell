@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:47 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:43:34 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/05 15:59:19 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,16 @@ t_List	add_list(char **tab, t_List sta)
 		push_list_back(&sta, var_name, var_value);
 		free(ret);
 		j++;
-	}
+	}	
 	return (sta);
 }
 
 void	print_env(t_shell *shell, t_List st)
 {
-	int	i;
+	t_List	tmp4;
 
-	i = 0;
-	if (st == NULL)
+	tmp4 = st;
+	if (tmp4 == NULL)
 		return ;
 	if (shell->parsing->arg[1] != NULL)
 	{
@@ -110,14 +110,17 @@ void	print_env(t_shell *shell, t_List st)
 		s()->sig->ret = 2;
 		return ;
 	}
-	while (st != NULL)
+	while (tmp4 != NULL)
 	{
-		ft_putstr_fd(st->var, 1);
-		ft_putstr_fd("=", 1);
-		ft_putstr_fd(st->value, 1);
-		ft_putstr_fd("\n", 1);
-		st = st->next;
-		i++;
+		if (ft_strcmp(tmp4->var, "258"))
+		{
+			ft_putstr_fd(tmp4->var, 1);
+			ft_putstr_fd("=", 1);
+			ft_putstr_fd(tmp4->value, 1);
+			ft_putstr_fd("\n", 1);
+		}
+		tmp4 = tmp4->next;
 	}
+	free(tmp4);
 	s()->sig->ret = 0;
 }

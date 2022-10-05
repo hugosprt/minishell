@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:40:20 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:43:38 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/05 15:13:03 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	is_var(char *str, t_List st)
 	int		i;
 	char	**ret;
 
-	i = 1;
+	i = 0;
 	ret = malloc(sizeof(char *) * (2));
 	if (!ret)
 		return ;
@@ -71,22 +71,6 @@ void	is_var(char *str, t_List st)
 	else
 		fonction_du_sale(i, str, ret, st);
 	free(ret);
-}
-
-void	export_only(t_List st)
-{
-	int	i;
-
-	i = 0;
-	if (st == NULL)
-		return ;
-	while (st != NULL)
-	{
-		printf("%s=", st->var);
-		printf("%s\n", st->value);
-		st = st->next;
-		i++;
-	}
 }
 
 void	ft_export(t_List st, char **arg)

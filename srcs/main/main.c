@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:07 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/05 14:03:45 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/05 15:59:27 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static t_List	init(t_List st)
 	char		cwd[1024];
 
 	test[0] = "NULL";
-	test[3] = "PATH=/bin";
-	test[1] = ft_strjoin("PWD=", getcwd(cwd, sizeof(cwd)));
-	test[2] = " ";
+	test[1] = "258";
+	test[2] = "PATH=/bin";
+	test[3] = ft_strjoin("PWD=", getcwd(cwd, sizeof(cwd)));
 	test[4] = NULL;
 	return (add_list(test, st));
 }
@@ -74,7 +74,10 @@ int	main(int ac, char **av, char **env)
 	if (!env || !(*env))
 		st = init(st);
 	else
+	{
+		push_list_back(&st, "258", " ");
 		st = add_list(env, st);
+	}
 	shell->str_env = env;
 	shell->error = 0;
 	minishell(shell, st);

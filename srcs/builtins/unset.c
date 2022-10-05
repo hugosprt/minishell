@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:40:36 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:43:44 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/05 15:50:06 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_list_remove_if(t_List st, char *var_name)
 		tmp = st;
 		st = st->next;
 		free(tmp);
+		return ;
 	}
 	prev = st;
 	tmp = st->next;
