@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:14 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:44:22 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 14:45:58 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	error(t_shell *sh, int i)
 	{
 		ft_putstr_fd(sh->parsing->l->str, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
+		sh->error = 2;
 		if (i == 3)
 			exit(130);
 	}
@@ -63,7 +64,7 @@ int	init_par(t_shell *sh)
 	par->nb_pipe = count_pipe(sh->lexer);
 	if (lex_check(sh))
 		return (0);
-	make_block(sh);
+	make_block(sh, sh->parsing);
 	return (0);
 }
 

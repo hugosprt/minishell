@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fonctions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:44 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/04 15:04:25 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 14:46:50 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int			error(t_shell *sh, int i);
 **/
 
 void		error_return(t_parsing *p, int i);
-int			make_block(t_shell *s);
+int			make_block(t_shell *s, t_parsing *p);
 
 /**
 **		redir.c
