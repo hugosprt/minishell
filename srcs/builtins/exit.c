@@ -6,11 +6,46 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:55 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:43:36 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 14:07:56 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static	int	ft_isdigit3(char str)
+{
+	if (str >= '0' && str <= '9')
+		return (1);
+	return (0);
+}
+
+static long long int	ft_atoll(const char *str)
+{
+	int				i;
+	long long int	nb;
+	int				sign;
+
+	nb = 0;
+	i = 0;
+	sign = 1;
+	while (str[i] && ((str[i] <= 13 && str[i] >= 9) || str[i] == ' '))
+	{
+		i++;
+	}
+	if (str[i] == '+' && ft_isdigit3(str[i + 1]))
+		i++;
+	if (str[i] == '-' && ft_isdigit3(str[i + 1]))
+	{
+		sign = -1;
+		i++;
+	}
+	while (str[i] && ft_isdigit3(str[i]))
+	{
+		nb = str[i] - 48 + nb * 10;
+		i++;
+	}
+	return (nb * sign);
+}
 
 static void	print_err(int pipe, char **str)
 {
@@ -44,12 +79,14 @@ static int	is_good(char *str)
 
 int	ft_exit(int pipe, char **str)
 {
-	int	sta;
+	int				sta;
+	long long int	nb;
 
 	sta = 0;
 	if (str[1])
 	{
-		if (!is_good(str[1]))
+		nb = ft_atoll(str[1]);
+		if (!is_good(str[1]) || nb > INT32_MAX || nb < INT32_MIN)
 			print_err(pipe, str);
 		else if (str[2])
 		{

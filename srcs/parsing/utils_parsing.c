@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:34 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 19:24:28 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 14:47:54 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,8 @@ void	make_the_fd_great_again(t_shell *sh)
 	close(sh->parsing->pipe[0]);
 }
 
-int	make_block(t_shell *sh)
+int	make_block(t_shell *sh, t_parsing *p)
 {
-	t_parsing	*p;
-
-	p = sh->parsing;
 	make_the_fd_great_again(sh);
 	while (p->l->koi != END && p->l->koi != PIPE)
 	{
@@ -87,8 +84,9 @@ int	make_block(t_shell *sh)
 	dup2_close(sh->parsing->std_out, STDOUT_FILENO);
 	if (p->l->koi == PIPE)
 	{
+		sh->error = 0;
 		sh->parsing->l = p->l->next;
-		make_block(sh);
+		make_block(sh, p);
 	}
 	return (0);
 }
