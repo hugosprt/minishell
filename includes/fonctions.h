@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:44 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 14:46:50 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 16:54:18 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void		signal_gestion(t_shell *s);
 void		ctrl_d_exit(void);
 void		path_not_set(t_parsing *p);
 void		path_error( char *path, char *cwd);
-void		free_stuff(t_parsing *p);
+void		free_stuff(t_parsing *p, int n);
 void		path_error( char *path, char *cwd);
 void		supp_d_quote(t_lexer *l, t_quote quote, int *i, t_List st);
 void		supp_dollarz(t_lexer *l, int *i, t_List st);
@@ -151,5 +151,6 @@ char		*is_in_env2(t_List st, char *var_name);
 int			is_quote(char c);
 int			lex_check(t_shell *sh);
 int			isp(t_shell *sh);
+void		freelex(t_lexer *l);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:41:08 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 19:22:02 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 16:55:41 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	exec(t_shell *sh, t_parsing *p)
 	if (!p->arg)
 		return ;
 	if (sh->error)
-		return (free_stuff(p));
+		return (free_stuff(p, 0));
 	if (!ft_strcmp(p->arg[0], "echo"))
 		echo(sh, 1, 1);
 	else if (!ft_strcmp(p->arg[0], "env"))
@@ -94,5 +94,5 @@ void	exec(t_shell *sh, t_parsing *p)
 		ft_exit(p->nb_pipe, p->arg);
 	else
 		le_exec(sh, p, 0);
-	free_stuff(p);
+	free_stuff(p, 0);
 }
