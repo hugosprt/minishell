@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:40:20 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/05 15:13:03 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/10/06 15:28:54 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ static void	fonction_du_sale(int i, char *str, char **ret, t_List st)
 	{
 		ret = ft_trim_equal2(str, '=', 1, ret);
 		if (ret[0] == NULL)
+		{
 			write(2, "minishell: export: : not a valid identifier\n", 44);
+			s()->sig->ret = 1;
+		}
 		else
 			var_name = ret[0];
 		i = 0;
@@ -67,7 +70,10 @@ void	is_var(char *str, t_List st)
 	if (!ret)
 		return ;
 	if (!ft_isalpha(str[i]))
+	{
+		s()->sig->ret = 1;
 		write(2, "minishell: export: : Not a valid identifier\n", 44);
+	}
 	else
 		fonction_du_sale(i, str, ret, st);
 	free(ret);
@@ -80,10 +86,10 @@ void	ft_export(t_List st, char **arg)
 	i = 1;
 	if (arg == NULL)
 		return ;
+	s()->sig->ret = 0;
 	while (arg[i])
 	{
 		is_var(arg[i], st);
 		i++;
 	}
-	s()->sig->ret = 0;
 }

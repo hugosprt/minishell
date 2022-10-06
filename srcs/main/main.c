@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:07 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/05 15:59:27 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/10/06 16:54:05 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_List	init(t_List st)
 	return (add_list(test, st));
 }
 
-static void	freelex(t_lexer *l)
+void	freelex(t_lexer *l)
 {
 	t_lexer	*tmp;
 
@@ -81,5 +81,5 @@ int	main(int ac, char **av, char **env)
 	shell->str_env = env;
 	shell->error = 0;
 	minishell(shell, st);
-	return (s()->sig->ret);
+	return (0);
 }

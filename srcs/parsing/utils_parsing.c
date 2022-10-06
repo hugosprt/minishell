@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:34 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 14:47:54 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 16:29:59 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	error_return(t_parsing *p, int i)
 			if (p->status == 567)
 			{
 				s()->sig->ret = 130;
-				ft_putchar_fd('\n', 1);
-			}	
+				s()->error = 2;
+			}
 			else
 				s()->sig->ret = 0;
 		}
