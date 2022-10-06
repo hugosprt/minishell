@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:55 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 16:52:10 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 18:33:29 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static long long int	ft_atoll(const char *str)
 	return (nb * sign);
 }
 
-static void	print_err(int pipe, char **str)
+static int	print_err(int pipe, char **str)
 {
 	if (!pipe)
 		ft_putstr_fd("exit\n", 2);
@@ -56,10 +56,8 @@ static void	print_err(int pipe, char **str)
 	ft_putstr_fd(": numeric argument required\n", 2);
 	s()->sig->ret = 2;
 	if (!pipe)
-	{
-		
-		exit(2);
-	}
+		return (free_stuff(s()->parsing, 1), exit(2), 0);
+	return (0);
 }
 
 static int	is_good(char *str)
@@ -86,6 +84,8 @@ int	ft_exit(int pipe, char **str)
 	long long int	nb;
 
 	sta = 0;
+	if (!str)
+		return (free_stuff(NULL, 1), exit(sta), 0);
 	if (str[1])
 	{
 		nb = ft_atoll(str[1]);
@@ -99,10 +99,7 @@ int	ft_exit(int pipe, char **str)
 			return (0);
 		}
 		else
-		{
-			sta = ft_atoi(str[1]);
-			s()->sig->ret = sta;
-		}
+			s()->sig->ret = ft_atoi(str[1]);
 	}
 	if (!pipe)
 		return (free_stuff(s()->parsing, 1), exit(sta), 0);
