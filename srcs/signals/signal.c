@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:59 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:45:01 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 18:29:00 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 void	ctrl_d_exit(void)
 {
-	uint32_t	exit_c;
-
-	exit_c = s()->sig->ret;
 	ft_putstr_fd("exit\n", 2);
-	exit(exit_c);
+	ft_exit(0, NULL);
 }
 
 void	handle_int(siginfo_t *siginfo)

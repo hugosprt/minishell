@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:40:36 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/05 15:50:06 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/10/06 18:51:45 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	is_var2(char *str, t_List st)
 		i++;
 	var_name = str;
 	ft_list_remove_if(st, var_name);
-	s()->sig->ret = 0;
 }
 
 void	ft_unset(t_List st, char **arg)
@@ -65,11 +64,9 @@ void	ft_unset(t_List st, char **arg)
 	int	i;
 
 	i = 0;
+	s()->sig->ret = 0;
 	if (arg == NULL)
-	{
-		s()->sig->ret = 0;
 		return ;
-	}
 	while (arg[i])
 	{
 		is_var2(arg[i], st);

@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:37:28 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/03 13:43:25 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 17:43:52 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_sig
 	int				ret;
 	int				sigint;
 	int				sigquit;
-	pid_t			pid;
 }		t_sig;
 
 typedef struct s_shell
@@ -85,7 +84,6 @@ typedef struct s_shell
 	int				t;
 	int				b;
 	int				fin;
-
 }	t_shell;
 
 #endif

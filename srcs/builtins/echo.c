@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 17:33:41 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/06 18:40:23 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,49 @@ char	**ft_free(char	**ret)
 	return (NULL);
 }
 
-void	freeenv(t_ListElement *l)
+void	freeenv(t_List l)
 {
-	t_ListElement	*tmp;
-	
-	ft_putstr_fd("3a\n", 2);
-	while (l->next)
-	{
-		tmp = l;
-		l = l->next;
-		free(tmp->var);
-		free(tmp->value);
-		free(tmp);
-	}
-	ft_putstr_fd("3b\n", 2);
-	free (l);
-}
+	t_List	tmp;
+	int		i;
 
+	i = 0;
+	while (l->next)
+	{	
+		tmp = l;
+			l = l->next;
+		if (i != 0)
+		{
+			free(tmp->var);
+			free(tmp->value);
+		}
+		free(tmp);
+		i++;
+	}
+	free(l->var);
+	free(l->value);
+	free(l);
+}
 
 void	free_stuff(t_parsing *p, int n)
 {
 	t_shell	*sh;
 
-	sh = p->sh;
-	ft_free(p->arg);
-	p->arg = NULL;
-	p->com = NULL;
+	sh = s();
+	if (p)
+	{		
+		ft_free(p->arg);
+		p->com = NULL;
+		p->arg = NULL;
+	}
 	if (n)
 	{
-		ft_putstr_fd("1\n", 2);
-		free(sh->parsing);
-		ft_putstr_fd("2\n", 2);
-		freelex(sh->lexer);
-		ft_putstr_fd("3\n", 2);
-		//freeenv(sh->env);
-		ft_putstr_fd("4\n", 2);
-		free(sh);
-		ft_putstr_fd("5\n", 2);
+		if (p)
+			free(p);
+		if (p)
+			freelex(sh->lexer);
+		freeenv(sh->st);
+		free(s()->sig);
+		free(s());
 		rl_clear_history();
 		ft_putstr_fd("exit\n", 2);
 	}
