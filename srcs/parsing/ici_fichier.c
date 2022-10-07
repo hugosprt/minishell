@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:20 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 16:11:35 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/07 13:54:39 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ void	ici_fichier(t_parsing *p)
 	int		pid;
 
 	tmp_fd_out = dup(STDOUT_FILENO);
-	dup2_close(p->std_out, STDOUT_FILENO);
+	dup2(p->std_out, STDOUT_FILENO);
 	pid = fork();
 	if (pid == 0)
 		ec145(p);
 	p->status = 567;
 	waitpid(pid, &p->status, 0);
 	error_return(p, 2);
+	s()->t = 0;
 	p->fd = open("/tmp/.ici_fichier", O_RDONLY);
 	if (p->fd == -1)
 		unlink("/tmp/.ici_fichier");
