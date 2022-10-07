@@ -6,11 +6,18 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:34 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/07 12:41:41 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/07 14:02:14 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+static void	kayak(void)
+{
+	write(2, "\n", 1);
+	s()->sig->ret = 130;
+	s()->error = 2;
+}
 
 void	error_return(t_parsing *p, int i)
 {
@@ -31,11 +38,7 @@ void	error_return(t_parsing *p, int i)
 		else
 		{
 			if (p->status == 567)
-			{
-				write(2, "\n", 1);
-				s()->sig->ret = 130;
-				s()->error = 2;
-			}
+				kayak();
 			else
 				s()->sig->ret = 0;
 		}
