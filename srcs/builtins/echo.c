@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 18:40:23 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/07 12:32:40 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,12 @@ void	free_stuff(t_parsing *p, int n)
 	if (n)
 	{
 		if (p)
+		{
+			close(p->std_in);
+			close(p->std_out);
 			free(p);
-		if (p)
 			freelex(sh->lexer);
+		}
 		freeenv(sh->st);
 		free(s()->sig);
 		free(s());

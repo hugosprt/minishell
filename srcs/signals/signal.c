@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:59 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 18:29:00 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/07 12:58:18 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ void	handle_int(siginfo_t *siginfo)
 {
 	if (s()->t == 1)
 	{
-		ft_putchar_fd('\n', 1);
 		exit(0);
 	}
 	if (siginfo->si_pid != 0)
 	{
-		ft_putchar_fd('\n', 1);
+		ft_putchar_fd('\n', 2);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
