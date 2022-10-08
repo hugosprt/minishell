@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:37:28 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 17:43:52 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 23:18:34 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_shell
 	char			*prompt;
 	int				pid;
 	t_List			st;
+	char			*tmp;
 	int				t;
 	int				b;
 	int				fin;

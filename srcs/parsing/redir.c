@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/08 17:06:04 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 23:20:50 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ static void	redir_d(t_parsing *p, int type)
 		flags = O_CREAT | O_APPEND | O_WRONLY;
 	fd = open(p->l->str, flags, 00644);
 	if (fd == -1)
+	{
 		error(p->sh, 2);
+		p->sh->error = 2;
+	}
 	else
 		dup2_close(fd, 1);
 }
@@ -53,21 +56,22 @@ static void	redir_g(t_parsing *p)
 
 	fd = open(p->l->str, O_RDONLY);
 	if (fd == -1)
+	{
 		error(p->sh, 2);
+		p->sh->error = 2;
+	}
 	else
 		dup2_close(fd, 0);
 }
 
 t_lexer	*redir(t_parsing *p)
 {
-	if (p->sh->error)
-		return (p->l->next->next);
-	if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR)
+	if ((p->l->koi == R_REDIR || p->l->koi == RR_REDIR) && p->sh->error < 2)
 	{
 		p->l = p->l->next;
 		redir_d(p, p->l->prev->koi);
 	}
-	else if (p->l->koi == L_REDIR)
+	else if (p->l->koi == L_REDIR && p->sh->error < 2)
 	{
 		p->l = p->l->next;
 		redir_g(p);
@@ -77,6 +81,12 @@ t_lexer	*redir(t_parsing *p)
 		p->l = p->l->next;
 		if (p->sh->error != 3)
 			ici_fichier(p);
+		if (p->sh->error == 2)
+		{
+			ft_putstr_fd("minishell: ", 2);
+			ft_putstr_fd(p->sh->tmp, 2);
+			ft_putstr_fd(": No such file or directory\n", 2);
+		}
 	}
 	p->l = p->l->next;
 	return (p->l);
