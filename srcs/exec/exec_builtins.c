@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:41:08 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 16:55:41 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 01:26:59 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	le_exec(t_shell *sh, t_parsing *p, int pid)
 	pid = fork();
 	if (pid == 0)
 	{
+		signal(SIGQUIT, SIG_DFL);
 		if (!ft_strlen(p->arg[0]) == 0)
 			make_path(sh, p);
 		else
@@ -64,11 +65,13 @@ void	le_exec(t_shell *sh, t_parsing *p, int pid)
 		{
 			error_return(p, 1);
 		}
+		s()->t = 1;
 		execve(p->com, p->arg, sh->str_env);
 		exit (0);
 	}
 	p->status = 567;
 	waitpid(pid, &p->status, 0);
+	s()->t = 0;
 	error_return(p, 2);
 }
 
