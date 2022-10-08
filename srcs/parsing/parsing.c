@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:14 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/08 14:28:35 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 15:41:42 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	error(t_shell *sh, int i)
 	sh->error = 1;
 	s()->sig->ret = 1;
 	if (i == 1)
+	{
 		ft_putstr_fd("MALLOC ERROR\n", 2);
+		ft_exit(0, NULL);
+	}
 	else
 	{
 		ft_putstr_fd(sh->parsing->l->str, 2);
