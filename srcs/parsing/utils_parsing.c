@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:34 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/08 16:28:34 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 01:32:52 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ void	error_return(t_parsing *p, int i)
 	{
 		if (WIFEXITED(p->status))
 			s()->sig->ret = WEXITSTATUS(p->status);
+		if (WIFSIGNALED(p->status) && WCOREDUMP(p->status))
+		{
+			ft_putstr_fd("Quit (core dumped)\n", 2);
+			s()->sig->ret = 131;
+		}
 		else
 		{
 			if (p->status == 567)
 				kayak();
-			else
-				s()->sig->ret = 0;
 		}
 	}
 }
