@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/07 12:32:40 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 13:03:54 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	free_stuff(t_parsing *p, int n)
 		freeenv(sh->st);
 		free(s()->sig);
 		free(s());
-		rl_clear_history();
+		clear_history();
 		ft_putstr_fd("exit\n", 2);
 	}
 }

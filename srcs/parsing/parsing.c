@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:14 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 14:45:58 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 14:28:35 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	init_par(t_shell *sh)
 	par->com = NULL;
 	par->l = sh->lexer;
 	par->prev_in = STDIN_FILENO;
+	par->fd = 0;
 	par->nb_pipe = count_pipe(sh->lexer);
 	if (lex_check(sh))
 		return (0);
