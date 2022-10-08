@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/08 16:38:02 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 17:06:04 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	redir_g(t_parsing *p)
 
 t_lexer	*redir(t_parsing *p)
 {
-	if (p->sh->error == 2)
+	if (p->sh->error)
 		return (p->l->next->next);
 	if (p->l->koi == R_REDIR || p->l->koi == RR_REDIR)
 	{
