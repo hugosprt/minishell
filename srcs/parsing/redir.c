@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 14:41:19 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 16:38:02 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ t_lexer	*redir(t_parsing *p)
 	else if (p->l->koi == LL_REDIR)
 	{
 		p->l = p->l->next;
-		ici_fichier(p);
+		if (p->sh->error != 3)
+			ici_fichier(p);
 	}
 	p->l = p->l->next;
 	return (p->l);
