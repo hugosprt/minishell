@@ -6,7 +6,7 @@
 /*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:34 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/07 14:02:14 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/08 16:28:34 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	kayak(void)
 {
 	write(2, "\n", 1);
 	s()->sig->ret = 130;
-	s()->error = 2;
+	s()->error = 3;
 }
 
 void	error_return(t_parsing *p, int i)
@@ -86,7 +86,7 @@ int	make_block(t_shell *sh, t_parsing *p)
 	exec(sh, sh->parsing);
 	dup2_close(sh->parsing->std_in, STDIN_FILENO);
 	dup2_close(sh->parsing->std_out, STDOUT_FILENO);
-	if (p->l->koi == PIPE)
+	if (p->l->koi == PIPE && sh->error != 3)
 	{
 		sh->error = 0;
 		sh->parsing->l = p->l->next;
