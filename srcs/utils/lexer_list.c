@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:45:46 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/05 14:01:37 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 14:30:47 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_lexer	*create_token(t_koi	token, t_quote quote, t_lexer *next, t_lexer *prev)
 
 	lexer = NULL;
 	lexer = (t_lexer *)malloc(sizeof(t_lexer));
+	if (lexer == NULL)
+		return (NULL);
 	ft_bzero(lexer, sizeof(t_lexer));
 	lexer->prev = prev;
 	lexer->next = next;
