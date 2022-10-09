@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:40:20 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 15:28:54 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 11:43:54 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	is_var(char *str, t_List st)
 	ret = malloc(sizeof(char *) * (2));
 	if (!ret)
 		return ;
-	if (!ft_isalpha(str[i]))
+	if (!ft_isalpha(str[i]) && str[i] != '_')
 	{
 		s()->sig->ret = 1;
 		write(2, "minishell: export: : Not a valid identifier\n", 44);
