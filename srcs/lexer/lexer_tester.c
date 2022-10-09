@@ -6,7 +6,7 @@
 /*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:41:30 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/09 14:01:02 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/10/09 15:35:46 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,12 @@ int	test_pipe(t_shell *s, t_lexer *l)
 		syntax_problem(s, 5);
 	else if (tmp->prev->koi == L_REDIR && tmp->koi == PIPE)
 		syntax_problem(s, 0);
-	else if (tmp->prev->koi == RR_REDIR && tmp->koi == R_REDIR)
-		syntax_problem(s, 0);
+	else if (tmp->prev->koi == RR_REDIR && tmp->koi == L_REDIR)
+		syntax_problem(s, 2);
 	else if (tmp->prev->koi == PIPE && tmp->koi == PIPE
 		&& tmp->next->koi == PIPE)
 		syntax_problem(s, 0);
-	else if (tmp->koi == LL_REDIR && tmp->next->koi == END)
+	else if (tmp->koi == LL_REDIR && tmp->next->koi >= END)
 		syntax_problem(s, 5);
 	else if (tmp->koi == R_REDIR && tmp->next->koi == END)
 		syntax_problem(s, 5);
@@ -110,7 +110,7 @@ int	test_pipe(t_shell *s, t_lexer *l)
 		syntax_problem(s, 5);
 	else if (tmp->prev->koi == L_REDIR && tmp->koi == R_REDIR)
 		syntax_problem(s, 5);
-	else if (tmp->koi == RR_REDIR && tmp->next->koi == END)
+	else if (tmp->koi == RR_REDIR && tmp->next->koi >= END)
 		syntax_problem(s, 5);
 	return (1);
 }
