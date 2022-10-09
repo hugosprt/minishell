@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:59 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/08 16:24:37 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 14:28:12 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	handle_int(siginfo_t *siginfo)
 		wait(NULL);
 }
 
-void
-	signal_handler(int signal, siginfo_t *siginfo, void *data)
+void	signal_handler(int signal, siginfo_t *siginfo, void *data)
 {
 	(void)data;
 	if (signal == SIGINT)

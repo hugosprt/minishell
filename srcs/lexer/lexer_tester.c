@@ -6,7 +6,7 @@
 /*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:41:30 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/09 13:52:06 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/10/09 14:01:02 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,17 @@ int	first_arg(t_shell *s, t_lexer *l)
 		if (tmp->koi > 0)
 			syntax_problem(s, 5);
 	if (tmp->koi > 2 && tmp->next->koi > 2)
-		syntax_problem(s, 2);
+		syntax_problem(s, 3);
 	else
 	{
 		tmp = tmp->next;
 		while (tmp && tmp->next && !s->error)
 		{
 			if (find_last_elem(tmp) == PIPE)
+			{
 				syntax_problem(s, 0);
+				break ;
+			}
 			test_pipe(s, tmp);
 			tmp = tmp->next;
 		}
