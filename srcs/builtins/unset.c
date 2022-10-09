@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:40:36 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 18:51:45 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 12:01:27 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	is_var2(char *str, t_List st)
 	char	*var_name;
 
 	i = 0;
-	if (!ft_isalpha(str[i]))
+	if (!ft_isalpha(str[i]) && str[i] != '_')
 	{
 		ft_putstr_fd("minishell: unset: : not a valid identifier\n", 2);
 		s()->sig->ret = 1;
