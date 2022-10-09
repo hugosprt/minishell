@@ -6,7 +6,7 @@
 /*   By: hspriet <hspriet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:41:30 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/09 13:47:21 by hspriet          ###   ########.fr       */
+/*   Updated: 2022/10/09 13:52:06 by hspriet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,9 @@ int	first_arg(t_shell *s, t_lexer *l)
 
 	tmp = l;
 	if (size_list(tmp) == 2)
-	{
 		if (tmp->koi > 0)
 			syntax_problem(s, 5);
-	}
-	if (tmp->koi == RR_REDIR && tmp->next->koi == R_REDIR)
-		syntax_problem(s, 2);
-	if (tmp->koi == LL_REDIR && tmp->next->koi == L_REDIR)
-		syntax_problem(s, 2);
-	if (tmp->koi == RR_REDIR && tmp->next->koi == L_REDIR)
-		syntax_problem(s, 2);
-	if (tmp->koi == LL_REDIR && tmp->next->koi == R_REDIR)
+	if (tmp->koi > 2 && tmp->next->koi > 2)
 		syntax_problem(s, 2);
 	else
 	{
