@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:14 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/08 23:24:37 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:38:28 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	error(t_shell *sh, int i)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd("MALLOC ERROR\n", 2);
-		ft_exit(0, NULL);
+		ft_exit(0, NULL, 0);
 	}
 	else if (herenext(sh))
 	{

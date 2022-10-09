@@ -6,7 +6,7 @@
 /*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:38 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/09 14:48:08 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:45:33 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	free_stuff(t_parsing *p, int n)
 		free(s()->sig);
 		free(s());
 		clear_history();
-		ft_putstr_fd("exit\n", 2);
 	}
 }
 

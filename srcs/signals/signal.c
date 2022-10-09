@@ -6,7 +6,7 @@
 /*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:59 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/09 14:48:13 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:38:35 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ctrl_d_exit(void)
 {
-	ft_exit(0, NULL);
+	ft_exit(0, NULL, 0);
 }
 
 void	handle_int(siginfo_t *siginfo)

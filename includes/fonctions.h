@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fonctions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:36:44 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 16:54:18 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:37:45 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * 
  */
 
-int			ft_exit(int pipe, char **str);
+int			ft_exit(int pipe, char **str, int n);
 
 void		get_signal(int sig);
 

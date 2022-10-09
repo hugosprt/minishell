@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtins.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:41:08 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/09 01:26:59 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:38:05 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	exec(t_shell *sh, t_parsing *p)
 	else if (!ft_strcmp(p->arg[0], "cd"))
 		cd(sh->st, p->arg[1]);
 	else if (!ft_strcmp(p->arg[0], "exit"))
-		ft_exit(p->nb_pipe, p->arg);
+		ft_exit(p->nb_pipe, p->arg, 0);
 	else
 		le_exec(sh, p, 0);
 	free_stuff(p, 0);

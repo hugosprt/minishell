@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:39:55 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 18:33:29 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 15:47:56 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,12 @@ static int	is_good(char *str)
 	return (1);
 }
 
-int	ft_exit(int pipe, char **str)
+int	ft_exit(int pipe, char **str, int n)
 {
-	int				sta;
 	long long int	nb;
 
-	sta = 0;
 	if (!str)
-		return (free_stuff(NULL, 1), exit(sta), 0);
+		return (free_stuff(NULL, 1), write(2, "exit\n", 5), exit(0), 0);
 	if (str[1])
 	{
 		nb = ft_atoll(str[1]);
@@ -99,9 +97,12 @@ int	ft_exit(int pipe, char **str)
 			return (0);
 		}
 		else
+		{
 			s()->sig->ret = ft_atoi(str[1]);
+			n = ft_atoi(str[1]);
+		}
 	}
 	if (!pipe)
-		return (free_stuff(s()->parsing, 1), exit(sta), 0);
+		return (free_stuff(s()->parsing, 1), exit(n), 0);
 	return (0);
 }
