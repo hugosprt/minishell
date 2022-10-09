@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpol <rpol@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:42:07 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/06 16:54:05 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 14:45:23 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static t_List	init(t_List st)
 	char		*test[4];
 	char		cwd[1024];
 
+	s()->i = 1;
 	test[0] = "NULL";
 	test[1] = "258";
 	test[2] = "PATH=/bin";
@@ -70,6 +71,7 @@ int	main(int ac, char **av, char **env)
 	shell = s();
 	if (!shell)
 		return (0);
+	s()->i = 0;
 	signal_gestion(shell);
 	if (!env || !(*env))
 		st = init(st);
