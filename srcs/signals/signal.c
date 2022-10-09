@@ -6,7 +6,7 @@
 /*   By: rpol <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 13:44:59 by rpol              #+#    #+#             */
-/*   Updated: 2022/10/09 14:43:58 by rpol             ###   ########.fr       */
+/*   Updated: 2022/10/09 14:48:13 by rpol             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ void	handle_int(siginfo_t *siginfo)
 		wait(NULL);
 }
 
-void
-	signal_handler(int signal, siginfo_t *siginfo, void *data)
+void	signal_handler(int signal, siginfo_t *siginfo, void *data)
 {
 	(void)data;
 	if (signal == SIGINT)
