@@ -71,7 +71,7 @@ static int	is_good(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!isdigit(str[i]))
+		if (!ft_isdigit3(str[i]))
 			return (0);
 		i++;
 	}

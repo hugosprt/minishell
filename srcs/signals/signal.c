@@ -27,7 +27,6 @@ void	handle_int(siginfo_t *siginfo)
 	{
 		ft_putchar_fd('\n', 2);
 		rl_on_new_line();
-		rl_replace_line("", 0);
 		rl_redisplay();
 		s()->sig->ret = 130;
 	}
